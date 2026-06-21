@@ -16,6 +16,12 @@ export type AssetRef = string
 export type ClipShape = 'rect' | 'rounded' | 'custom'
 
 /**
+ * Estilo del marco dibujado alrededor de un hueco cuando no se usa un
+ * `frameOverlay` (asset). El editor lo dibuja de forma vectorial.
+ */
+export type FrameStyle = 'goldOrnate' | 'thin' | 'none'
+
+/**
  * Rol semántico de un campo de texto. Permite autocompletado desde el
  * Perfil del negocio y tratar la marca como contenido bloqueado.
  */
@@ -47,8 +53,10 @@ export interface PhotoSlot extends Box {
   cornerRadius?: number
   /** Path SVG del recorte cuando `clipShape === 'custom'`. */
   clipPath?: string
-  /** Marco/adorno dibujado ENCIMA de la foto (p. ej. marco dorado). */
+  /** Marco/adorno (asset) dibujado ENCIMA de la foto. Tiene prioridad sobre `frameStyle`. */
   frameOverlay?: AssetRef
+  /** Marco vectorial dibujado por el editor cuando no hay `frameOverlay`. */
+  frameStyle?: FrameStyle
   /** Ajuste inicial de la foto al entrar al hueco. */
   defaultFit: 'cover' | 'contain'
 }
@@ -62,6 +70,8 @@ export interface TextField {
   align: TextAlign
   fontFamily: string
   fontSize: number
+  /** Estilo tipográfico para Konva ('normal', 'italic', 'bold', 'italic bold'). */
+  fontStyle?: string
   /** Color en formato CSS (hex/rgb). */
   color: string
   /** Máximo de líneas antes de encoger el texto para que no se desborde. */
@@ -72,6 +82,8 @@ export interface TextField {
   locked?: boolean
   /** Texto guía cuando el campo está vacío. */
   placeholder: string
+  /** Contenido de ejemplo para previsualizar la plantilla (galería / preview). */
+  sample?: string
 }
 
 /** Dimensiones del lienzo de la plantilla (px a 300 DPI). */

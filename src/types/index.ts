@@ -3,6 +3,7 @@ export type {
   Box,
   CanvasSpec,
   ClipShape,
+  FrameStyle,
   PhotoSlot,
   TemplateDef,
   TextAlign,

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <radialGradient id="pinkBg" cx="50%" cy="32%" r="85%">
+      <stop offset="0%" stop-color="#fdeef2" />
+      <stop offset="55%" stop-color="#f7cdd8" />
+      <stop offset="100%" stop-color="#efb0c2" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5ebc4" />
+      <stop offset="35%" stop-color="#dcbb62" />
+      <stop offset="55%" stop-color="#b8902f" />
+      <stop offset="78%" stop-color="#e8d18a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+    <radialGradient id="pearl" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#fff8db" />
+      <stop offset="45%" stop-color="#e7c969" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </radialGradient>
+    <symbol id="flower" viewBox="-44 -44 88 88">
+      <g>
+        <g fill="#ffffff">
+          <ellipse cx="0" cy="-26" rx="14" ry="24" />
+          <ellipse cx="0" cy="-26" rx="14" ry="24" transform="rotate(72)" />
+          <ellipse cx="0" cy="-26" rx="14" ry="24" transform="rotate(144)" />
+          <ellipse cx="0" cy="-26" rx="14" ry="24" transform="rotate(216)" />
+          <ellipse cx="0" cy="-26" rx="14" ry="24" transform="rotate(288)" />
+        </g>
+        <circle r="12" fill="#f6c84a" />
+      </g>
+    </symbol>
+    <symbol id="leaf" viewBox="-30 -12 60 24">
+      <path d="M-28,0 C-14,-14 14,-14 28,0 C14,14 -14,14 -28,0 Z" fill="#9bc08a" />
+      <path d="M-26,0 L26,0" stroke="#6f9a60" stroke-width="1.5" />
+    </symbol>
+  </defs>
+
+  <!-- Fondo rosa -->
+  <rect width="1200" height="1800" fill="url(#pinkBg)" />
+
+  <!-- Bokeh claro -->
+  <g fill="#ffffff" opacity="0.35">
+    <circle cx="180" cy="150" r="74" />
+    <circle cx="1010" cy="110" r="48" />
+    <circle cx="120" cy="780" r="60" />
+    <circle cx="1080" cy="640" r="86" />
+    <circle cx="640" cy="60" r="40" />
+    <circle cx="960" cy="900" r="54" />
+  </g>
+  <!-- Bokeh rosa -->
+  <g fill="#f49ab6" opacity="0.30">
+    <circle cx="320" cy="280" r="52" />
+    <circle cx="900" cy="330" r="64" />
+    <circle cx="520" cy="720" r="44" />
+    <circle cx="240" cy="520" r="36" />
+    <circle cx="780" cy="780" r="40" />
+  </g>
+
+  <!-- Flores suaves dispersas -->
+  <g opacity="0.85">
+    <use href="#flower" x="60" y="520" width="150" height="150" />
+    <use href="#flower" x="980" y="430" width="170" height="170" />
+    <use href="#flower" x="470" y="60" width="120" height="120" />
+    <use href="#flower" x="120" y="300" width="100" height="100" opacity="0.7" />
+    <use href="#flower" x="900" y="700" width="110" height="110" opacity="0.7" />
+  </g>
+
+  <!-- Perlas doradas -->
+  <g>
+    <circle cx="250" cy="200" r="16" fill="url(#pearl)" />
+    <circle cx="300" cy="240" r="10" fill="url(#pearl)" />
+    <circle cx="980" cy="240" r="14" fill="url(#pearl)" />
+    <circle cx="1040" cy="540" r="18" fill="url(#pearl)" />
+    <circle cx="170" cy="640" r="12" fill="url(#pearl)" />
+    <circle cx="720" cy="840" r="13" fill="url(#pearl)" />
+    <circle cx="560" cy="160" r="10" fill="url(#pearl)" />
+  </g>
+
+  <!-- "Mis 15" arriba a la derecha -->
+  <text x="980" y="170" font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic" font-weight="bold" font-size="130"
+        fill="url(#gold)" text-anchor="middle"
+        stroke="#8a6315" stroke-width="1.5">Mis 15</text>
+
+  <!-- Voluta dorada superior izquierda -->
+  <path d="M40,120 C160,40 300,60 360,150 C300,90 170,90 70,170"
+        fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.9" />
+
+  <!-- Tarjeta blanca inferior -->
+  <rect x="40" y="980" width="1120" height="780" rx="42" fill="#ffffff" />
+  <rect x="40" y="980" width="1120" height="780" rx="42" fill="none"
+        stroke="url(#gold)" stroke-width="11" />
+  <rect x="60" y="1000" width="1080" height="740" rx="32" fill="none"
+        stroke="url(#gold)" stroke-width="2" opacity="0.7" />
+
+  <!-- Decoración floral junto al nombre (dentro de la tarjeta) -->
+  <g transform="translate(845,1235)">
+    <use href="#leaf" x="-120" y="-14" width="90" height="36" transform="rotate(-18 -75 4)" />
+    <use href="#leaf" x="40" y="-14" width="90" height="36" transform="rotate(18 85 4)" />
+    <use href="#flower" x="-46" y="-46" width="92" height="92" />
+    <use href="#flower" x="-118" y="-30" width="60" height="60" opacity="0.9" />
+    <use href="#flower" x="60" y="-30" width="60" height="60" opacity="0.9" />
+  </g>
+</svg>
