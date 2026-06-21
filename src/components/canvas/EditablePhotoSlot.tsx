@@ -1,7 +1,8 @@
 import { Group, Image as KonvaImage, Rect, Text } from 'react-konva'
 import type { PhotoSlot, SlotTransform } from '../../types'
-import { coverScale } from '../../lib/image'
+import { slotImageLayout } from '../../lib/image'
 import { SlotFrame } from './frames'
+import { roundedRectClip } from './clip'
 
 interface Props {
   slot: PhotoSlot
@@ -14,24 +15,6 @@ interface Props {
 }
 
 const MAX_ZOOM = 5
-
-/** Geometría de la foto dentro del hueco (tamaño dibujado y límites de paneo). */
-function geom(W: number, H: number, image: HTMLImageElement, t: SlotTransform) {
-  const iw = image.width
-  const ih = image.height
-  const rot = ((t.rotation % 360) + 360) % 360
-  const swapped = rot === 90 || rot === 270
-  const base = coverScale(W, H, swapped ? ih : iw, swapped ? iw : ih)
-  const drawScale = base * t.scale
-  const imgW = iw * drawScale
-  const imgH = ih * drawScale
-  const extentW = swapped ? imgH : imgW
-  const extentH = swapped ? imgW : imgH
-  const maxOffX = Math.max(0, (extentW - W) / 2)
-  const maxOffY = Math.max(0, (extentH - H) / 2)
-  return { imgW, imgH, maxOffX, maxOffY, rot }
-}
-
 const clampTo = (v: number, max: number) => Math.min(max, Math.max(-max, v))
 
 /**
@@ -57,36 +40,18 @@ export function EditablePhotoSlot({
     cornerRadius = 0,
   } = slot
 
-  const clip = (ctx: {
-    beginPath: () => void
-    moveTo: (x: number, y: number) => void
-    arcTo: (x1: number, y1: number, x2: number, y2: number, r: number) => void
-    closePath: () => void
-  }) => {
-    const r = cornerRadius
-    ctx.beginPath()
-    ctx.moveTo(r, 0)
-    ctx.arcTo(W, 0, W, H, r)
-    ctx.arcTo(W, H, 0, H, r)
-    ctx.arcTo(0, H, 0, 0, r)
-    ctx.arcTo(0, 0, W, 0, r)
-    ctx.closePath()
-  }
-
   let content
   if (image) {
-    const g = geom(W, H, image, transform)
-    const offX = clampTo(transform.offsetX, g.maxOffX)
-    const offY = clampTo(transform.offsetY, g.maxOffY)
+    const g = slotImageLayout(W, H, image.width, image.height, transform)
     content = (
       <KonvaImage
         image={image}
-        x={W / 2 + offX}
-        y={H / 2 + offY}
-        width={g.imgW}
-        height={g.imgH}
-        offsetX={g.imgW / 2}
-        offsetY={g.imgH / 2}
+        x={W / 2 + g.offX}
+        y={H / 2 + g.offY}
+        width={g.drawW}
+        height={g.drawH}
+        offsetX={g.drawW / 2}
+        offsetY={g.drawH / 2}
         rotation={g.rot}
         draggable
         onDragEnd={(e) => {
@@ -140,7 +105,10 @@ export function EditablePhotoSlot({
           MAX_ZOOM,
           Math.max(1, transform.scale * factor),
         )
-        const g = geom(W, H, image, { ...transform, scale: newScale })
+        const g = slotImageLayout(W, H, image.width, image.height, {
+          ...transform,
+          scale: newScale,
+        })
         onTransform({
           scale: newScale,
           offsetX: clampTo(transform.offsetX, g.maxOffX),
@@ -148,7 +116,7 @@ export function EditablePhotoSlot({
         })
       }}
     >
-      <Group clipFunc={clip}>{content}</Group>
+      <Group clipFunc={roundedRectClip(W, H, cornerRadius)}>{content}</Group>
       <SlotFrame
         frameStyle={slot.frameStyle}
         width={W}

@@ -58,6 +58,40 @@ export function clampOffset(
   return Math.min(max, Math.max(-max, offset))
 }
 
+/**
+ * Layout de una foto dentro de su hueco: tamaño dibujado, offsets de paneo
+ * (ya limitados para cubrir el marco) y rotación normalizada. Compartido por
+ * el editor y el exportador para que el resultado impreso coincida con la
+ * vista en pantalla (RNF-06).
+ */
+export function slotImageLayout(
+  W: number,
+  H: number,
+  imgW: number,
+  imgH: number,
+  t: { scale: number; offsetX: number; offsetY: number; rotation: number },
+) {
+  const rot = ((t.rotation % 360) + 360) % 360
+  const swapped = rot === 90 || rot === 270
+  const base = coverScale(W, H, swapped ? imgH : imgW, swapped ? imgW : imgH)
+  const drawScale = base * t.scale
+  const drawW = imgW * drawScale
+  const drawH = imgH * drawScale
+  const extentW = swapped ? drawH : drawW
+  const extentH = swapped ? drawW : drawH
+  const maxOffX = Math.max(0, (extentW - W) / 2)
+  const maxOffY = Math.max(0, (extentH - H) / 2)
+  return {
+    drawW,
+    drawH,
+    rot,
+    maxOffX,
+    maxOffY,
+    offX: clampOffset(t.offsetX, W, extentW),
+    offY: clampOffset(t.offsetY, H, extentH),
+  }
+}
+
 const measureCanvas =
   typeof document !== 'undefined' ? document.createElement('canvas') : null
 

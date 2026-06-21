@@ -7,6 +7,7 @@ import { deleteImage, getProject, putImage, saveProject } from '../lib/db'
 import { EditorCanvas } from '../components/EditorCanvas'
 import { SlotPanel } from '../components/editor/SlotPanel'
 import { TextPanel } from '../components/editor/TextPanel'
+import { ExportModal } from '../components/editor/ExportModal'
 
 export function EditorPage() {
   const { projectId } = useParams()
@@ -23,6 +24,7 @@ export function EditorPage() {
   const setName = useEditorStore((s) => s.setName)
 
   const [loadError, setLoadError] = useState(false)
+  const [showExport, setShowExport] = useState(false)
   const stageRef = useRef<Konva.Stage>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const pendingSlotRef = useRef<string | null>(null)
@@ -177,8 +179,15 @@ export function EditorPage() {
           <TextPanel />
           <button
             type="button"
+            onClick={() => setShowExport(true)}
+            className="w-full rounded-lg bg-brand-gold px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-105"
+          >
+            🖨️ Exportar para imprimir
+          </button>
+          <button
+            type="button"
             onClick={() => void save()}
-            className="w-full rounded-lg bg-brand-gold px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:brightness-105"
+            className="w-full rounded-lg border border-brand-gold-soft bg-white px-4 py-2 text-sm"
           >
             Guardar
           </button>
@@ -191,6 +200,14 @@ export function EditorPage() {
           </button>
         </div>
       </div>
+
+      {showExport && (
+        <ExportModal
+          project={project}
+          template={template}
+          onClose={() => setShowExport(false)}
+        />
+      )}
     </div>
   )
 }
