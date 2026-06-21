@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type Konva from 'konva'
 import { useEditorStore } from '../store/editorStore'
@@ -7,7 +7,13 @@ import { deleteImage, getProject, putImage, saveProject } from '../lib/db'
 import { EditorCanvas } from '../components/EditorCanvas'
 import { SlotPanel } from '../components/editor/SlotPanel'
 import { TextPanel } from '../components/editor/TextPanel'
-import { ExportModal } from '../components/editor/ExportModal'
+
+// El modal de exportación (incluye jsPDF) se carga solo al abrirlo.
+const ExportModal = lazy(() =>
+  import('../components/editor/ExportModal').then((m) => ({
+    default: m.ExportModal,
+  })),
+)
 
 export function EditorPage() {
   const { projectId } = useParams()
@@ -202,11 +208,13 @@ export function EditorPage() {
       </div>
 
       {showExport && (
-        <ExportModal
-          project={project}
-          template={template}
-          onClose={() => setShowExport(false)}
-        />
+        <Suspense fallback={null}>
+          <ExportModal
+            project={project}
+            template={template}
+            onClose={() => setShowExport(false)}
+          />
+        </Suspense>
       )}
     </div>
   )

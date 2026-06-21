@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 /** Marco responsivo de la app: cabecera con marca + navegación, y contenido. */
@@ -34,11 +35,17 @@ export function AppShell() {
       </header>
 
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6">
-        <Outlet />
+        <Suspense
+          fallback={
+            <p className="text-center text-brand-ink/60">Cargando…</p>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer className="px-6 py-4 text-center text-xs text-brand-ink/40">
-        Fase 2 — Editor · Vite + React + TS + Tailwind + Konva + Dexie
+        Generador de Recuerditos · Vite + React + Konva + Dexie + PWA
       </footer>
     </div>
   )
