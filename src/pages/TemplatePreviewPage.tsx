@@ -1,6 +1,8 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getTemplate } from '../templates'
 import { TemplateCanvas } from '../components/TemplateCanvas'
+import { getProfile, saveProject } from '../lib/db'
+import { createProjectFromTemplate } from '../lib/project'
 
 /**
  * Vista previa de una plantilla renderizada a medidas reales en el lienzo
@@ -9,7 +11,16 @@ import { TemplateCanvas } from '../components/TemplateCanvas'
  */
 export function TemplatePreviewPage() {
   const { templateId } = useParams()
+  const navigate = useNavigate()
   const template = templateId ? getTemplate(templateId) : undefined
+
+  const handleUse = async () => {
+    if (!template) return
+    const profile = await getProfile()
+    const project = createProjectFromTemplate(template, profile)
+    await saveProject(project)
+    navigate(`/editor/${project.id}`)
+  }
 
   if (!template) {
     return (
@@ -39,9 +50,8 @@ export function TemplatePreviewPage() {
         </div>
         <button
           type="button"
-          disabled
-          title="Disponible en la Fase 2"
-          className="cursor-not-allowed rounded-lg bg-brand-gold/50 px-4 py-2 text-sm font-medium text-white"
+          onClick={() => void handleUse()}
+          className="rounded-lg bg-brand-gold px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:brightness-105"
         >
           Usar esta plantilla
         </button>

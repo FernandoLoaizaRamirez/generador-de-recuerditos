@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffaf0" />
+      <stop offset="100%" stop-color="#f6ead2" />
+    </linearGradient>
+    <linearGradient id="egold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3e7bd" />
+      <stop offset="40%" stop-color="#c8a04a" />
+      <stop offset="70%" stop-color="#a9791f" />
+      <stop offset="100%" stop-color="#e8d18a" />
+    </linearGradient>
+    <symbol id="eflower" viewBox="-44 -44 88 88">
+      <g>
+        <g fill="#e7c98f">
+          <ellipse cx="0" cy="-26" rx="13" ry="23" />
+          <ellipse cx="0" cy="-26" rx="13" ry="23" transform="rotate(72)" />
+          <ellipse cx="0" cy="-26" rx="13" ry="23" transform="rotate(144)" />
+          <ellipse cx="0" cy="-26" rx="13" ry="23" transform="rotate(216)" />
+          <ellipse cx="0" cy="-26" rx="13" ry="23" transform="rotate(288)" />
+        </g>
+        <circle r="11" fill="#c8a04a" />
+      </g>
+    </symbol>
+    <symbol id="eleaf" viewBox="-30 -12 60 24">
+      <path d="M-28,0 C-14,-13 14,-13 28,0 C14,13 -14,13 -28,0 Z" fill="#cdbb88" />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#cream)" />
+
+  <!-- Borde ornamental -->
+  <rect x="44" y="44" width="1112" height="1712" rx="26" fill="none"
+        stroke="url(#egold)" stroke-width="10" />
+  <rect x="62" y="62" width="1076" height="1676" rx="18" fill="none"
+        stroke="#a9791f" stroke-width="2" opacity="0.6" />
+
+  <!-- Spray floral esquina superior izquierda -->
+  <g transform="translate(120,120)">
+    <use href="#eleaf" x="-10" y="40" width="110" height="44" transform="rotate(35 45 62)" />
+    <use href="#eleaf" x="40" y="-10" width="110" height="44" transform="rotate(-10 95 12)" />
+    <use href="#eflower" x="-30" y="-30" width="92" height="92" />
+    <use href="#eflower" x="60" y="20" width="64" height="64" opacity="0.9" />
+    <use href="#eflower" x="20" y="80" width="56" height="56" opacity="0.85" />
+  </g>
+
+  <!-- Spray floral esquina inferior derecha -->
+  <g transform="translate(1080,1680) rotate(180)">
+    <use href="#eleaf" x="-10" y="40" width="110" height="44" transform="rotate(35 45 62)" />
+    <use href="#eflower" x="-30" y="-30" width="92" height="92" />
+    <use href="#eflower" x="60" y="20" width="60" height="60" opacity="0.9" />
+  </g>
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1255)">
+    <line x1="-260" y1="0" x2="-30" y2="0" stroke="url(#egold)" stroke-width="3" />
+    <line x1="30" y1="0" x2="260" y2="0" stroke="url(#egold)" stroke-width="3" />
+    <circle cx="0" cy="0" r="9" fill="url(#egold)" />
+    <circle cx="-30" cy="0" r="4" fill="#a9791f" />
+    <circle cx="30" cy="0" r="4" fill="#a9791f" />
+  </g>
+</svg>

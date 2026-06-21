@@ -3,6 +3,8 @@ import { AppShell } from './components/AppShell'
 import { HomePage } from './pages/HomePage'
 import { GalleryPage } from './pages/GalleryPage'
 import { TemplatePreviewPage } from './pages/TemplatePreviewPage'
+import { EditorPage } from './pages/EditorPage'
+import { ProfilePage } from './pages/ProfilePage'
 
 /**
  * Hash router: amigable con hosting estático y PWA (no requiere reescrituras
@@ -16,6 +18,8 @@ export const router = createHashRouter([
       { index: true, element: <HomePage /> },
       { path: 'plantillas', element: <GalleryPage /> },
       { path: 'plantillas/:templateId', element: <TemplatePreviewPage /> },
+      { path: 'editor/:projectId', element: <EditorPage /> },
+      { path: 'perfil', element: <ProfilePage /> },
     ],
   },
 ])

@@ -1,0 +1,92 @@
+import type { TemplateDef } from '../types'
+
+const BASE = '/templates/elegante-dorado'
+
+/**
+ * Plantilla «Elegante Dorado»: layout distinto (una foto grande + textos),
+ * para validar que el sistema de plantillas es declarativo — se agrega sin
+ * tocar el editor ni el exportador (RNF-08).
+ */
+export const eleganteDorado: TemplateDef = {
+  id: 'elegante-dorado',
+  name: 'Elegante Dorado',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 110,
+      y: 150,
+      width: 980,
+      height: 900,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 28,
+      frameStyle: 'thin',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 1110,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 120,
+      color: '#b8902f',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1300,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 38,
+      color: '#5b4a32',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme en mis XV años',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1470,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 46,
+      fontStyle: 'italic',
+      color: '#7a5b2e',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1610,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 40,
+      fontStyle: 'bold',
+      color: '#444444',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

@@ -15,13 +15,21 @@ export function AppShell() {
               Caballetes de XV años · listos para imprimir en 4×6&quot;
             </p>
           </Link>
-          <button
-            type="button"
-            onClick={() => navigate('/plantillas')}
-            className="shrink-0 rounded-lg bg-brand-gold px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:brightness-105"
-          >
-            + Nuevo recuerdo
-          </button>
+          <div className="flex shrink-0 items-center gap-3">
+            <Link
+              to="/perfil"
+              className="hidden text-sm text-brand-ink/60 hover:text-brand-ink sm:inline"
+            >
+              Perfil
+            </Link>
+            <button
+              type="button"
+              onClick={() => navigate('/plantillas')}
+              className="rounded-lg bg-brand-gold px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:brightness-105"
+            >
+              + Nuevo recuerdo
+            </button>
+          </div>
         </div>
       </header>
 
@@ -30,7 +38,7 @@ export function AppShell() {
       </main>
 
       <footer className="px-6 py-4 text-center text-xs text-brand-ink/40">
-        Fase 1 — Maquetación · Vite + React + TS + Tailwind + Konva
+        Fase 2 — Editor · Vite + React + TS + Tailwind + Konva + Dexie
       </footer>
     </div>
   )

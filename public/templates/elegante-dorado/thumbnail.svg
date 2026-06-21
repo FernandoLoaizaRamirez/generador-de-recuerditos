@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <linearGradient id="tcream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffaf0" />
+      <stop offset="100%" stop-color="#f6ead2" />
+    </linearGradient>
+    <linearGradient id="tegold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d18a" />
+      <stop offset="50%" stop-color="#c8a04a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" fill="url(#tcream)" />
+  <rect x="10" y="10" width="220" height="340" rx="8" fill="none"
+        stroke="url(#tegold)" stroke-width="4" />
+  <rect x="26" y="28" width="188" height="170" rx="6" fill="#e7ddc6"
+        stroke="url(#tegold)" stroke-width="3" />
+  <text x="120" y="238" font-family="'Segoe Script','Brush Script MT',cursive"
+        font-size="30" fill="#b8902f" text-anchor="middle">Nombre</text>
+  <line x1="60" y1="258" x2="180" y2="258" stroke="url(#tegold)" stroke-width="2" />
+  <circle cx="120" cy="258" r="4" fill="#c8a04a" />
+  <rect x="64" y="276" width="112" height="6" rx="3" fill="#d8c8a8" />
+  <rect x="78" y="294" width="84" height="6" rx="3" fill="#d8c8a8" />
+  <rect x="84" y="318" width="72" height="6" rx="3" fill="#c8a04a" />
+</svg>
