@@ -1,0 +1,103 @@
+/**
+ * Esquema declarativo de una PLANTILLA (layout de solo lectura).
+ *
+ * Principio de arquitectura: plantilla = layout + proyecto = contenido.
+ * Agregar una plantilla nueva debe requerir solo un `TemplateDef` + sus
+ * assets, sin tocar el motor del editor ni el exportador (RNF-08).
+ *
+ * Todas las coordenadas y tamaños están en píxeles del sistema de
+ * coordenadas de la plantilla (lienzo a 300 DPI, ver `src/lib/print.ts`).
+ */
+
+/** Ruta a un asset de imagen (relativa a /public o URL importada por Vite). */
+export type AssetRef = string
+
+/** Forma del recorte aplicado a la foto dentro de un hueco. */
+export type ClipShape = 'rect' | 'rounded' | 'custom'
+
+/**
+ * Rol semántico de un campo de texto. Permite autocompletado desde el
+ * Perfil del negocio y tratar la marca como contenido bloqueado.
+ */
+export type TextRole =
+  | 'quinceaneraName'
+  | 'message'
+  | 'businessName'
+  | 'phone'
+  | 'custom'
+
+/** Alineación horizontal del texto. */
+export type TextAlign = 'left' | 'center' | 'right'
+
+/** Caja posicionada en el lienzo. */
+export interface Box {
+  x: number
+  y: number
+  width: number
+  height: number
+  /** Rotación en grados (sentido horario). Por defecto 0. */
+  rotation?: number
+}
+
+/** Hueco donde el usuario coloca y encuadra una foto (recorte + zoom + paneo). */
+export interface PhotoSlot extends Box {
+  id: string
+  clipShape: ClipShape
+  /** Radio de esquina en px cuando `clipShape === 'rounded'`. */
+  cornerRadius?: number
+  /** Path SVG del recorte cuando `clipShape === 'custom'`. */
+  clipPath?: string
+  /** Marco/adorno dibujado ENCIMA de la foto (p. ej. marco dorado). */
+  frameOverlay?: AssetRef
+  /** Ajuste inicial de la foto al entrar al hueco. */
+  defaultFit: 'cover' | 'contain'
+}
+
+/** Campo de texto editable de la plantilla. */
+export interface TextField {
+  id: string
+  x: number
+  y: number
+  width: number
+  align: TextAlign
+  fontFamily: string
+  fontSize: number
+  /** Color en formato CSS (hex/rgb). */
+  color: string
+  /** Máximo de líneas antes de encoger el texto para que no se desborde. */
+  maxLines: number
+  /** Rol semántico (autocompletado / bloqueo de marca). */
+  role?: TextRole
+  /** Si es `true`, el usuario no puede mover/alterar el layout (p. ej. marca). */
+  locked?: boolean
+  /** Texto guía cuando el campo está vacío. */
+  placeholder: string
+}
+
+/** Dimensiones del lienzo de la plantilla (px a 300 DPI). */
+export interface CanvasSpec {
+  /** Ancho del área de corte (trim). Ej.: 1200 px = 4". */
+  width: number
+  /** Alto del área de corte (trim). Ej.: 1800 px = 6". */
+  height: number
+  /** Sangrado por lado en px (ej.: 38 px ≈ 0.125" @ 300 DPI). */
+  bleedPx: number
+  /** Margen interior de zona segura en px. */
+  safePx: number
+}
+
+/** Definición declarativa completa de una plantilla. */
+export interface TemplateDef {
+  id: string
+  name: string
+  thumbnail: AssetRef
+  /** Versión del esquema/plantilla para migraciones futuras. */
+  version: number
+  canvas: CanvasSpec
+  /** Fondo a pantalla completa del lienzo. */
+  background: AssetRef
+  /** Adornos sobre el fondo, en orden de z (primero = más atrás). */
+  overlays: AssetRef[]
+  photoSlots: PhotoSlot[]
+  textFields: TextField[]
+}

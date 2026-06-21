@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+/* Tokens de diseño — paleta inspirada en el arte base (rosa + dorado). */
+@theme {
+  --color-brand-pink: #f4b8c8;
+  --color-brand-pink-soft: #fbe4ea;
+  --color-brand-gold: #c8a04a;
+  --color-brand-gold-soft: #e8d6a8;
+  --color-brand-ink: #3a2b33;
+
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
