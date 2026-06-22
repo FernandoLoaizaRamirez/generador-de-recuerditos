@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      # npm install (no `npm ci`) para resolver dependencias opcionales
+      # específicas de la plataforma del runner (lockfile generado en Windows).
+      - run: npm install --no-audit --no-fund
       - run: npm run build
       - uses: actions/configure-pages@v5
         with:
