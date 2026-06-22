@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#eef6ff" />
+      <stop offset="55%" stop-color="#cfe2f6" />
+      <stop offset="100%" stop-color="#a9caea" />
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdfefe" />
+      <stop offset="50%" stop-color="#c9d2da" />
+      <stop offset="100%" stop-color="#8b97a3" />
+    </linearGradient>
+    <symbol id="sparkle" viewBox="-10 -10 20 20">
+      <path d="M0,-10 L2,-2 L10,0 L2,2 L0,10 L-2,2 L-10,0 L-2,-2 Z" />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#sky)" />
+
+  <!-- Destellos -->
+  <g fill="#ffffff" opacity="0.85">
+    <use href="#sparkle" x="640" y="120" width="46" height="46" />
+    <use href="#sparkle" x="1040" y="300" width="34" height="34" />
+    <use href="#sparkle" x="700" y="560" width="26" height="26" />
+    <use href="#sparkle" x="1080" y="900" width="40" height="40" />
+    <use href="#sparkle" x="620" y="1380" width="30" height="30" />
+  </g>
+  <g fill="#ffffff" opacity="0.4">
+    <circle cx="180" cy="120" r="60" />
+    <circle cx="980" cy="1500" r="80" />
+  </g>
+
+  <!-- Panel claro para los textos (derecha) -->
+  <rect x="636" y="200" width="510" height="1400" rx="28" fill="#ffffff" opacity="0.55" />
+  <rect x="636" y="200" width="510" height="1400" rx="28" fill="none"
+        stroke="url(#silver)" stroke-width="4" opacity="0.8" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(890,640)">
+    <line x1="-150" y1="0" x2="-20" y2="0" stroke="url(#silver)" stroke-width="3" />
+    <line x1="20" y1="0" x2="150" y2="0" stroke="url(#silver)" stroke-width="3" />
+    <use href="#sparkle" x="-14" y="-14" width="28" height="28" fill="#5a86ba" />
+  </g>
+</svg>

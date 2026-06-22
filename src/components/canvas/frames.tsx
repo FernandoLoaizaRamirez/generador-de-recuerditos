@@ -2,6 +2,16 @@ import { Rect } from 'react-konva'
 import type { FrameStyle } from '../../types'
 
 const GOLD_STOPS = [0, '#f5ebc4', 0.45, '#c8a04a', 0.7, '#b8902f', 1, '#a9791f']
+const SILVER_STOPS = [
+  0,
+  '#fdfefe',
+  0.45,
+  '#c9d2da',
+  0.7,
+  '#9aa6b2',
+  1,
+  '#7d8893',
+]
 
 interface FrameProps {
   width: number
@@ -57,8 +67,13 @@ function GoldFrame({ width, height, cornerRadius }: FrameProps) {
   )
 }
 
-/** Marco delgado dorado (p. ej. para el retrato de la tarjeta). */
-function ThinFrame({ width, height, cornerRadius }: FrameProps) {
+/** Marco delgado con degradado (dorado por defecto, plateado opcional). */
+function ThinFrame({
+  width,
+  height,
+  cornerRadius,
+  stops = GOLD_STOPS,
+}: FrameProps & { stops?: (number | string)[] }) {
   return (
     <Rect
       width={width}
@@ -67,7 +82,7 @@ function ThinFrame({ width, height, cornerRadius }: FrameProps) {
       strokeWidth={7}
       strokeLinearGradientStartPoint={{ x: 0, y: 0 }}
       strokeLinearGradientEndPoint={{ x: 0, y: height }}
-      strokeLinearGradientColorStops={GOLD_STOPS}
+      strokeLinearGradientColorStops={stops}
       listening={false}
     />
   )
@@ -87,6 +102,15 @@ export function SlotFrame({
   if (frameStyle === 'thin')
     return (
       <ThinFrame width={width} height={height} cornerRadius={cornerRadius} />
+    )
+  if (frameStyle === 'silver')
+    return (
+      <ThinFrame
+        width={width}
+        height={height}
+        cornerRadius={cornerRadius}
+        stops={SILVER_STOPS}
+      />
     )
   return null
 }

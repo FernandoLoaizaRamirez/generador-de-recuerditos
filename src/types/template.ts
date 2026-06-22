@@ -19,7 +19,7 @@ export type ClipShape = 'rect' | 'rounded' | 'custom'
  * Estilo del marco dibujado alrededor de un hueco cuando no se usa un
  * `frameOverlay` (asset). El editor lo dibuja de forma vectorial.
  */
-export type FrameStyle = 'goldOrnate' | 'thin' | 'none'
+export type FrameStyle = 'goldOrnate' | 'thin' | 'silver' | 'none'
 
 /**
  * Rol semántico de un campo de texto. Permite autocompletado desde el
