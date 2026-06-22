@@ -1,0 +1,91 @@
+import type { TemplateDef } from '../types'
+
+const BASE = '/templates/noche-estelar'
+
+/**
+ * Plantilla «Noche Estelar»: fondo azul noche con estrellas doradas, una foto
+ * grande y textos en tonos claros/dorados (alto contraste sobre oscuro).
+ */
+export const nocheEstelar: TemplateDef = {
+  id: 'noche-estelar',
+  name: 'Noche Estelar',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 110,
+      y: 150,
+      width: 980,
+      height: 920,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 24,
+      frameStyle: 'thin',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 1110,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 120,
+      color: '#e8c45a',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1310,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 36,
+      color: '#e6e2d6',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1490,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 46,
+      fontStyle: 'italic',
+      color: '#e8c45a',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1630,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 40,
+      fontStyle: 'bold',
+      color: '#cfd4e2',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

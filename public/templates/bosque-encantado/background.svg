@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="sage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6f8f1" />
+      <stop offset="60%" stop-color="#e3ecda" />
+      <stop offset="100%" stop-color="#cdddbf" />
+    </linearGradient>
+    <linearGradient id="bgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0dfa0" />
+      <stop offset="50%" stop-color="#c8a04a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+    <symbol id="bleaf" viewBox="-30 -12 60 24">
+      <path d="M-28,0 C-14,-13 14,-13 28,0 C14,13 -14,13 -28,0 Z" fill="#7fa06a" />
+      <path d="M-26,0 L26,0" stroke="#5d7d4c" stroke-width="1.4" />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#sage)" />
+
+  <!-- Corona de hojas alrededor de la foto circular (centro 600,470) -->
+  <g transform="translate(600,470)" opacity="0.95">
+    <use href="#bleaf" width="110" height="44" transform="rotate(0)   translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(30)  translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(60)  translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(90)  translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(120) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(150) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(180) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(210) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(240) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(270) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(300) translate(255,-22)" />
+    <use href="#bleaf" width="110" height="44" transform="rotate(330) translate(255,-22)" />
+  </g>
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1010)">
+    <line x1="-220" y1="0" x2="-30" y2="0" stroke="url(#bgold)" stroke-width="3" />
+    <line x1="30" y1="0" x2="220" y2="0" stroke="url(#bgold)" stroke-width="3" />
+    <use href="#bleaf" x="-26" y="-10" width="52" height="20" />
+  </g>
+</svg>

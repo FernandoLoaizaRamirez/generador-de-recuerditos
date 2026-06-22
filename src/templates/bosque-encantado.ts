@@ -1,0 +1,91 @@
+import type { TemplateDef } from '../types'
+
+const BASE = '/templates/bosque-encantado'
+
+/**
+ * Plantilla «Bosque Encantado»: una foto circular (cornerRadius = radio)
+ * dentro de una corona de hojas, tema botánico verde.
+ */
+export const bosqueEncantado: TemplateDef = {
+  id: 'bosque-encantado',
+  name: 'Bosque Encantado',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 350,
+      y: 220,
+      width: 500,
+      height: 500,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 250,
+      frameStyle: 'thin',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 840,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 116,
+      color: '#4f7a52',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1080,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 36,
+      color: '#46553a',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1290,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 46,
+      fontStyle: 'italic',
+      color: '#4f7a52',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1470,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 40,
+      fontStyle: 'bold',
+      color: '#444444',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

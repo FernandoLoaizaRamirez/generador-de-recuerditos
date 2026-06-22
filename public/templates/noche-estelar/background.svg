@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#202a47" />
+      <stop offset="55%" stop-color="#141c33" />
+      <stop offset="100%" stop-color="#0b1124" />
+    </linearGradient>
+    <linearGradient id="ngold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6e7a8" />
+      <stop offset="50%" stop-color="#d4af52" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+    <symbol id="star" viewBox="-50 -50 100 100">
+      <path d="M0,-48 L14,-15 L48,-15 L20,8 L30,42 L0,20 L-30,42 L-20,8 L-48,-15 L-14,-15 Z" />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#night)" />
+
+  <!-- Estrellas doradas -->
+  <g fill="url(#ngold)">
+    <use href="#star" x="120" y="120" width="70" height="70" />
+    <use href="#star" x="1020" y="180" width="56" height="56" />
+    <use href="#star" x="980" y="640" width="44" height="44" />
+    <use href="#star" x="160" y="600" width="40" height="40" />
+    <use href="#star" x="560" y="60" width="34" height="34" />
+  </g>
+  <!-- Polvo de estrellas -->
+  <g fill="#f6e7a8">
+    <circle cx="300" cy="220" r="3" /><circle cx="420" cy="120" r="2" />
+    <circle cx="820" cy="300" r="3" /><circle cx="1080" cy="420" r="2" />
+    <circle cx="240" cy="420" r="2" /><circle cx="700" cy="180" r="2" />
+    <circle cx="960" cy="120" r="3" /><circle cx="520" cy="320" r="2" />
+  </g>
+
+  <!-- Marco ornamental -->
+  <rect x="44" y="44" width="1112" height="1712" rx="24" fill="none"
+        stroke="url(#ngold)" stroke-width="8" />
+  <rect x="62" y="62" width="1076" height="1676" rx="16" fill="none"
+        stroke="#d4af52" stroke-width="1.5" opacity="0.6" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1250)">
+    <line x1="-240" y1="0" x2="-30" y2="0" stroke="url(#ngold)" stroke-width="3" />
+    <line x1="30" y1="0" x2="240" y2="0" stroke="url(#ngold)" stroke-width="3" />
+    <use href="#star" x="-16" y="-16" width="32" height="32" fill="url(#ngold)" />
+  </g>
+</svg>
