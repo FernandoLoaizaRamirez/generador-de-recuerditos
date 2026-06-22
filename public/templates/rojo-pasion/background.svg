@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <radialGradient id="wine" cx="50%" cy="32%" r="85%">
+      <stop offset="0%" stop-color="#7a1830" />
+      <stop offset="55%" stop-color="#4a0f20" />
+      <stop offset="100%" stop-color="#280812" />
+    </radialGradient>
+    <linearGradient id="rgold2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6e7a8" />
+      <stop offset="50%" stop-color="#d4af52" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#wine)" />
+
+  <!-- Marco dorado ornamental -->
+  <rect x="44" y="44" width="1112" height="1712" rx="22" fill="none"
+        stroke="url(#rgold2)" stroke-width="9" />
+  <rect x="62" y="62" width="1076" height="1676" rx="14" fill="none"
+        stroke="#d4af52" stroke-width="1.5" opacity="0.6" />
+
+  <!-- Volutas doradas en esquinas -->
+  <g fill="none" stroke="url(#rgold2)" stroke-width="5" opacity="0.9">
+    <path d="M90,150 C200,90 320,110 380,200 C320,140 200,140 120,210" />
+    <path d="M1110,150 C1000,90 880,110 820,200 C880,140 1000,140 1080,210" />
+  </g>
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1325)">
+    <line x1="-240" y1="0" x2="-30" y2="0" stroke="url(#rgold2)" stroke-width="3" />
+    <line x1="30" y1="0" x2="240" y2="0" stroke="url(#rgold2)" stroke-width="3" />
+    <circle cx="0" cy="0" r="9" fill="url(#rgold2)" />
+  </g>
+</svg>

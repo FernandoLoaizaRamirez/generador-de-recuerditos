@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfdf8" />
+      <stop offset="100%" stop-color="#eef4e6" />
+    </linearGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3f8f63" />
+      <stop offset="100%" stop-color="#1f5e3c" />
+    </linearGradient>
+    <linearGradient id="tgold2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0dfa0" />
+      <stop offset="50%" stop-color="#c8a04a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+    <symbol id="palm" viewBox="-100 -20 200 40">
+      <path d="M-95,0 C-40,-30 40,-30 95,0 C40,30 -40,30 -95,0 Z" fill="url(#emerald)" />
+      <path d="M-90,0 L90,0" stroke="#16482d" stroke-width="2" />
+      <g stroke="#16482d" stroke-width="1.4" opacity="0.7">
+        <path d="M-60,0 L-72,-14" /><path d="M-30,0 L-42,-16" /><path d="M0,0 L-12,-17" />
+        <path d="M30,0 L18,-16" /><path d="M60,0 L48,-14" />
+        <path d="M-60,0 L-72,14" /><path d="M-30,0 L-42,16" /><path d="M0,0 L-12,17" />
+        <path d="M30,0 L18,16" /><path d="M60,0 L48,14" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#ivory)" />
+
+  <!-- Hojas tropicales esquina superior izquierda -->
+  <g transform="translate(110,120)" opacity="0.92">
+    <use href="#palm" width="320" height="64" transform="rotate(35)" />
+    <use href="#palm" width="260" height="52" transform="rotate(75) translate(-30,0)" />
+  </g>
+  <!-- Hojas tropicales esquina inferior derecha -->
+  <g transform="translate(1090,1680) rotate(180)" opacity="0.92">
+    <use href="#palm" width="320" height="64" transform="rotate(35)" />
+    <use href="#palm" width="260" height="52" transform="rotate(75) translate(-30,0)" />
+  </g>
+
+  <!-- Marco interior fino dorado -->
+  <rect x="54" y="54" width="1092" height="1692" rx="20" fill="none"
+        stroke="url(#tgold2)" stroke-width="4" opacity="0.8" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1235)">
+    <line x1="-220" y1="0" x2="-30" y2="0" stroke="url(#tgold2)" stroke-width="3" />
+    <line x1="30" y1="0" x2="220" y2="0" stroke="url(#tgold2)" stroke-width="3" />
+    <circle cx="0" cy="0" r="8" fill="#2f7a4e" />
+  </g>
+</svg>

@@ -6,6 +6,9 @@ import { azulCristal } from './azul-cristal'
 import { lilaEncanto } from './lila-encanto'
 import { bosqueEncantado } from './bosque-encantado'
 import { nocheEstelar } from './noche-estelar'
+import { duraznoSuave } from './durazno-suave'
+import { rojoPasion } from './rojo-pasion'
+import { tropicalEsmeralda } from './tropical-esmeralda'
 
 /**
  * Registro central de plantillas. Para agregar una plantilla nueva basta
@@ -20,6 +23,9 @@ export const templates: TemplateDef[] = [
   lilaEncanto,
   bosqueEncantado,
   nocheEstelar,
+  duraznoSuave,
+  rojoPasion,
+  tropicalEsmeralda,
 ]
 
 /** Busca una plantilla por id. */

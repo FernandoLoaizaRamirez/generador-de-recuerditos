@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <radialGradient id="peach" cx="50%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#fff5ef" />
+      <stop offset="55%" stop-color="#f9d8c6" />
+      <stop offset="100%" stop-color="#f2bca2" />
+    </radialGradient>
+    <linearGradient id="pgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3e3bc" />
+      <stop offset="50%" stop-color="#cfa15c" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#peach)" />
+
+  <g fill="#ffffff" opacity="0.4">
+    <circle cx="170" cy="150" r="60" />
+    <circle cx="1030" cy="200" r="44" />
+    <circle cx="1060" cy="560" r="70" />
+  </g>
+
+  <!-- Tarjeta blanca inferior -->
+  <rect x="40" y="700" width="1120" height="1020" rx="40" fill="#ffffff" />
+  <rect x="40" y="700" width="1120" height="1020" rx="40" fill="none"
+        stroke="url(#pgold)" stroke-width="9" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,855)">
+    <line x1="-230" y1="0" x2="-26" y2="0" stroke="url(#pgold)" stroke-width="3" />
+    <line x1="26" y1="0" x2="230" y2="0" stroke="url(#pgold)" stroke-width="3" />
+    <circle cx="0" cy="0" r="8" fill="url(#pgold)" />
+  </g>
+</svg>

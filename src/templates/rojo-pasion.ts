@@ -1,0 +1,91 @@
+import type { TemplateDef } from '../types'
+
+const BASE = '/templates/rojo-pasion'
+
+/**
+ * Plantilla «Rojo Pasión»: fondo vino con marco dorado ornamentado, una foto
+ * grande y textos en dorado/crema (dramática y elegante).
+ */
+export const rojoPasion: TemplateDef = {
+  id: 'rojo-pasion',
+  name: 'Rojo Pasión',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 130,
+      y: 170,
+      width: 940,
+      height: 960,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 12,
+      frameStyle: 'goldOrnate',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 1190,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 120,
+      color: '#e8c45a',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1390,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 36,
+      color: '#f0e6d8',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1555,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 46,
+      fontStyle: 'italic',
+      color: '#e8c45a',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1680,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 38,
+      fontStyle: 'bold',
+      color: '#e8dcc8',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

@@ -1,0 +1,91 @@
+import type { TemplateDef } from '../types'
+
+const BASE = '/templates/tropical-esmeralda'
+
+/**
+ * Plantilla «Tropical Esmeralda»: marfil con hojas tropicales verdes y
+ * detalles dorados, una foto grande y textos en verde esmeralda.
+ */
+export const tropicalEsmeralda: TemplateDef = {
+  id: 'tropical-esmeralda',
+  name: 'Tropical Esmeralda',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 130,
+      y: 160,
+      width: 940,
+      height: 920,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 20,
+      frameStyle: 'thin',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 1120,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 116,
+      color: '#2f7a4e',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1300,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 36,
+      color: '#3a5240',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1480,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 46,
+      fontStyle: 'italic',
+      color: '#2f7a4e',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1620,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 40,
+      fontStyle: 'bold',
+      color: '#444444',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

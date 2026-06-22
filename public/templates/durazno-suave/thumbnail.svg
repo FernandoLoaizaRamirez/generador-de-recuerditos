@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <radialGradient id="tpeach" cx="50%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#fff5ef" /><stop offset="55%" stop-color="#f9d8c6" /><stop offset="100%" stop-color="#f2bca2" />
+    </radialGradient>
+    <linearGradient id="tpg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3e3bc" /><stop offset="50%" stop-color="#cfa15c" /><stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" fill="url(#tpeach)" />
+  <rect x="20" y="28" width="200" height="106" rx="8" fill="#fff" stroke="url(#tpg)" stroke-width="4" />
+  <rect x="14" y="148" width="212" height="198" rx="12" fill="#fff" stroke="url(#tpg)" stroke-width="4" />
+  <text x="120" y="186" font-family="'Segoe Script','Brush Script MT',cursive" font-size="26" fill="#d2755a" text-anchor="middle">Nombre</text>
+  <circle cx="78" cy="244" r="30" fill="#f6ddd0" stroke="url(#tpg)" stroke-width="3" />
+  <circle cx="162" cy="244" r="30" fill="#f6ddd0" stroke="url(#tpg)" stroke-width="3" />
+  <rect x="76" y="300" width="88" height="6" rx="3" fill="#e7b9a4" />
+  <rect x="86" y="320" width="68" height="6" rx="3" fill="#d2755a" />
+</svg>
