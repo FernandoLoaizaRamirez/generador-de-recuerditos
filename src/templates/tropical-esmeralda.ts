@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/tropical-esmeralda'
+const BASE = import.meta.env.BASE_URL + 'templates/tropical-esmeralda'
 
 /**
  * Plantilla «Tropical Esmeralda»: marfil con hojas tropicales verdes y

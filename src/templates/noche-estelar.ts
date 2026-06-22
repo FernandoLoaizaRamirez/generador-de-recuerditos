@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/noche-estelar'
+const BASE = import.meta.env.BASE_URL + 'templates/noche-estelar'
 
 /**
  * Plantilla «Noche Estelar»: fondo azul noche con estrellas doradas, una foto

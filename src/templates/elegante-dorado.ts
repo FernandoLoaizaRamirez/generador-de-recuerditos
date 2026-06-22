@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/elegante-dorado'
+const BASE = import.meta.env.BASE_URL + 'templates/elegante-dorado'
 
 /**
  * Plantilla «Elegante Dorado»: layout distinto (una foto grande + textos),

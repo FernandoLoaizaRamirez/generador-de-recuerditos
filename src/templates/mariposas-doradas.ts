@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/mariposas-doradas'
+const BASE = import.meta.env.BASE_URL + 'templates/mariposas-doradas'
 
 /**
  * Plantilla «Mariposas Doradas», recreación del arte de referencia:

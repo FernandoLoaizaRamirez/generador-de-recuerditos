@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/lila-encanto'
+const BASE = import.meta.env.BASE_URL + 'templates/lila-encanto'
 
 /** Plantilla «Lila Encanto»: tres fotos en fila sobre lavanda + tarjeta. */
 export const lilaEncanto: TemplateDef = {

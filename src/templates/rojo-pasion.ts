@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/rojo-pasion'
+const BASE = import.meta.env.BASE_URL + 'templates/rojo-pasion'
 
 /**
  * Plantilla «Rojo Pasión»: fondo vino con marco dorado ornamentado, una foto

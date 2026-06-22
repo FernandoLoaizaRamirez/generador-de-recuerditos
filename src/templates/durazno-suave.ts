@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/durazno-suave'
+const BASE = import.meta.env.BASE_URL + 'templates/durazno-suave'
 
 /**
  * Plantilla «Durazno Suave»: una foto principal apaisada arriba y dos fotos

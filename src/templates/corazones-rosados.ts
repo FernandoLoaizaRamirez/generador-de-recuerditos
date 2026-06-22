@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/corazones-rosados'
+const BASE = import.meta.env.BASE_URL + 'templates/corazones-rosados'
 
 /**
  * Plantilla «Corazones Rosados»: dos fotos inclinadas arriba sobre un fondo

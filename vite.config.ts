@@ -4,7 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
-export default defineConfig({
+// En producción la app se sirve en una subruta de GitHub Pages
+// (/generador-de-recuerditos/); en desarrollo en la raíz.
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/generador-de-recuerditos/' : '/',
   plugins: [
     react(),
     tailwindcss(),
@@ -52,4 +55,4 @@ export default defineConfig({
       },
     }),
   ],
-})
+}))

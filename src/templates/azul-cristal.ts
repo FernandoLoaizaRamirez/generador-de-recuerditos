@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/azul-cristal'
+const BASE = import.meta.env.BASE_URL + 'templates/azul-cristal'
 
 /**
  * Plantilla «Azul Cristal»: layout en dos columnas — una foto vertical grande

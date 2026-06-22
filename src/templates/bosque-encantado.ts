@@ -1,6 +1,6 @@
 import type { TemplateDef } from '../types'
 
-const BASE = '/templates/bosque-encantado'
+const BASE = import.meta.env.BASE_URL + 'templates/bosque-encantado'
 
 /**
  * Plantilla «Bosque Encantado»: una foto circular (cornerRadius = radio)
