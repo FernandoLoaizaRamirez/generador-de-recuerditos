@@ -1,0 +1,91 @@
+import type { TemplateDef } from '../types'
+
+const BASE = import.meta.env.BASE_URL + 'templates/aqua-menta'
+
+/**
+ * Plantilla «Aqua Menta»: fondo menta fresco con ramitas botánicas y detalles
+ * dorados, una foto grande y tarjeta inferior para los textos.
+ */
+export const aquaMenta: TemplateDef = {
+  id: 'aqua-menta',
+  name: 'Aqua Menta',
+  thumbnail: `${BASE}/thumbnail.svg`,
+  version: 1,
+  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
+  background: `${BASE}/background.svg`,
+  overlays: [],
+  photoSlots: [
+    {
+      id: 'foto-principal',
+      x: 150,
+      y: 170,
+      width: 900,
+      height: 820,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 20,
+      frameStyle: 'thin',
+      defaultFit: 'cover',
+    },
+  ],
+  textFields: [
+    {
+      id: 'nombre',
+      x: 100,
+      y: 1095,
+      width: 1000,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 110,
+      color: '#2e8b6f',
+      maxLines: 1,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Chelsea Valentina',
+    },
+    {
+      id: 'mensaje',
+      x: 150,
+      y: 1310,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 34,
+      color: '#3a5a4e',
+      maxLines: 2,
+      role: 'message',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
+    },
+    {
+      id: 'negocio',
+      x: 150,
+      y: 1480,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 44,
+      fontStyle: 'italic',
+      color: '#2e8b6f',
+      maxLines: 2,
+      role: 'businessName',
+      placeholder: 'Nombre del negocio',
+      sample: 'Videofilmaciones "Yesenia"',
+    },
+    {
+      id: 'telefono',
+      x: 150,
+      y: 1620,
+      width: 900,
+      align: 'center',
+      fontFamily: 'Playfair Display',
+      fontSize: 38,
+      fontStyle: 'bold',
+      color: '#444444',
+      maxLines: 1,
+      role: 'phone',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
+    },
+  ],
+}

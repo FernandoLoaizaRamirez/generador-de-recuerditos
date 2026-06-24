@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="mint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1fbf7" />
+      <stop offset="60%" stop-color="#cdeee2" />
+      <stop offset="100%" stop-color="#a7ddca" />
+    </linearGradient>
+    <linearGradient id="agold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0dfa0" />
+      <stop offset="50%" stop-color="#c8a04a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+    <symbol id="sprig" viewBox="-60 -16 120 32">
+      <path d="M-55,0 C-20,-2 20,-2 55,0" stroke="#5fa98a" stroke-width="2.5" fill="none" />
+      <g fill="#7cc0a4">
+        <ellipse cx="-36" cy="-9" rx="11" ry="5" transform="rotate(-25 -36 -9)" />
+        <ellipse cx="-12" cy="-10" rx="11" ry="5" transform="rotate(-25 -12 -10)" />
+        <ellipse cx="12" cy="-10" rx="11" ry="5" transform="rotate(25 12 -10)" />
+        <ellipse cx="36" cy="-9" rx="11" ry="5" transform="rotate(25 36 -9)" />
+        <ellipse cx="-24" cy="9" rx="11" ry="5" transform="rotate(25 -24 9)" />
+        <ellipse cx="0" cy="11" rx="11" ry="5" />
+        <ellipse cx="24" cy="9" rx="11" ry="5" transform="rotate(-25 24 9)" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#mint)" />
+
+  <!-- Ramitas decorativas -->
+  <use href="#sprig" x="120" y="120" width="300" height="80" transform="rotate(20 270 160)" opacity="0.8" />
+  <use href="#sprig" x="780" y="120" width="300" height="80" transform="rotate(-20 930 160)" opacity="0.8" />
+
+  <!-- Tarjeta blanca inferior -->
+  <rect x="40" y="1050" width="1120" height="670" rx="40" fill="#ffffff" opacity="0.7" />
+  <rect x="40" y="1050" width="1120" height="670" rx="40" fill="none"
+        stroke="url(#agold)" stroke-width="8" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1240)">
+    <line x1="-220" y1="0" x2="-30" y2="0" stroke="url(#agold)" stroke-width="3" />
+    <line x1="30" y1="0" x2="220" y2="0" stroke="url(#agold)" stroke-width="3" />
+    <circle cx="0" cy="0" r="8" fill="#2e8b6f" />
+  </g>
+</svg>

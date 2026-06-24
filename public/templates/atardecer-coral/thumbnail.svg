@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <linearGradient id="tsunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe1b0" /><stop offset="40%" stop-color="#ffb088" /><stop offset="75%" stop-color="#f77e93" /><stop offset="100%" stop-color="#e85c86" />
+    </linearGradient>
+    <linearGradient id="tcg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0cf" /><stop offset="50%" stop-color="#e0aa5c" /><stop offset="100%" stop-color="#bb7f2c" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" fill="url(#tsunset)" />
+  <circle cx="120" cy="62" r="42" fill="#fff3da" opacity="0.5" />
+  <rect x="20" y="34" width="92" height="118" rx="8" fill="#fffaf6" stroke="url(#tcg)" stroke-width="4" transform="rotate(-3 66 93)" />
+  <rect x="128" y="50" width="92" height="118" rx="8" fill="#fffaf6" stroke="url(#tcg)" stroke-width="4" transform="rotate(3 174 109)" />
+  <rect x="14" y="180" width="212" height="166" rx="12" fill="#fffaf6" stroke="url(#tcg)" stroke-width="4" />
+  <text x="120" y="228" font-family="'Segoe Script','Brush Script MT',cursive" font-size="28" fill="#d2486a" text-anchor="middle">Nombre</text>
+  <line x1="64" y1="244" x2="176" y2="244" stroke="url(#tcg)" stroke-width="2" />
+  <rect x="70" y="272" width="100" height="6" rx="3" fill="#f0b9a8" />
+  <rect x="84" y="298" width="72" height="6" rx="3" fill="#d2486a" />
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe1b0" />
+      <stop offset="40%" stop-color="#ffb088" />
+      <stop offset="75%" stop-color="#f77e93" />
+      <stop offset="100%" stop-color="#e85c86" />
+    </linearGradient>
+    <linearGradient id="cgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0cf" />
+      <stop offset="50%" stop-color="#e0aa5c" />
+      <stop offset="100%" stop-color="#bb7f2c" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#sunset)" />
+
+  <!-- Sol suave -->
+  <circle cx="600" cy="300" r="220" fill="#ffe9c4" opacity="0.45" />
+  <circle cx="600" cy="300" r="150" fill="#fff3da" opacity="0.5" />
+
+  <!-- Tarjeta blanca inferior -->
+  <rect x="40" y="840" width="1120" height="880" rx="40" fill="#fffaf6" />
+  <rect x="40" y="840" width="1120" height="880" rx="40" fill="none"
+        stroke="url(#cgold)" stroke-width="10" />
+  <rect x="58" y="858" width="1084" height="844" rx="32" fill="none"
+        stroke="#eaa07f" stroke-width="2" opacity="0.6" />
+
+  <!-- Divisor bajo el nombre -->
+  <g transform="translate(600,1075)">
+    <line x1="-230" y1="0" x2="-28" y2="0" stroke="url(#cgold)" stroke-width="3" />
+    <line x1="28" y1="0" x2="230" y2="0" stroke="url(#cgold)" stroke-width="3" />
+    <circle cx="0" cy="0" r="8" fill="url(#cgold)" />
+  </g>
+</svg>

@@ -9,6 +9,9 @@ import { nocheEstelar } from './noche-estelar'
 import { duraznoSuave } from './durazno-suave'
 import { rojoPasion } from './rojo-pasion'
 import { tropicalEsmeralda } from './tropical-esmeralda'
+import { glamNegroOro } from './glam-negro-oro'
+import { atardecerCoral } from './atardecer-coral'
+import { aquaMenta } from './aqua-menta'
 
 /**
  * Registro central de plantillas. Para agregar una plantilla nueva basta
@@ -26,6 +29,9 @@ export const templates: TemplateDef[] = [
   duraznoSuave,
   rojoPasion,
   tropicalEsmeralda,
+  glamNegroOro,
+  atardecerCoral,
+  aquaMenta,
 ]
 
 /** Busca una plantilla por id. */

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <radialGradient id="tnoir" cx="50%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#2a2a2a" /><stop offset="60%" stop-color="#141414" /><stop offset="100%" stop-color="#000" />
+    </radialGradient>
+    <linearGradient id="tglam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6e7a8" /><stop offset="50%" stop-color="#d4af52" /><stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" fill="url(#tnoir)" />
+  <g stroke="url(#tglam)" stroke-width="2" opacity="0.85">
+    <line x1="12" y1="12" x2="60" y2="12" /><line x1="12" y1="12" x2="52" y2="34" /><line x1="12" y1="12" x2="34" y2="52" /><line x1="12" y1="12" x2="12" y2="60" />
+  </g>
+  <rect x="8" y="8" width="224" height="344" rx="8" fill="none" stroke="url(#tglam)" stroke-width="3" />
+  <rect x="32" y="40" width="176" height="184" rx="6" fill="#222" stroke="url(#tglam)" stroke-width="5" />
+  <text x="120" y="268" font-family="'Segoe Script','Brush Script MT',cursive" font-size="30" fill="#e8c45a" text-anchor="middle">Nombre</text>
+  <line x1="64" y1="284" x2="176" y2="284" stroke="url(#tglam)" stroke-width="2" />
+  <rect x="70" y="304" width="100" height="6" rx="3" fill="#cfc7b4" />
+  <rect x="84" y="326" width="72" height="6" rx="3" fill="#e8c45a" />
+</svg>
