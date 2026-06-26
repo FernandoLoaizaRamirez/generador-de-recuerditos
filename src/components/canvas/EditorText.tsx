@@ -1,6 +1,7 @@
 import { Group, Rect, Text } from 'react-konva'
 import type { TextField } from '../../types'
 import { fitFontSize } from '../../lib/image'
+import { textStyleProps } from '../../lib/textStyle'
 
 interface Props {
   field: TextField
@@ -11,8 +12,8 @@ interface Props {
 
 /**
  * Campo de texto editable. Muestra el valor del proyecto (o el placeholder
- * atenuado si está vacío) con auto-ajuste de tamaño para no desbordarse
- * (RF-21). El texto se edita desde el panel lateral.
+ * atenuado si está vacío) con auto-ajuste de tamaño (RF-21) y acabado deluxe
+ * (gradiente metálico + borde + sombra). El texto se edita desde el panel.
  */
 export function EditorText({ field, value, selected, onSelect }: Props) {
   const isPlaceholder = !value.trim()
@@ -24,6 +25,7 @@ export function EditorText({ field, value, selected, onSelect }: Props) {
     maxLines: field.maxLines,
     fontStyle: field.fontStyle,
   })
+  const style = textStyleProps(field, fontSize, { placeholder: isPlaceholder })
 
   return (
     <Group onClick={onSelect} onTap={onSelect}>
@@ -48,10 +50,10 @@ export function EditorText({ field, value, selected, onSelect }: Props) {
         fontFamily={field.fontFamily}
         fontSize={fontSize}
         fontStyle={field.fontStyle ?? 'normal'}
-        fill={isPlaceholder ? '#9aa0a6' : field.color}
         opacity={isPlaceholder ? 0.7 : 1}
         wrap="word"
         lineHeight={1.1}
+        {...style}
       />
     </Group>
   )

@@ -8,7 +8,10 @@ export type {
   TemplateDef,
   TextAlign,
   TextField,
+  TextGradient,
   TextRole,
+  TextShadow,
+  TextStroke,
 } from './template'
 
 export type {

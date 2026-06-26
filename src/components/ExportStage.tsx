@@ -11,6 +11,7 @@ import {
 import type { Project, TemplateDef } from '../types'
 import type { ExportImages } from '../lib/export'
 import { fitFontSize, slotImageLayout } from '../lib/image'
+import { textStyleProps } from '../lib/textStyle'
 import { SlotFrame } from './canvas/frames'
 import { roundedRectClip } from './canvas/clip'
 
@@ -167,10 +168,10 @@ export function ExportStage({
                 fontFamily={field.fontFamily}
                 fontSize={fontSize}
                 fontStyle={field.fontStyle ?? 'normal'}
-                fill={field.color}
                 wrap="word"
                 lineHeight={1.1}
                 listening={false}
+                {...textStyleProps(field, fontSize)}
               />
             )
           })}

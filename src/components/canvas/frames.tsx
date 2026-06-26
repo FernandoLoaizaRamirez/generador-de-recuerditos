@@ -1,17 +1,43 @@
 import { Rect } from 'react-konva'
 import type { FrameStyle } from '../../types'
 
-const GOLD_STOPS = [0, '#f5ebc4', 0.45, '#c8a04a', 0.7, '#b8902f', 1, '#a9791f']
+// Gradientes con banda de brillo central para un acabado metálico (no plano).
+const GOLD_STOPS = [
+  0,
+  '#f7ecbe',
+  0.28,
+  '#e3bd5e',
+  0.46,
+  '#fff6d0',
+  0.54,
+  '#caa24c',
+  0.74,
+  '#9c6f1c',
+  1,
+  '#e6c87a',
+]
 const SILVER_STOPS = [
   0,
-  '#fdfefe',
-  0.45,
-  '#c9d2da',
-  0.7,
+  '#eef2f6',
+  0.3,
+  '#c2ccd5',
+  0.47,
+  '#ffffff',
+  0.55,
   '#9aa6b2',
+  0.75,
+  '#76828e',
   1,
-  '#7d8893',
+  '#dfe6ee',
 ]
+
+// Sombra proyectada compartida (da sensación de relieve sobre el fondo).
+const FRAME_SHADOW = {
+  shadowColor: 'rgba(0,0,0,0.4)',
+  shadowBlur: 18,
+  shadowOffsetX: 0,
+  shadowOffsetY: 9,
+}
 
 interface FrameProps {
   width: number
@@ -19,7 +45,7 @@ interface FrameProps {
   cornerRadius: number
 }
 
-/** Marco dorado de doble línea con remates en las esquinas. */
+/** Marco dorado ornamentado: banda metálica + bisel de luz + sombra + remates. */
 function GoldFrame({ width, height, cornerRadius }: FrameProps) {
   const corner = (cx: number, cy: number) => (
     <Rect
@@ -30,33 +56,50 @@ function GoldFrame({ width, height, cornerRadius }: FrameProps) {
       rotation={45}
       offsetX={9}
       offsetY={9}
-      fill="#d9b65a"
-      stroke="#8a6315"
+      fillLinearGradientStartPoint={{ x: 0, y: -9 }}
+      fillLinearGradientEndPoint={{ x: 0, y: 9 }}
+      fillLinearGradientColorStops={[0, '#fff2bf', 1, '#b8902f']}
+      stroke="#7a5512"
       strokeWidth={1.5}
       listening={false}
     />
   )
   return (
     <>
+      {/* Banda dorada principal con sombra proyectada */}
       <Rect
         width={width}
         height={height}
         cornerRadius={cornerRadius}
-        strokeWidth={16}
+        strokeWidth={18}
         strokeLinearGradientStartPoint={{ x: 0, y: 0 }}
         strokeLinearGradientEndPoint={{ x: 0, y: height }}
         strokeLinearGradientColorStops={GOLD_STOPS}
+        {...FRAME_SHADOW}
         listening={false}
       />
+      {/* Bisel: filo de luz interior */}
       <Rect
-        x={11}
-        y={11}
-        width={width - 22}
-        height={height - 22}
-        cornerRadius={Math.max(0, cornerRadius - 4)}
-        stroke="#8a6315"
+        x={4}
+        y={4}
+        width={width - 8}
+        height={height - 8}
+        cornerRadius={Math.max(0, cornerRadius - 2)}
+        stroke="#fff6d0"
         strokeWidth={2}
-        opacity={0.8}
+        opacity={0.55}
+        listening={false}
+      />
+      {/* Línea de sombra interior (profundidad) */}
+      <Rect
+        x={12}
+        y={12}
+        width={width - 24}
+        height={height - 24}
+        cornerRadius={Math.max(0, cornerRadius - 6)}
+        stroke="#7a5512"
+        strokeWidth={2}
+        opacity={0.7}
         listening={false}
       />
       {corner(0, 0)}
@@ -67,24 +110,41 @@ function GoldFrame({ width, height, cornerRadius }: FrameProps) {
   )
 }
 
-/** Marco delgado con degradado (dorado por defecto, plateado opcional). */
+/** Marco delgado con degradado metálico, bisel de luz y sombra suave. */
 function ThinFrame({
   width,
   height,
   cornerRadius,
   stops = GOLD_STOPS,
-}: FrameProps & { stops?: (number | string)[] }) {
+  highlight = '#fff6d0',
+}: FrameProps & { stops?: (number | string)[]; highlight?: string }) {
   return (
-    <Rect
-      width={width}
-      height={height}
-      cornerRadius={cornerRadius}
-      strokeWidth={7}
-      strokeLinearGradientStartPoint={{ x: 0, y: 0 }}
-      strokeLinearGradientEndPoint={{ x: 0, y: height }}
-      strokeLinearGradientColorStops={stops}
-      listening={false}
-    />
+    <>
+      <Rect
+        width={width}
+        height={height}
+        cornerRadius={cornerRadius}
+        strokeWidth={8}
+        strokeLinearGradientStartPoint={{ x: 0, y: 0 }}
+        strokeLinearGradientEndPoint={{ x: 0, y: height }}
+        strokeLinearGradientColorStops={stops}
+        {...FRAME_SHADOW}
+        shadowBlur={14}
+        shadowOffsetY={7}
+        listening={false}
+      />
+      <Rect
+        x={2.5}
+        y={2.5}
+        width={width - 5}
+        height={height - 5}
+        cornerRadius={Math.max(0, cornerRadius - 1)}
+        stroke={highlight}
+        strokeWidth={1.5}
+        opacity={0.5}
+        listening={false}
+      />
+    </>
   )
 }
 
@@ -110,6 +170,7 @@ export function SlotFrame({
         height={height}
         cornerRadius={cornerRadius}
         stops={SILVER_STOPS}
+        highlight="#ffffff"
       />
     )
   return null

@@ -35,6 +35,30 @@ export type TextRole =
 /** Alineación horizontal del texto. */
 export type TextAlign = 'left' | 'center' | 'right'
 
+/**
+ * Gradiente metálico del texto (oro/plata/etc.). `colorStops` sigue el
+ * formato de `createLinearGradient`: [offset, color, offset, color, ...].
+ */
+export interface TextGradient {
+  colorStops: (number | string)[]
+  /** Dirección del barrido. Por defecto 'vertical' (sheen metálico). */
+  angle?: 'vertical' | 'horizontal'
+}
+
+/** Borde del texto (ctx.strokeStyle + ctx.lineWidth). */
+export interface TextStroke {
+  color: string
+  width: number
+}
+
+/** Sombra proyectada del texto (ctx.shadow*). */
+export interface TextShadow {
+  color: string
+  blur: number
+  offsetX?: number
+  offsetY?: number
+}
+
 /** Caja posicionada en el lienzo. */
 export interface Box {
   x: number
@@ -84,6 +108,12 @@ export interface TextField {
   placeholder: string
   /** Contenido de ejemplo para previsualizar la plantilla (galería / preview). */
   sample?: string
+  /** Estilos deluxe: gradiente metálico del relleno. */
+  gradient?: TextGradient
+  /** Estilos deluxe: borde del texto. */
+  stroke?: TextStroke
+  /** Estilos deluxe: sombra proyectada. */
+  shadow?: TextShadow
 }
 
 /** Dimensiones del lienzo de la plantilla (px a 300 DPI). */
