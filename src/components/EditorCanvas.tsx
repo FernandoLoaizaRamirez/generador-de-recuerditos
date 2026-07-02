@@ -7,11 +7,9 @@ import { useContainerSize } from '../hooks/useContainerSize'
 import { useFontsReady } from '../hooks/useFontsReady'
 import { useSlotImages } from '../hooks/useSlotImages'
 import { resolveOverlay } from '../lib/overlay'
-import { partitionByFold } from '../lib/fold'
 import { CanvasImage } from './canvas/CanvasImage'
 import { EditablePhotoSlot } from './canvas/EditablePhotoSlot'
 import { EditorText } from './canvas/EditorText'
-import { FoldGroup } from './canvas/FoldGroup'
 
 interface Props {
   stageRef: React.RefObject<Konva.Stage | null>
@@ -47,15 +45,13 @@ export function EditorCanvas({ stageRef, onRequestUpload }: Props) {
   const cw = template.canvas.width
   const ch = template.canvas.height
   const scale = width > 0 ? width / cw : 0
-  const foldY = template.fold?.atY
 
+  // El doblez (rotación 180° de la mitad superior) es SOLO para el archivo de
+  // impresión (ver ExportStage): en el editor mostramos todo al derecho, tal
+  // como se ve el caballete ya doblado, para encuadrar las fotos con comodidad.
   const resolve = (l: OverlayLayer) => resolveOverlay(l, template.canvas)
   const underlays = (template.underlays ?? []).map(resolve)
   const overlays = template.overlays.map(resolve)
-  const slots = partitionByFold(template.photoSlots, (s) => s.y, foldY)
-  const und = partitionByFold(underlays, (o) => o.y, foldY)
-  const ovl = partitionByFold(overlays, (o) => o.y, foldY)
-  const texts = partitionByFold(template.textFields, (t) => t.y, foldY)
 
   const renderSlot = (slot: (typeof template.photoSlots)[number]) => (
     <EditablePhotoSlot
@@ -120,18 +116,10 @@ export function EditorCanvas({ stageRef, onRequestUpload }: Props) {
               width={cw}
               height={ch}
             />
-            {und.bottom.map(renderOverlay)}
-            {slots.bottom.map(renderSlot)}
-            {ovl.bottom.map(renderOverlay)}
-            {texts.bottom.map(renderText)}
-            {foldY != null && (
-              <FoldGroup atY={foldY} width={cw}>
-                {und.top.map(renderOverlay)}
-                {slots.top.map(renderSlot)}
-                {ovl.top.map(renderOverlay)}
-                {texts.top.map(renderText)}
-              </FoldGroup>
-            )}
+            {underlays.map(renderOverlay)}
+            {template.photoSlots.map(renderSlot)}
+            {overlays.map(renderOverlay)}
+            {template.textFields.map(renderText)}
           </Layer>
         </Stage>
       )}

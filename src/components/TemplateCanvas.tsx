@@ -4,11 +4,9 @@ import type { OverlayLayer, TemplateDef } from '../types'
 import { useContainerSize } from '../hooks/useContainerSize'
 import { useFontsReady } from '../hooks/useFontsReady'
 import { resolveOverlay } from '../lib/overlay'
-import { partitionByFold } from '../lib/fold'
 import { CanvasImage } from './canvas/CanvasImage'
 import { PhotoSlotView } from './canvas/PhotoSlotView'
 import { TextFieldView } from './canvas/TextFieldView'
-import { FoldGroup } from './canvas/FoldGroup'
 
 /**
  * Lienzo WYSIWYG de solo lectura (vista previa / galería). Renderiza la
@@ -27,15 +25,13 @@ export function TemplateCanvas({ template }: { template: TemplateDef }) {
   const cw = template.canvas.width
   const ch = template.canvas.height
   const scale = containerWidth > 0 ? containerWidth / cw : 0
-  const foldY = template.fold?.atY
 
+  // El doblez (rotación 180° de la mitad superior) se aplica SOLO al exportar
+  // (ver ExportStage): en la galería mostramos la plantilla al derecho, tal
+  // como se ve el caballete ya doblado.
   const resolve = (l: OverlayLayer) => resolveOverlay(l, template.canvas)
   const underlays = (template.underlays ?? []).map(resolve)
   const overlays = template.overlays.map(resolve)
-  const slots = partitionByFold(template.photoSlots, (s) => s.y, foldY)
-  const und = partitionByFold(underlays, (o) => o.y, foldY)
-  const ovl = partitionByFold(overlays, (o) => o.y, foldY)
-  const texts = partitionByFold(template.textFields, (t) => t.y, foldY)
 
   const renderSlots = (list: typeof template.photoSlots) =>
     list.map((slot) => <PhotoSlotView key={slot.id} slot={slot} />)
@@ -70,18 +66,10 @@ export function TemplateCanvas({ template }: { template: TemplateDef }) {
               width={cw}
               height={ch}
             />
-            {renderOverlays(und.bottom)}
-            {renderSlots(slots.bottom)}
-            {renderOverlays(ovl.bottom)}
-            {renderTexts(texts.bottom)}
-            {foldY != null && (
-              <FoldGroup atY={foldY} width={cw}>
-                {renderOverlays(und.top)}
-                {renderSlots(slots.top)}
-                {renderOverlays(ovl.top)}
-                {renderTexts(texts.top)}
-              </FoldGroup>
-            )}
+            {renderOverlays(underlays)}
+            {renderSlots(template.photoSlots)}
+            {renderOverlays(overlays)}
+            {renderTexts(template.textFields)}
           </Layer>
         </Stage>
       )}

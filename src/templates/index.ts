@@ -1,5 +1,6 @@
 import type { TemplateDef } from '../types'
 import { deluxeValentina } from './deluxe-valentina'
+import { bodaBlancoOro } from './boda-blanco-oro'
 import { mariposasDoradas } from './mariposas-doradas'
 import { eleganteDorado } from './elegante-dorado'
 import { corazonesRosados } from './corazones-rosados'
@@ -20,6 +21,7 @@ import { aquaMenta } from './aqua-menta'
  * editor y el exportador la consumen sin cambios (RNF-08).
  */
 export const templates: TemplateDef[] = [
+  bodaBlancoOro,
   deluxeValentina,
   mariposasDoradas,
   eleganteDorado,
