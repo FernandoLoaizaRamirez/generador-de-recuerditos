@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 410" width="1020" height="410" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="pgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0dfa0" />
+      <stop offset="50%" stop-color="#c8a04a" />
+      <stop offset="100%" stop-color="#a9791f" />
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="1004" height="394" rx="30"
+        fill="#fffaf3" fill-opacity="0.78"
+        stroke="url(#pgold)" stroke-width="6" />
+  <rect x="22" y="22" width="976" height="366" rx="22"
+        fill="none" stroke="#b8902f" stroke-width="1.5" opacity="0.5" />
+</svg>

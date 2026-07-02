@@ -2,45 +2,42 @@ import type { TemplateDef } from '../types'
 
 const BASE = import.meta.env.BASE_URL + 'templates/deluxe-valentina'
 
+// El marco + fotos ocupan una región superior (deja una banda inferior para
+// los textos). Las ventanas de foto se derivan de esta región usando las
+// fracciones detectadas en el canal alfa del marco.
+const FR = { x: 168, y: 10, w: 864, h: 1330 }
+const win = (fx: number, fy: number, fw: number, fh: number, pad: number) => ({
+  x: Math.round(FR.x + fx * FR.w - pad),
+  y: Math.round(FR.y + fy * FR.h - pad),
+  width: Math.round(fw * FR.w + 2 * pad),
+  height: Math.round(fh * FR.h + 2 * pad),
+})
+const big = win(0.282, 0.214, 0.431, 0.385, 14)
+const small = win(0.546, 0.711, 0.27, 0.163, 12)
+
 /**
- * Plantilla «Deluxe Valentina»: assets PNG fotorrealistas (mármol + seda,
- * marco de oro hiperrealista, mariposas de seda, perlas y divisor floral).
- *
- * Pipeline de capas: Fondo(png) → fotos del usuario → MarcoOro(png, tapa los
- * bordes) → Decoraciones(png) → Divisor(png posicionado) → textos deluxe.
- *
- * Los huecos se alinean con las ventanas transparentes del marco (detectadas
- * por análisis del canal alfa), ligeramente agrandados para quedar por debajo
- * del borde dorado. Sin marco vectorial (frameStyle 'none'): el oro lo aporta
- * el PNG.
+ * Plantilla «Deluxe Valentina»: assets PNG fotorrealistas. El marco y las
+ * fotos van arriba (region FR), las decoraciones detrás (underlay) y los
+ * textos abajo sobre una placa translúcida para que sean legibles.
  */
 export const deluxeValentina: TemplateDef = {
   id: 'deluxe-valentina',
   name: 'Deluxe Valentina',
   thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
+  version: 2,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
   background: `${BASE}/Fondo.png`,
-  // Decoraciones DEBAJO de las fotos: mariposas/perlas asoman en los márgenes
-  // sin tapar las fotos (el generador las colocó sobre el centro).
-  underlays: [`${BASE}/Decoraciones.png`],
+  underlays: [
+    { src: `${BASE}/Decoraciones.png`, x: FR.x, y: FR.y, width: FR.w, height: FR.h },
+  ],
   overlays: [
-    `${BASE}/MarcoOro.png`,
-    {
-      src: `${BASE}/SeparadorDivisor.png`,
-      x: 190,
-      y: 1300,
-      width: 300,
-      height: 150,
-    },
+    { src: `${BASE}/MarcoOro.png`, x: FR.x, y: FR.y, width: FR.w, height: FR.h },
+    { src: `${BASE}/placa.svg`, x: 90, y: 1360, width: 1020, height: 410 },
   ],
   photoSlots: [
     {
       id: 'foto-1',
-      x: 322,
-      y: 368,
-      width: 548,
-      height: 724,
+      ...big,
       rotation: 0,
       clipShape: 'rounded',
       cornerRadius: 10,
@@ -49,13 +46,10 @@ export const deluxeValentina: TemplateDef = {
     },
     {
       id: 'foto-2',
-      x: 632,
-      y: 1262,
-      width: 366,
-      height: 326,
+      ...small,
       rotation: 0,
       clipShape: 'rounded',
-      cornerRadius: 10,
+      cornerRadius: 8,
       frameStyle: 'none',
       defaultFit: 'cover',
     },
@@ -63,12 +57,12 @@ export const deluxeValentina: TemplateDef = {
   textFields: [
     {
       id: 'nombre',
-      x: 40,
-      y: 1195,
-      width: 600,
+      x: 110,
+      y: 1378,
+      width: 980,
       align: 'center',
       fontFamily: 'Great Vibes',
-      fontSize: 84,
+      fontSize: 100,
       color: '#b8860b',
       maxLines: 1,
       role: 'quinceaneraName',
@@ -77,12 +71,12 @@ export const deluxeValentina: TemplateDef = {
     },
     {
       id: 'mensaje',
-      x: 50,
-      y: 1455,
-      width: 580,
+      x: 150,
+      y: 1512,
+      width: 900,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 27,
+      fontSize: 34,
       color: '#5b3a45',
       maxLines: 2,
       role: 'message',
@@ -91,12 +85,12 @@ export const deluxeValentina: TemplateDef = {
     },
     {
       id: 'negocio',
-      x: 50,
-      y: 1555,
-      width: 580,
+      x: 150,
+      y: 1600,
+      width: 900,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 36,
+      fontSize: 46,
       fontStyle: 'italic',
       color: '#7a5b2e',
       maxLines: 2,
@@ -106,12 +100,12 @@ export const deluxeValentina: TemplateDef = {
     },
     {
       id: 'telefono',
-      x: 50,
-      y: 1660,
-      width: 580,
+      x: 150,
+      y: 1700,
+      width: 900,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 30,
+      fontSize: 40,
       fontStyle: 'bold',
       color: '#4a3a42',
       maxLines: 1,
