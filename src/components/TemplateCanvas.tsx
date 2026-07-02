@@ -3,6 +3,7 @@ import { Layer, Stage } from 'react-konva'
 import type { TemplateDef } from '../types'
 import { useContainerSize } from '../hooks/useContainerSize'
 import { useFontsReady } from '../hooks/useFontsReady'
+import { resolveOverlay } from '../lib/overlay'
 import { CanvasImage } from './canvas/CanvasImage'
 import { PhotoSlotView } from './canvas/PhotoSlotView'
 import { TextFieldView } from './canvas/TextFieldView'
@@ -44,19 +45,35 @@ export function TemplateCanvas({ template }: { template: TemplateDef }) {
               width={cw}
               height={ch}
             />
+            {(template.underlays ?? []).map((layer, i) => {
+              const o = resolveOverlay(layer, template.canvas)
+              return (
+                <CanvasImage
+                  key={`u${i}`}
+                  src={o.src}
+                  x={o.x}
+                  y={o.y}
+                  width={o.width}
+                  height={o.height}
+                />
+              )
+            })}
             {template.photoSlots.map((slot) => (
               <PhotoSlotView key={slot.id} slot={slot} />
             ))}
-            {template.overlays.map((src) => (
-              <CanvasImage
-                key={src}
-                src={src}
-                x={0}
-                y={0}
-                width={cw}
-                height={ch}
-              />
-            ))}
+            {template.overlays.map((layer, i) => {
+              const o = resolveOverlay(layer, template.canvas)
+              return (
+                <CanvasImage
+                  key={i}
+                  src={o.src}
+                  x={o.x}
+                  y={o.y}
+                  width={o.width}
+                  height={o.height}
+                />
+              )
+            })}
             {fontsReady &&
               template.textFields.map((field) => (
                 <TextFieldView key={field.id} field={field} />

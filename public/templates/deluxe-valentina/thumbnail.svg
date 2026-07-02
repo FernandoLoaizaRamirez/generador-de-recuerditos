@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <linearGradient id="dvbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbfaf7" />
+      <stop offset="62%" stop-color="#f3f0ea" />
+      <stop offset="68%" stop-color="#e6c3ce" />
+      <stop offset="100%" stop-color="#dda6b6" />
+    </linearGradient>
+    <linearGradient id="dvgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff3c4" />
+      <stop offset="45%" stop-color="#d4af52" />
+      <stop offset="70%" stop-color="#9c6f1c" />
+      <stop offset="100%" stop-color="#e6c87a" />
+    </linearGradient>
+    <linearGradient id="dvname" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6dd8f" />
+      <stop offset="55%" stop-color="#b8860b" />
+      <stop offset="100%" stop-color="#7a5512" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" fill="url(#dvbg)" />
+  <!-- vetas suaves de mármol -->
+  <g stroke="#d9cbb0" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M20,40 C70,80 120,60 180,120" />
+    <path d="M0,150 C60,140 110,180 200,160" />
+  </g>
+  <!-- marco grande -->
+  <rect x="42" y="42" width="120" height="150" rx="5" fill="#efe7d3"
+        stroke="url(#dvgold)" stroke-width="9" />
+  <!-- marco pequeño (abajo-derecha, superpuesto) -->
+  <rect x="132" y="176" width="80" height="92" rx="5" fill="#efe7d3"
+        stroke="url(#dvgold)" stroke-width="8" />
+  <!-- mariposa (hint) -->
+  <g transform="translate(56,150)" stroke="#a9791f" stroke-width="1">
+    <path d="M0,0 C-20,-20 -26,-3 -9,3 Z" fill="#e6a6bd" />
+    <path d="M0,0 C20,-20 26,-3 9,3 Z" fill="#e6a6bd" />
+  </g>
+  <!-- nombre dorado -->
+  <text x="96" y="250" font-family="'Segoe Script','Brush Script MT',cursive"
+        font-size="30" fill="url(#dvname)" text-anchor="middle">Nombre</text>
+  <!-- divisor con rosa (hint) -->
+  <g transform="translate(96,268)">
+    <line x1="-46" y1="0" x2="-10" y2="0" stroke="url(#dvgold)" stroke-width="2" />
+    <line x1="10" y1="0" x2="46" y2="0" stroke="url(#dvgold)" stroke-width="2" />
+    <circle cx="0" cy="0" r="5" fill="#e57ea0" />
+  </g>
+  <rect x="40" y="288" width="112" height="6" rx="3" fill="#8a6b52" opacity="0.7" />
+  <rect x="52" y="308" width="88" height="6" rx="3" fill="#7a5b2e" />
+</svg>

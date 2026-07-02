@@ -12,6 +12,23 @@
 /** Ruta a un asset de imagen (relativa a /public o URL importada por Vite). */
 export type AssetRef = string
 
+/** Adorno posicionado (para elementos que no ocupan todo el lienzo). */
+export interface PositionedOverlay {
+  src: AssetRef
+  /** Por defecto 0. */
+  x?: number
+  y?: number
+  /** Por defecto = ancho/alto del lienzo (adorno a pantalla completa). */
+  width?: number
+  height?: number
+}
+
+/**
+ * Capa de adorno: una ruta simple (se dibuja a lienzo completo) o un objeto
+ * posicionado (`overlayUrl` a medida, p. ej. un divisor horizontal).
+ */
+export type OverlayLayer = AssetRef | PositionedOverlay
+
 /** Forma del recorte aplicado a la foto dentro de un hueco. */
 export type ClipShape = 'rect' | 'rounded' | 'custom'
 
@@ -138,8 +155,13 @@ export interface TemplateDef {
   canvas: CanvasSpec
   /** Fondo a pantalla completa del lienzo. */
   background: AssetRef
-  /** Adornos sobre el fondo, en orden de z (primero = más atrás). */
-  overlays: AssetRef[]
+  /**
+   * Adornos dibujados DEBAJO de las fotos (entre el fondo y las fotos). Útil
+   * para decoraciones que deben quedar en los márgenes sin tapar las fotos.
+   */
+  underlays?: OverlayLayer[]
+  /** Adornos sobre las fotos, en orden de z (primero = más atrás). */
+  overlays: OverlayLayer[]
   photoSlots: PhotoSlot[]
   textFields: TextField[]
 }

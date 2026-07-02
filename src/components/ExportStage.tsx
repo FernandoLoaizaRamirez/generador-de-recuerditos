@@ -80,6 +80,17 @@ export function ExportStage({
           listening={false}
         />
         <Group x={b} y={b}>
+          {images.underlays.map((uv, i) => (
+            <KImage
+              key={`u${i}`}
+              image={uv.img}
+              x={uv.x}
+              y={uv.y}
+              width={uv.width}
+              height={uv.height}
+              listening={false}
+            />
+          ))}
           {template.photoSlots.map((slot) => {
             const img = images.slotImages[slot.id]
             const t = project.slots[slot.id].transform
@@ -138,11 +149,11 @@ export function ExportStage({
           {images.overlays.map((ov, i) => (
             <KImage
               key={i}
-              image={ov}
-              x={0}
-              y={0}
-              width={W}
-              height={H}
+              image={ov.img}
+              x={ov.x}
+              y={ov.y}
+              width={ov.width}
+              height={ov.height}
               listening={false}
             />
           ))}

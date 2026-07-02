@@ -5,6 +5,7 @@ import { useEditorStore } from '../store/editorStore'
 import { useContainerSize } from '../hooks/useContainerSize'
 import { useFontsReady } from '../hooks/useFontsReady'
 import { useSlotImages } from '../hooks/useSlotImages'
+import { resolveOverlay } from '../lib/overlay'
 import { CanvasImage } from './canvas/CanvasImage'
 import { EditablePhotoSlot } from './canvas/EditablePhotoSlot'
 import { EditorText } from './canvas/EditorText'
@@ -74,6 +75,19 @@ export function EditorCanvas({ stageRef, onRequestUpload }: Props) {
               width={cw}
               height={ch}
             />
+            {(template.underlays ?? []).map((layer, i) => {
+              const o = resolveOverlay(layer, template.canvas)
+              return (
+                <CanvasImage
+                  key={`u${i}`}
+                  src={o.src}
+                  x={o.x}
+                  y={o.y}
+                  width={o.width}
+                  height={o.height}
+                />
+              )
+            })}
             {template.photoSlots.map((slot) => (
               <EditablePhotoSlot
                 key={slot.id}
@@ -89,16 +103,19 @@ export function EditorCanvas({ stageRef, onRequestUpload }: Props) {
                 }}
               />
             ))}
-            {template.overlays.map((src) => (
-              <CanvasImage
-                key={src}
-                src={src}
-                x={0}
-                y={0}
-                width={cw}
-                height={ch}
-              />
-            ))}
+            {template.overlays.map((layer, i) => {
+              const o = resolveOverlay(layer, template.canvas)
+              return (
+                <CanvasImage
+                  key={i}
+                  src={o.src}
+                  x={o.x}
+                  y={o.y}
+                  width={o.width}
+                  height={o.height}
+                />
+              )
+            })}
             {fontsReady &&
               template.textFields.map((field) => (
                 <EditorText

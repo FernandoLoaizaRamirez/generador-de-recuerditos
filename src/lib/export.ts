@@ -3,11 +3,22 @@ import type Konva from 'konva'
 import type { Project, TemplateDef } from '../types'
 import { getImageBlob } from './db'
 import { coverScale } from './image'
+import { resolveOverlay } from './overlay'
 import { DPI, MIN_PHOTO_DPI, PRINT_4X6 } from './print'
+
+/** Adorno ya cargado y posicionado, listo para dibujar. */
+export interface ExportOverlay {
+  img: HTMLImageElement
+  x: number
+  y: number
+  width: number
+  height: number
+}
 
 export interface ExportImages {
   bg: HTMLImageElement
-  overlays: HTMLImageElement[]
+  underlays: ExportOverlay[]
+  overlays: ExportOverlay[]
   /** Imágenes ORIGINALES (alta resolución) por hueco. */
   slotImages: Record<string, HTMLImageElement>
 }
@@ -31,8 +42,23 @@ export async function prepareExportImages(
   template: TemplateDef,
 ): Promise<{ images: ExportImages; revoke: () => void }> {
   const urls: string[] = []
+  const loadLayers = (layers: TemplateDef['overlays']) =>
+    Promise.all(
+      layers.map(async (layer): Promise<ExportOverlay> => {
+        const o = resolveOverlay(layer, template.canvas)
+        return {
+          img: await loadImage(o.src),
+          x: o.x,
+          y: o.y,
+          width: o.width,
+          height: o.height,
+        }
+      }),
+    )
+
   const bg = await loadImage(template.background)
-  const overlays = await Promise.all(template.overlays.map(loadImage))
+  const underlays = await loadLayers(template.underlays ?? [])
+  const overlays = await loadLayers(template.overlays)
   const slotImages: Record<string, HTMLImageElement> = {}
   for (const slot of template.photoSlots) {
     const blobId = project.slots[slot.id]?.imageBlobId
@@ -44,7 +70,7 @@ export async function prepareExportImages(
     slotImages[slot.id] = await loadImage(url)
   }
   return {
-    images: { bg, overlays, slotImages },
+    images: { bg, underlays, overlays, slotImages },
     revoke: () => urls.forEach((u) => URL.revokeObjectURL(u)),
   }
 }
