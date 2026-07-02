@@ -145,6 +145,15 @@ export interface CanvasSpec {
   safePx: number
 }
 
+/**
+ * Doblez tipo caballete: el contenido de la MITAD SUPERIOR (elementos con
+ * y < atY) se dibuja rotado 180° alrededor del centro de esa mitad, de modo
+ * que al doblar y parar la tarjeta (⋀) cada mitad queda derecha.
+ */
+export interface FoldSpec {
+  atY: number
+}
+
 /** Definición declarativa completa de una plantilla. */
 export interface TemplateDef {
   id: string
@@ -152,6 +161,8 @@ export interface TemplateDef {
   thumbnail: AssetRef
   /** Versión del esquema/plantilla para migraciones futuras. */
   version: number
+  /** Si está presente, la plantilla es un caballete plegable (mitad sup. rotada). */
+  fold?: FoldSpec
   canvas: CanvasSpec
   /** Fondo a pantalla completa del lienzo. */
   background: AssetRef

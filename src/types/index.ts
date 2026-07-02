@@ -3,6 +3,7 @@ export type {
   Box,
   CanvasSpec,
   ClipShape,
+  FoldSpec,
   FrameStyle,
   OverlayLayer,
   PhotoSlot,
