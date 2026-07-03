@@ -15,6 +15,9 @@ import { tropicalEsmeralda } from './tropical-esmeralda'
 import { glamNegroOro } from './glam-negro-oro'
 import { atardecerCoral } from './atardecer-coral'
 import { aquaMenta } from './aqua-menta'
+import { consolaNeon } from './consola-neon'
+import { mallaCyber } from './malla-cyber'
+import { togaDigital } from './toga-digital'
 
 /**
  * Registro central de plantillas. Para agregar una plantilla nueva basta
@@ -23,6 +26,9 @@ import { aquaMenta } from './aqua-menta'
  */
 export const templates: TemplateDef[] = [
   universal,
+  consolaNeon,
+  mallaCyber,
+  togaDigital,
   bodaBlancoOro,
   deluxeValentina,
   mariposasDoradas,

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <linearGradient id="ttd-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c1226" /><stop offset="100%" stop-color="#050710" />
+    </linearGradient>
+    <linearGradient id="ttd-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0b8" /><stop offset="45%" stop-color="#f5c542" /><stop offset="100%" stop-color="#b8862a" />
+    </linearGradient>
+    <linearGradient id="ttd-goldh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b8862a" /><stop offset="50%" stop-color="#ffe89a" /><stop offset="100%" stop-color="#b8862a" />
+    </linearGradient>
+    <linearGradient id="ttd-photo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#182238" /><stop offset="100%" stop-color="#0d1424" />
+    </linearGradient>
+    <filter id="ttd-g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2" /></filter>
+    <clipPath id="ttd-clip"><rect x="31" y="72" width="178" height="146" rx="8" /></clipPath>
+  </defs>
+  <rect width="240" height="360" fill="url(#ttd-bg)" />
+  <rect x="12" y="12" width="216" height="336" rx="14" fill="#ffffff" opacity="0.03" />
+  <rect x="12" y="12" width="216" height="336" rx="14" fill="none" stroke="#cfe0ff" stroke-width="1" opacity="0.16" />
+
+  <!-- Circuitos -->
+  <g fill="none" opacity="0.5">
+    <path d="M12 120 H40 V150" stroke="#f5c542" stroke-width="1" /><circle cx="40" cy="150" r="2" fill="#f5c542" />
+    <path d="M228 250 H200 V220" stroke="#22d3ee" stroke-width="1" /><circle cx="200" cy="220" r="2" fill="#22d3ee" />
+  </g>
+
+  <!-- Birrete -->
+  <g>
+    <path d="M120 24 L158 38 L120 52 L82 38 Z" fill="url(#ttd-gold)" stroke="#8a6a1e" stroke-width="1" />
+    <path d="M108 46 L132 46 L129 58 Q120 63 111 58 Z" fill="#c79a34" />
+    <circle cx="120" cy="38" r="3" fill="#fff0b8" />
+    <path d="M120 38 L152 33" stroke="#22d3ee" stroke-width="1.6" fill="none" />
+    <path d="M152 33 L154 60" stroke="#f5c542" stroke-width="1.6" fill="none" />
+    <path d="M150 60 l8 0 -2 10 -4 0 z" fill="#f5c542" />
+  </g>
+
+  <!-- Foto + marco doble -->
+  <g clip-path="url(#ttd-clip)">
+    <rect x="31" y="72" width="178" height="146" fill="url(#ttd-photo)" />
+    <circle cx="120" cy="132" r="27" fill="#26344f" />
+    <path d="M80 222 q40 -48 80 0 z" fill="#26344f" />
+  </g>
+  <g fill="none">
+    <rect x="31" y="72" width="178" height="146" rx="8" stroke="url(#ttd-goldh)" stroke-width="4" opacity="0.5" filter="url(#ttd-g)" />
+    <rect x="31" y="72" width="178" height="146" rx="8" stroke="url(#ttd-goldh)" stroke-width="3" />
+    <rect x="37" y="78" width="166" height="134" rx="5" stroke="#22d3ee" stroke-width="1.3" opacity="0.85" />
+  </g>
+
+  <!-- Nombre -->
+  <text x="120" y="254" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700"
+        font-size="24" letter-spacing="1" fill="#f5d67a" text-anchor="middle">José Fernando</text>
+  <g transform="translate(120,270)">
+    <line x1="-54" y1="0" x2="-14" y2="0" stroke="#f5c542" stroke-width="1.5" />
+    <line x1="14" y1="0" x2="54" y2="0" stroke="#f5c542" stroke-width="1.5" />
+    <path d="M-9 0 L0 -5 L9 0 L0 5 Z" fill="none" stroke="#f5c542" stroke-width="1" />
+    <circle r="1.6" fill="#8af1ff" />
+  </g>
+  <rect x="68" y="288" width="104" height="6" rx="3" fill="#9fb0d0" />
+  <rect x="58" y="306" width="124" height="7" rx="3.5" fill="#f5c542" />
+  <rect x="82" y="324" width="76" height="6" rx="3" fill="#22d3ee" />
+</svg>

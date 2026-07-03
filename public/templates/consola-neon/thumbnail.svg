@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <linearGradient id="tcn-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#070a16" /><stop offset="100%" stop-color="#03040a" />
+    </linearGradient>
+    <radialGradient id="tcn-glow" cx="50%" cy="14%" r="60%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3" /><stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="tcn-photo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b2a4a" /><stop offset="100%" stop-color="#0e1830" />
+    </linearGradient>
+    <filter id="tcn-g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4" /></filter>
+  </defs>
+  <rect width="240" height="360" fill="url(#tcn-bg)" />
+  <rect width="240" height="360" fill="url(#tcn-glow)" />
+
+  <!-- Esquinas HUD -->
+  <g stroke="#22d3ee" stroke-width="2" fill="none" opacity="0.75">
+    <path d="M16 26 L16 16 L26 16" /><path d="M214 16 L224 16 L224 26" />
+    <path d="M16 334 L16 344 L26 344" /><path d="M224 334 L224 344 L214 344" />
+  </g>
+
+  <!-- Ventana terminal + foto -->
+  <rect x="20" y="28" width="200" height="184" rx="10" fill="#0c1428" stroke="#22d3ee" stroke-width="1" opacity="0.9" />
+  <line x1="20" y1="46" x2="220" y2="46" stroke="#22d3ee" stroke-width="0.8" opacity="0.4" />
+  <circle cx="32" cy="37" r="3" fill="#ff5f56" /><circle cx="42" cy="37" r="3" fill="#ffbd2e" /><circle cx="52" cy="37" r="3" fill="#27c93f" />
+
+  <!-- Foto (silueta) -->
+  <clipPath id="tcn-clip"><rect x="30" y="54" width="180" height="150" rx="6" /></clipPath>
+  <g clip-path="url(#tcn-clip)">
+    <rect x="30" y="54" width="180" height="150" fill="url(#tcn-photo)" />
+    <circle cx="120" cy="120" r="30" fill="#2a3c60" />
+    <path d="M70 210 q50 -56 100 0 z" fill="#2a3c60" />
+  </g>
+  <g fill="none">
+    <rect x="30" y="54" width="180" height="150" rx="6" stroke="#22d3ee" stroke-width="3" opacity="0.5" filter="url(#tcn-g)" />
+    <rect x="30" y="54" width="180" height="150" rx="6" stroke="#8af1ff" stroke-width="1.4" />
+  </g>
+
+  <!-- Nombre -->
+  <text x="120" y="256" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700"
+        font-size="24" letter-spacing="1" fill="#8af1ff" text-anchor="middle">José Fernando</text>
+  <!-- Divisor -->
+  <g transform="translate(120,272)">
+    <line x1="-52" y1="0" x2="-10" y2="0" stroke="#22d3ee" stroke-width="1.5" />
+    <line x1="10" y1="0" x2="52" y2="0" stroke="#8b5cf6" stroke-width="1.5" />
+    <circle r="2.5" fill="#8af1ff" />
+  </g>
+  <!-- Textos simulados -->
+  <rect x="68" y="290" width="104" height="6" rx="3" fill="#7f8db0" />
+  <rect x="58" y="308" width="124" height="7" rx="3.5" fill="#e8c45a" />
+  <rect x="82" y="326" width="76" height="6" rx="3" fill="#22d3ee" />
+</svg>
