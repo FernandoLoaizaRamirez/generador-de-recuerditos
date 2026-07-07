@@ -4,10 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
-// En producción la app se sirve en una subruta de GitHub Pages
-// (/generador-de-recuerditos/); en desarrollo en la raíz.
+// En GitHub Pages la app se sirve en una subruta (/generador-de-recuerditos/);
+// en Vercel y en desarrollo se sirve en la raíz (/).
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/generador-de-recuerditos/' : '/',
+  base: process.env.VERCEL
+    ? '/'
+    : command === 'build'
+      ? '/generador-de-recuerditos/'
+      : '/',
   plugins: [
     react(),
     tailwindcss(),
