@@ -12,6 +12,24 @@ dist
 dist-ssr
 *.local
 
+# Salida cruda de los generadores de imagen (ver docs/plantillas-fotorrealistas.md).
+# Solo se commitean los assets ya renombrados que una plantilla usa de verdad:
+# los originales pesan ~1 MB cada uno e inflan el deploy sin aportar nada.
+#
+#   _raw/           carpeta de cuarentena — deja ahí TODO lo que baje el generador
+#                   y saca solo los elegidos con nombre limpio. Es la regla fiable:
+#                   las dos de abajo son solo una red de seguridad.
+#   "algo (1).png"  descargas duplicadas del navegador
+#   "a--b--c.png"   nombres derivados del prompt (doble guion)
+#   "algo-.png"     guion suelto al final, típico del recorte del prompt
+#   "a-b-c-d-e-f"   5+ guiones: los assets buenos usan 0-2 (flowers-front.svg,
+#                   MarcoArriba.png); solo un nombre-prompt encadena tantos
+public/templates/**/_raw/
+public/templates/**/* (*)*
+public/templates/**/*--*
+public/templates/**/*-.*
+public/templates/**/*-*-*-*-*-*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

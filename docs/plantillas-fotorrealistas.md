@@ -61,6 +61,11 @@ Crea `public/templates/<id>/` y copia los PNG con nombres cortos y estables
 
 > Deja los archivos crudos con nombre largo **fuera** del commit (son
 > duplicados que inflan el deploy). Commitea solo los que usa la plantilla.
+>
+> Lo más cómodo: baja todo a `public/templates/<id>/_raw/` y saca de ahí solo
+> los elegidos, ya renombrados. `_raw/` está en `.gitignore`, igual que los
+> nombres típicos del generador (`a--b--c.png`, `algo (1).png`, `algo-.png` y
+> los de 5+ guiones), así que no hay forma de colarlos por descuido.
 
 ---
 
