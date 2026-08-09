@@ -1,108 +1,21 @@
-import type { TemplateDef } from '../types'
-
-const BASE = import.meta.env.BASE_URL + 'templates/boda-blanco-oro'
+import { caballete } from './_caballete'
 
 /**
- * Plantilla «Boda Blanco y Oro»: recuerdo elegante para bodas — marfil con
- * doble marco dorado, filigranas de esquina y laurel; una foto central con
- * marco fino y textos (nombres de los novios, fecha, mensaje, negocio,
- * teléfono). No es plegable: se ve al derecho.
+ * «Boda Blanco y Oro» — caballete plegable.
+ *
+ * El layout (dos mitades, 2 fotos arriba, retrato + textos abajo) lo define
+ * `caballete()`, que es común a todo el catálogo; aquí solo va la identidad
+ * visual. Los assets por mitad los genera
+ * `scripts/build-caballete-assets.mjs` a partir de esta misma paleta.
  */
-export const bodaBlancoOro: TemplateDef = {
+export const bodaBlancoOro = caballete({
   id: 'boda-blanco-oro',
   name: 'Boda Blanco y Oro',
   category: 'boda',
-  thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
-  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
-  background: `${BASE}/background.svg`,
-  overlays: [],
-  photoSlots: [
-    {
-      id: 'foto-principal',
-      x: 175,
-      y: 205,
-      width: 850,
-      height: 760,
-      rotation: 0,
-      clipShape: 'rounded',
-      cornerRadius: 32,
-      frameStyle: 'thin',
-      defaultFit: 'cover',
-    },
-  ],
-  textFields: [
-    {
-      id: 'nombres',
-      x: 100,
-      y: 1010,
-      width: 1000,
-      align: 'center',
-      fontFamily: 'Great Vibes',
-      fontSize: 116,
-      color: '#b8902f',
-      maxLines: 1,
-      role: 'quinceaneraName',
-      placeholder: 'Nombres de los novios',
-      sample: 'Ana & Luis',
-    },
-    {
-      id: 'fecha',
-      x: 150,
-      y: 1235,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 34,
-      color: '#9c7622',
-      maxLines: 1,
-      role: 'custom',
-      placeholder: 'Fecha de la boda',
-      sample: '12 de Octubre, 2026',
-    },
-    {
-      id: 'mensaje',
-      x: 150,
-      y: 1330,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 34,
-      color: '#5b4a32',
-      maxLines: 2,
-      role: 'message',
-      placeholder: 'Mensaje de agradecimiento',
-      sample: 'Gracias por acompañarnos en nuestra boda',
-    },
-    {
-      id: 'negocio',
-      x: 150,
-      y: 1490,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 44,
-      fontStyle: 'italic',
-      color: '#7a5b2e',
-      maxLines: 2,
-      role: 'businessName',
-      placeholder: 'Nombre del negocio',
-      sample: 'Videofilmaciones "Yesenia"',
-    },
-    {
-      id: 'telefono',
-      x: 150,
-      y: 1610,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 38,
-      fontStyle: 'bold',
-      color: '#444444',
-      maxLines: 1,
-      role: 'phone',
-      placeholder: 'Cel. 0000 00 00 00',
-      sample: 'Cel. 6672 21 62 83',
-    },
-  ],
-}
+  kind: 'boda',
+  frameStyle: 'goldOrnate',
+  nameColor: '#c19a3f',
+  ink: '#6f6252',
+  inkSoft: '#8a7355',
+  business: '#9a7434',
+})

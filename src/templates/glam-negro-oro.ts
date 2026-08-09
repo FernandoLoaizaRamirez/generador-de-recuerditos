@@ -1,92 +1,21 @@
-import type { TemplateDef } from '../types'
-
-const BASE = import.meta.env.BASE_URL + 'templates/glam-negro-oro'
+import { caballete } from './_caballete'
 
 /**
- * Plantilla «Glam Negro y Oro»: fondo negro con detalles art-déco dorados,
- * una foto grande con marco dorado ornamentado y textos en dorado/crema.
+ * «Glam Negro y Oro» — caballete plegable.
+ *
+ * El layout (dos mitades, 2 fotos arriba, retrato + textos abajo) lo define
+ * `caballete()`, que es común a todo el catálogo; aquí solo va la identidad
+ * visual. Los assets por mitad los genera
+ * `scripts/build-caballete-assets.mjs` a partir de esta misma paleta.
  */
-export const glamNegroOro: TemplateDef = {
+export const glamNegroOro = caballete({
   id: 'glam-negro-oro',
   name: 'Glam Negro y Oro',
   category: 'xv',
-  thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
-  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
-  background: `${BASE}/background.svg`,
-  overlays: [],
-  photoSlots: [
-    {
-      id: 'foto-principal',
-      x: 110,
-      y: 150,
-      width: 980,
-      height: 960,
-      rotation: 0,
-      clipShape: 'rounded',
-      cornerRadius: 10,
-      frameStyle: 'goldOrnate',
-      defaultFit: 'cover',
-    },
-  ],
-  textFields: [
-    {
-      id: 'nombre',
-      x: 100,
-      y: 1130,
-      width: 1000,
-      align: 'center',
-      fontFamily: 'Great Vibes',
-      fontSize: 120,
-      color: '#e8c45a',
-      maxLines: 1,
-      role: 'quinceaneraName',
-      placeholder: 'Nombre de la quinceañera',
-      sample: 'Chelsea Valentina',
-    },
-    {
-      id: 'mensaje',
-      x: 150,
-      y: 1330,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 36,
-      color: '#ece6d8',
-      maxLines: 2,
-      role: 'message',
-      placeholder: 'Mensaje de agradecimiento',
-      sample: 'Gracias por acompañarme',
-    },
-    {
-      id: 'negocio',
-      x: 150,
-      y: 1510,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 46,
-      fontStyle: 'italic',
-      color: '#e8c45a',
-      maxLines: 2,
-      role: 'businessName',
-      placeholder: 'Nombre del negocio',
-      sample: 'Videofilmaciones "Yesenia"',
-    },
-    {
-      id: 'telefono',
-      x: 150,
-      y: 1650,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 38,
-      fontStyle: 'bold',
-      color: '#cfc7b4',
-      maxLines: 1,
-      role: 'phone',
-      placeholder: 'Cel. 0000 00 00 00',
-      sample: 'Cel. 6672 21 62 83',
-    },
-  ],
-}
+  kind: 'xv',
+  frameStyle: 'goldOrnate',
+  nameColor: '#d4af52',
+  ink: '#ddd6c8',
+  inkSoft: '#a9a294',
+  business: '#d4af52',
+})

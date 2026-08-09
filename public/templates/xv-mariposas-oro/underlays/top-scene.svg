@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    CAPA 2 / escena de la MITAD SUPERIOR (se coloca en 0,0,1200,900).
+    Ojo: aquí las coordenadas son LOCALES a la mitad (0..900), no del lienzo.
+
+    Fondo floral rosa fuera de foco + mariposas del plano trasero, que asoman
+    por detrás de los marcos. El desenfoque se consigue con gradientes de alfa
+    (así se comporta un plano trasero real) en vez de filtros, que son caros de
+    repintar en el editor.
+
+    Huecos de foto de esta mitad, para no taparlos con lo importante:
+      foto-1  x 75..606  y 60..489   (girada -4)
+      foto-2  x 606..1128 y 420..851 (girada +5)
+  -->
+  <defs>
+    <radialGradient id="tsBase" cx="38%" cy="26%" r="94%">
+      <stop offset="0%" stop-color="#fef4f6" />
+      <stop offset="34%" stop-color="#fbe4ea" />
+      <stop offset="68%" stop-color="#f4c8d5" />
+      <stop offset="100%" stop-color="#e5a6b9" />
+    </radialGradient>
+
+    <radialGradient id="tsBokehGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffeec2" stop-opacity="0.16" />
+      <stop offset="84%" stop-color="#ffdf9c" stop-opacity="0.30" />
+      <stop offset="100%" stop-color="#ffefcc" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tsBokehRose" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff0f0" stop-opacity="0.18" />
+      <stop offset="86%" stop-color="#ffd0d8" stop-opacity="0.30" />
+      <stop offset="100%" stop-color="#ffdde2" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="tsRoseA" cx="42%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#fff2ee" stop-opacity="0.94" />
+      <stop offset="48%" stop-color="#f6d2d4" stop-opacity="0.74" />
+      <stop offset="100%" stop-color="#e8adb8" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tsRoseB" cx="45%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#fffaf4" stop-opacity="0.92" />
+      <stop offset="52%" stop-color="#fae4dd" stop-opacity="0.66" />
+      <stop offset="100%" stop-color="#eec8c4" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tsCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dda2a8" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#e3b0b6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tsLeaf" cx="38%" cy="34%" r="70%">
+      <stop offset="0%" stop-color="#c8d3bd" stop-opacity="0.62" />
+      <stop offset="100%" stop-color="#a2b596" stop-opacity="0" />
+    </radialGradient>
+
+    <symbol id="tsRose" viewBox="-100 -100 200 200">
+      <ellipse cx="0" cy="0" rx="98" ry="92" fill="url(#tsRoseA)" />
+      <ellipse cx="-34" cy="-28" rx="54" ry="48" fill="url(#tsRoseB)" />
+      <ellipse cx="36" cy="-18" rx="46" ry="42" fill="url(#tsRoseB)" opacity="0.8" />
+      <ellipse cx="6" cy="38" rx="50" ry="40" fill="url(#tsRoseA)" opacity="0.85" />
+      <ellipse cx="-2" cy="4" rx="30" ry="27" fill="url(#tsCore)" />
+    </symbol>
+    <symbol id="tsLeafShape" viewBox="-100 -40 200 80">
+      <ellipse cx="0" cy="0" rx="96" ry="32" fill="url(#tsLeaf)" />
+    </symbol>
+
+    <!-- Mariposa trasera: apagada, va en sombra detrás de los marcos -->
+    <radialGradient id="tsWU" cx="12%" cy="76%" r="96%">
+      <stop offset="0%" stop-color="#d79fa9" stop-opacity="0.86" />
+      <stop offset="100%" stop-color="#f0d2ce" stop-opacity="0.32" />
+    </radialGradient>
+    <symbol id="tsBf" viewBox="-110 -110 220 220">
+      <g>
+        <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#tsWU)" />
+        <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#tsWU)" />
+        <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#dcb877"
+              stroke-width="2" opacity="0.6" />
+        <g transform="scale(-1,1)">
+          <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#tsWU)" />
+          <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#tsWU)" />
+          <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#dcb877"
+                stroke-width="2" opacity="0.6" />
+        </g>
+        <path d="M0,-48 C7,-41 8,-10 6,26 C5,52 2,68 0,76 C-2,68 -5,52 -6,26
+                 C-8,-10 -7,-41 0,-48 Z" fill="#8d6a52" opacity="0.72" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#tsBase)" />
+
+  <!-- Bokeh: concentrado donde no hay marcos -->
+  <circle cx="1044" cy="96" r="128" fill="url(#tsBokehGold)" />
+  <circle cx="880" cy="180" r="86" fill="url(#tsBokehRose)" />
+  <circle cx="1160" cy="278" r="96" fill="url(#tsBokehRose)" />
+  <circle cx="756" cy="86" r="58" fill="url(#tsBokehGold)" />
+  <circle cx="46" cy="128" r="94" fill="url(#tsBokehRose)" />
+  <circle cx="30" cy="560" r="110" fill="url(#tsBokehGold)" />
+  <circle cx="180" cy="720" r="130" fill="url(#tsBokehRose)" />
+  <circle cx="420" cy="836" r="96" fill="url(#tsBokehGold)" />
+  <circle cx="620" cy="760" r="66" fill="url(#tsBokehRose)" />
+  <circle cx="1150" cy="840" r="84" fill="url(#tsBokehGold)" />
+
+  <!-- Flores fuera de foco: esquina superior derecha -->
+  <g>
+    <use href="#tsLeafShape" x="-100" y="-40" width="200" height="80"
+         transform="translate(1096,74) rotate(-34) scale(1.28)" />
+    <use href="#tsLeafShape" x="-100" y="-40" width="200" height="80"
+         transform="translate(960,182) rotate(24) scale(1.05)" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(1112,124) scale(1.24)" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(944,72) scale(0.8)" opacity="0.9" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(1172,300) scale(0.9)" opacity="0.85" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(836,246) scale(0.54)" opacity="0.75" />
+  </g>
+
+  <!-- Flores fuera de foco: esquina inferior izquierda -->
+  <g>
+    <use href="#tsLeafShape" x="-100" y="-40" width="200" height="80"
+         transform="translate(88,624) rotate(38) scale(1.2)" />
+    <use href="#tsLeafShape" x="-100" y="-40" width="200" height="80"
+         transform="translate(214,782) rotate(-24) scale(1.0)" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(66,706) scale(1.16)" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(214,660) scale(0.72)" opacity="0.9" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(160,848) scale(0.82)" opacity="0.85" />
+    <use href="#tsRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(24,432) scale(0.6)" opacity="0.78" />
+  </g>
+
+  <!-- Mariposas del plano trasero: asoman por detrás de los marcos -->
+  <use href="#tsBf" x="-110" y="-110" width="220" height="220"
+       transform="translate(628,236) rotate(-18) scale(0.52)" />
+  <use href="#tsBf" x="-110" y="-110" width="220" height="220"
+       transform="translate(586,608) rotate(16) scale(0.42)" />
+  <use href="#tsBf" x="-110" y="-110" width="220" height="220"
+       transform="translate(1146,506) rotate(30) scale(0.34)" opacity="0.85" />
+</svg>

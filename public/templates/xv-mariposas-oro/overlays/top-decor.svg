@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    CAPA 6 / adorno delantero de la MITAD SUPERIOR (0,0,1200,900).
+    Coordenadas LOCALES a la mitad.
+
+    Va MONTADO sobre las esquinas de los marcos: parte del ramo queda detrás
+    de la foto (capa top-scene) y parte por delante. Ese solape es lo que da
+    la profundidad; sin él la escena se lee plana.
+
+    Esquinas reales de los marcos, ya con su rotación aplicada:
+      foto-1  TL(54,77)   TR(597,39)   BL(84,510)   BR(628,472)
+      foto-2  TL(622,398) TR(1150,445) BL(584,827)  BR(1112,873)
+  -->
+  <defs>
+    <linearGradient id="dPt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#c9868c" /><stop offset="26%" stop-color="#dfa2a4" />
+      <stop offset="58%" stop-color="#f0c6c2" /><stop offset="84%" stop-color="#fae0d9" />
+      <stop offset="100%" stop-color="#fdf1ec" />
+    </linearGradient>
+    <linearGradient id="dPtC" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#dcc0a4" /><stop offset="30%" stop-color="#eed9c4" />
+      <stop offset="66%" stop-color="#f9ecdc" /><stop offset="100%" stop-color="#fffaf2" />
+    </linearGradient>
+    <radialGradient id="dCore" cx="42%" cy="36%" r="66%">
+      <stop offset="0%" stop-color="#f7d9cf" /><stop offset="52%" stop-color="#d99a9d" />
+      <stop offset="100%" stop-color="#b3707a" />
+    </radialGradient>
+    <linearGradient id="dLeaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#c3d1b4" /><stop offset="46%" stop-color="#a3b795" />
+      <stop offset="100%" stop-color="#6f8862" />
+    </linearGradient>
+    <radialGradient id="dWU" cx="10%" cy="82%" r="104%">
+      <stop offset="0%" stop-color="#c9727f" stop-opacity="0.96" />
+      <stop offset="34%" stop-color="#dd9494" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#eabf90" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#f7e2b0" stop-opacity="0.44" />
+    </radialGradient>
+    <linearGradient id="dBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6f4f22" /><stop offset="52%" stop-color="#f2dda2" />
+      <stop offset="100%" stop-color="#5f421c" />
+    </linearGradient>
+    <radialGradient id="dPearl" cx="36%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#fffdf5" /><stop offset="52%" stop-color="#f3e3bc" />
+      <stop offset="100%" stop-color="#cdae70" />
+    </radialGradient>
+    <radialGradient id="dDust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbe8" stop-opacity="0.95" />
+      <stop offset="44%" stop-color="#f6dd9f" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#e0bd66" stop-opacity="0" />
+    </radialGradient>
+
+    <filter id="dDrop" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="5" dy="9" stdDeviation="8"
+                    flood-color="#6b4438" flood-opacity="0.3" />
+    </filter>
+
+    <path id="dp" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74
+                     C40,-44 26,-10 0,4 Z" />
+    <path id="dspark" d="M0,-10 Q1.2,-1.2 10,0 Q1.2,1.2 0,10 Q-1.2,1.2 -10,0
+                         Q-1.2,-1.2 0,-10 Z" />
+
+    <symbol id="dRose" viewBox="-100 -100 200 200">
+      <g fill="url(#dPt)">
+        <use href="#dp" transform="rotate(6)" /><use href="#dp" transform="rotate(66)" />
+        <use href="#dp" transform="rotate(126)" /><use href="#dp" transform="rotate(186)" />
+        <use href="#dp" transform="rotate(246)" /><use href="#dp" transform="rotate(306)" />
+      </g>
+      <g fill="url(#dPt)" opacity="0.97">
+        <use href="#dp" transform="rotate(36) scale(0.68)" />
+        <use href="#dp" transform="rotate(108) scale(0.68)" />
+        <use href="#dp" transform="rotate(180) scale(0.68)" />
+        <use href="#dp" transform="rotate(252) scale(0.68)" />
+        <use href="#dp" transform="rotate(324) scale(0.68)" />
+      </g>
+      <g fill="url(#dPt)">
+        <use href="#dp" transform="rotate(20) scale(0.4)" />
+        <use href="#dp" transform="rotate(110) scale(0.4)" />
+        <use href="#dp" transform="rotate(200) scale(0.4)" />
+        <use href="#dp" transform="rotate(290) scale(0.4)" />
+      </g>
+      <circle r="13" fill="url(#dCore)" />
+    </symbol>
+    <symbol id="dRoseC" viewBox="-100 -100 200 200">
+      <g fill="url(#dPtC)">
+        <use href="#dp" transform="rotate(-8)" /><use href="#dp" transform="rotate(64)" />
+        <use href="#dp" transform="rotate(136)" /><use href="#dp" transform="rotate(208)" />
+        <use href="#dp" transform="rotate(280)" />
+      </g>
+      <g fill="url(#dPtC)" opacity="0.96">
+        <use href="#dp" transform="rotate(28) scale(0.64)" />
+        <use href="#dp" transform="rotate(100) scale(0.64)" />
+        <use href="#dp" transform="rotate(172) scale(0.64)" />
+        <use href="#dp" transform="rotate(244) scale(0.64)" />
+      </g>
+      <circle r="11" fill="#e8cfa8" />
+    </symbol>
+    <symbol id="dLf" viewBox="-100 -46 200 92">
+      <path d="M-92,0 C-56,-40 40,-44 92,-4 C40,40 -56,38 -92,0 Z" fill="url(#dLeaf)" />
+      <path d="M-84,0 C-40,-8 40,-6 84,-3" fill="none" stroke="#6d8760"
+            stroke-width="2.4" opacity="0.6" />
+    </symbol>
+
+    <symbol id="dBf" viewBox="-115 -110 230 220">
+      <g>
+        <g>
+          <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#dWU)" />
+          <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#dWU)" />
+          <g stroke="#8f4a58" stroke-width="1.5" fill="none" opacity="0.42">
+            <path d="M8,-14 C36,-28 64,-44 86,-56" />
+            <path d="M8,-24 C34,-46 58,-62 76,-74" />
+            <path d="M10,20 C34,28 54,42 62,58" />
+          </g>
+          <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#e8c67c"
+                stroke-width="2.6" opacity="0.8" />
+          <circle cx="70" cy="-58" r="7" fill="url(#dPearl)" opacity="0.92" />
+          <circle cx="52" cy="46" r="5" fill="url(#dPearl)" opacity="0.86" />
+        </g>
+        <g transform="scale(-1,1)">
+          <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#dWU)" />
+          <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#dWU)" />
+          <g stroke="#8f4a58" stroke-width="1.5" fill="none" opacity="0.42">
+            <path d="M8,-14 C36,-28 64,-44 86,-56" />
+            <path d="M8,-24 C34,-46 58,-62 76,-74" />
+            <path d="M10,20 C34,28 54,42 62,58" />
+          </g>
+          <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#e8c67c"
+                stroke-width="2.6" opacity="0.8" />
+          <circle cx="70" cy="-58" r="7" fill="url(#dPearl)" opacity="0.92" />
+          <circle cx="52" cy="46" r="5" fill="url(#dPearl)" opacity="0.86" />
+        </g>
+        <path d="M0,-48 C7,-41 8,-10 6,26 C5,52 2,68 0,76 C-2,68 -5,52 -6,26
+                 C-8,-10 -7,-41 0,-48 Z" fill="url(#dBody)" />
+        <g stroke="#8a6528" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M-2,-46 C-13,-65 -30,-78 -46,-84" />
+          <path d="M2,-46 C13,-65 30,-78 46,-84" />
+        </g>
+      </g>
+    </symbol>
+  </defs>
+
+  <!-- Racimo: esquina superior izquierda de foto-1 -->
+  <g filter="url(#dDrop)">
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(26,42) rotate(-36) scale(0.7)" />
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(140,26) rotate(-6) scale(0.58)" />
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(16,152) rotate(66) scale(0.62)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(62,84) scale(0.72)" />
+    <use href="#dRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(158,40) rotate(18) scale(0.52)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(20,182) rotate(-14) scale(0.46)" />
+  </g>
+
+  <!-- Racimo: costura entre los dos marcos -->
+  <g filter="url(#dDrop)">
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(566,404) rotate(-48) scale(0.58)" />
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(690,374) rotate(14) scale(0.5)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(618,432) rotate(10) scale(0.6)" />
+    <use href="#dRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(712,382) rotate(-16) scale(0.42)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(568,506) rotate(22) scale(0.36)" />
+  </g>
+
+  <!-- Racimo: esquina inferior izquierda de foto-1 -->
+  <g filter="url(#dDrop)">
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(46,486) rotate(28) scale(0.62)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(84,522) rotate(-10) scale(0.64)" />
+    <use href="#dRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(178,498) rotate(22) scale(0.42)" />
+  </g>
+
+  <!-- Racimo: esquina inferior derecha de foto-2 -->
+  <g filter="url(#dDrop)">
+    <use href="#dLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(1132,846) rotate(-32) scale(0.54)" />
+    <use href="#dRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(1108,868) rotate(14) scale(0.5)" />
+    <use href="#dRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(1024,884) rotate(-18) scale(0.36)" />
+  </g>
+
+  <!-- Mariposas en tres escalas = tres planos -->
+  <use href="#dBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(596,258) rotate(-24) scale(0.78)" filter="url(#dDrop)" />
+  <use href="#dBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(940,352) rotate(18) scale(0.5)" filter="url(#dDrop)" />
+  <use href="#dBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(160,626) rotate(-14) scale(0.42)" filter="url(#dDrop)" />
+  <use href="#dBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(1160,660) rotate(34) scale(0.26)" opacity="0.9" />
+  <use href="#dBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(414,796) rotate(22) scale(0.22)" opacity="0.85" />
+
+  <!-- Destellos y polvo de oro -->
+  <g fill="url(#dDust)">
+    <use href="#dspark" transform="translate(842,104) scale(2.2)" />
+    <use href="#dspark" transform="translate(1116,206) scale(1.4)" />
+    <use href="#dspark" transform="translate(206,600) scale(1.7)" />
+    <use href="#dspark" transform="translate(660,830) scale(1.2)" />
+    <circle cx="908" cy="196" r="3" /><circle cx="1010" cy="128" r="2.2" />
+    <circle cx="786" cy="240" r="2.6" /><circle cx="1160" cy="352" r="2.4" />
+    <circle cx="96" cy="470" r="2.8" /><circle cx="286" cy="672" r="2.2" />
+    <circle cx="520" cy="796" r="2.5" /><circle cx="1064" cy="758" r="2.3" />
+    <circle cx="352" cy="126" r="2.1" /><circle cx="64" cy="286" r="2.6" />
+  </g>
+</svg>

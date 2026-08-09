@@ -1,43 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="400" height="600">
+  <!-- mariposas-doradas — miniatura. Mismo viewBox que la plantilla, así que los huecos
+       caen donde dice el .ts. Las dos mitades se muestran AL DERECHO, igual
+       que en el editor: el giro de 180° solo ocurre al exportar.
+       Generado por scripts/build-caballete-assets.mjs -->
   <defs>
-    <radialGradient id="tpink" cx="50%" cy="32%" r="85%">
-      <stop offset="0%" stop-color="#fdeef2" />
-      <stop offset="60%" stop-color="#f7cdd8" />
-      <stop offset="100%" stop-color="#efb0c2" />
+    <radialGradient id="tb" cx="40%" cy="26%" r="94%">
+      <stop offset="0%" stop-color="#fdeef2"/><stop offset="46%" stop-color="#f7cdd8"/>
+      <stop offset="100%" stop-color="#efb0c2"/>
     </radialGradient>
-    <linearGradient id="tgold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f0dfa0" />
-      <stop offset="50%" stop-color="#c8a04a" />
-      <stop offset="100%" stop-color="#a9791f" />
+    <linearGradient id="g" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#eeddb1"/>
+      <stop offset="34%" stop-color="#dcbb62"/>
+      <stop offset="56%" stop-color="#f2e5c3"/>
+      <stop offset="86%" stop-color="#a9791f"/>
+      <stop offset="100%" stop-color="#e7cf91"/>
     </linearGradient>
+    <symbol id="mo" viewBox="-50 -50 100 100"><g><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(288)"/></g><circle r="10" opacity="0.75"/></symbol>
   </defs>
-  <rect width="240" height="360" fill="url(#tpink)" />
-  <circle cx="40" cy="36" r="20" fill="#ffffff" opacity="0.4" />
-  <circle cx="205" cy="120" r="24" fill="#ffffff" opacity="0.35" />
 
-  <!-- marcos -->
-  <rect x="26" y="34" width="118" height="104" rx="6" fill="#ffffff"
-        stroke="url(#tgold)" stroke-width="6" transform="rotate(-6 85 86)" />
-  <rect x="120" y="120" width="98" height="86" rx="6" fill="#ffffff"
-        stroke="url(#tgold)" stroke-width="6" transform="rotate(5 169 163)" />
-
-  <!-- Mis 15 -->
-  <text x="196" y="44" font-family="Georgia, serif" font-style="italic"
-        font-weight="bold" font-size="30" fill="url(#tgold)"
-        text-anchor="middle">Mis 15</text>
-
-  <!-- mariposa -->
-  <g transform="translate(70,150)" stroke="#a9791f" stroke-width="1">
-    <path d="M0,0 C-22,-22 -28,-4 -10,2 Z" fill="#ea4b96" />
-    <path d="M0,0 C22,-22 28,-4 10,2 Z" fill="#ea4b96" />
+  <rect x="0" y="0" width="1200" height="900" fill="url(#tb)"/>
+  <g fill="url(#g)" color="#a9791f" opacity="0.75">
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(700,78) scale(1)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(880,168) scale(0.7)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1064,74) scale(0.86)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1140,246) scale(0.6)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(782,268) scale(0.52)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(960,318) scale(0.44)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1160,402) scale(0.5)"/>
+  </g>
+  <g transform="translate(75,95) rotate(-4)">
+    <rect width="505" height="395" rx="8" fill="#f0e6da"/>
+    <rect width="505" height="395" rx="8" fill="none" stroke="url(#g)" stroke-width="9"/>
+  </g>
+  <g transform="translate(640,420) rotate(5)">
+    <rect width="490" height="390" rx="8" fill="#f0e6da"/>
+    <rect width="490" height="390" rx="8" fill="none" stroke="url(#g)" stroke-width="9"/>
   </g>
 
-  <!-- tarjeta inferior -->
-  <rect x="14" y="208" width="212" height="138" rx="10" fill="#ffffff"
-        stroke="url(#tgold)" stroke-width="4" />
-  <rect x="26" y="220" width="78" height="112" rx="4" fill="#e9d9e2" />
-  <text x="170" y="250" font-family="'Segoe Script','Brush Script MT',cursive"
-        font-size="22" fill="#c14d86" text-anchor="middle">Nombre</text>
-  <rect x="120" y="288" width="100" height="6" rx="3" fill="#d8c6cf" />
-  <rect x="132" y="304" width="76" height="6" rx="3" fill="#d8c6cf" />
+  <rect x="0" y="900" width="1200" height="900" fill="#fffdf8"/>
+  <g transform="translate(0,900)">
+    <rect x="60" y="50" width="1080" height="800" rx="18" fill="#fffdf8"/>
+    <rect x="60" y="50" width="1080" height="800" rx="18" fill="none" stroke="url(#g)" stroke-width="5"/>
+    <rect x="528" y="96" width="592" height="708" rx="14" fill="#ffffff" opacity="0.92"/>
+    <rect x="112" y="112" width="400" height="655" rx="6" fill="#f0e6da"/>
+    <rect x="112" y="112" width="400" height="655" rx="6" fill="none" stroke="url(#g)" stroke-width="8"/>
+    <rect x="600" y="140" width="448" height="26" rx="13" fill="url(#g)" opacity="0.9"/>
+    <rect x="660" y="196" width="328" height="26" rx="13" fill="url(#g)" opacity="0.9"/>
+    <path d="M600,348 Q690,344.6 776,348 Q690,351.4 600,348 Z" fill="url(#g)" opacity="0.8"/>
+    <path d="M1048,348 Q958,344.6 872,348 Q958,351.4 1048,348 Z" fill="url(#g)" opacity="0.8"/>
+    <rect x="742" y="366" width="164" height="12" rx="6" fill="#a9791f" opacity="0.45"/>
+    <rect x="640" y="428" width="368" height="11" rx="5.5" fill="#a9791f" opacity="0.38"/>
+    <path d="M576,545 Q684,541.4 780,545 Q684,548.6 576,545 Z" fill="url(#g)" opacity="0.8"/>
+    <path d="M1072,545 Q964,541.4 868,545 Q964,548.6 1072,545 Z" fill="url(#g)" opacity="0.8"/>
+    <rect x="620" y="572" width="408" height="14" rx="7" fill="url(#g)" opacity="0.85"/>
+    <rect x="700" y="654" width="248" height="11" rx="5.5" fill="#a9791f" opacity="0.45"/>
+  </g>
 </svg>

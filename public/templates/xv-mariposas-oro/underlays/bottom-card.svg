@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    CAPA 3 / tarjeta de la MITAD INFERIOR (se coloca en 0,900,1200,900).
+    Coordenadas LOCALES a la mitad: local_y = canvas_y - 900.
+
+    Es la cara que queda de frente cuando el caballete está parado, así que
+    lleva el peso de la información: retrato a la izquierda, bloque de textos
+    a la derecha sobre un panel claro que garantiza el contraste.
+
+      retrato   local x 112..512  y 112..767   (canvas y 1012..1667)
+      textos    local x 528..1120 y 96..804    (canvas y 996..1704)
+  -->
+  <defs>
+    <filter id="bcShadow" filterUnits="userSpaceOnUse"
+            x="20" y="20" width="1160" height="880">
+      <feDropShadow dx="6" dy="12" stdDeviation="12"
+                    flood-color="#6b4a50" flood-opacity="0.28" />
+    </filter>
+
+    <linearGradient id="bcPaper" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0%" stop-color="#fffdf9" />
+      <stop offset="42%" stop-color="#fdf7ee" />
+      <stop offset="100%" stop-color="#f6ebdc" />
+    </linearGradient>
+    <linearGradient id="bcPanel" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#fffbf5" />
+      <stop offset="100%" stop-color="#fbf2e6" />
+    </linearGradient>
+
+    <linearGradient id="bcGold" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#fff8e2" />
+      <stop offset="20%" stop-color="#eed8a0" />
+      <stop offset="40%" stop-color="#d3ae5c" />
+      <stop offset="54%" stop-color="#fffbe9" />
+      <stop offset="70%" stop-color="#bd9548" />
+      <stop offset="86%" stop-color="#8d6825" />
+      <stop offset="100%" stop-color="#e4c785" />
+    </linearGradient>
+    <radialGradient id="bcPearl" cx="34%" cy="28%" r="74%">
+      <stop offset="0%" stop-color="#fffdf4" />
+      <stop offset="44%" stop-color="#f2e2bb" />
+      <stop offset="100%" stop-color="#b58f3e" />
+    </radialGradient>
+
+    <!-- Voluta de esquina: trazo fino, no forma maciza (una voluta rellena a
+         este tamaño se empasta y se lee como mancha). -->
+    <symbol id="bcCorner" viewBox="0 0 150 150">
+      <g fill="none" stroke="url(#bcGold)" stroke-linecap="round">
+        <path d="M8,140 C8,74 40,26 106,10" stroke-width="3.2" />
+        <path d="M8,140 C40,132 62,110 72,80" stroke-width="2.2" />
+        <path d="M72,80 C80,58 96,44 118,38" stroke-width="1.8" />
+        <path d="M118,38 C132,34 142,38 143,48 C144,58 134,64 128,58"
+              stroke-width="1.8" />
+        <path d="M28,120 C24,100 30,82 44,70" stroke-width="1.6" opacity="0.8" />
+      </g>
+      <g fill="url(#bcGold)">
+        <path d="M60,92 C74,80 92,74 106,76 C92,86 76,94 62,100 Z" />
+        <path d="M22,116 C16,130 18,142 26,148 C26,136 28,126 32,116 Z"
+              opacity="0.85" />
+      </g>
+      <circle cx="106" cy="10" r="4.6" fill="url(#bcPearl)" />
+      <circle cx="8" cy="140" r="4" fill="url(#bcPearl)" />
+    </symbol>
+  </defs>
+
+  <!-- Tarjeta -->
+  <g filter="url(#bcShadow)">
+    <rect x="60" y="50" width="1080" height="800" rx="18" fill="url(#bcPaper)" />
+  </g>
+
+  <!-- Doble filete de oro -->
+  <rect x="60" y="50" width="1080" height="800" rx="18" fill="none"
+        stroke="url(#bcGold)" stroke-width="5" />
+  <rect x="76" y="66" width="1048" height="768" rx="12" fill="none"
+        stroke="url(#bcGold)" stroke-width="1.6" opacity="0.75" />
+  <rect x="66" y="56" width="1068" height="788" rx="16" fill="none"
+        stroke="#fdf1c8" stroke-width="1.2" opacity="0.55" />
+
+  <!-- Volutas en las cuatro esquinas -->
+  <use href="#bcCorner" x="0" y="0" width="150" height="150"
+       transform="translate(66,56)" />
+  <use href="#bcCorner" x="0" y="0" width="150" height="150"
+       transform="translate(1134,56) scale(-1,1)" />
+  <use href="#bcCorner" x="0" y="0" width="150" height="150"
+       transform="translate(66,844) scale(1,-1)" />
+  <use href="#bcCorner" x="0" y="0" width="150" height="150"
+       transform="translate(1134,844) scale(-1,-1)" />
+
+  <!-- Panel claro del bloque de textos -->
+  <rect x="528" y="96" width="592" height="708" rx="14" fill="url(#bcPanel)"
+        opacity="0.92" />
+  <rect x="528" y="96" width="592" height="708" rx="14" fill="none"
+        stroke="url(#bcGold)" stroke-width="1.4" opacity="0.5" />
+</svg>

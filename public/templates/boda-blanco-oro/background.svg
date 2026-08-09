@@ -1,57 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <!-- boda-blanco-oro — CAPA 1 / base del caballete. Casi no se ve: la tapan las dos
+       mitades. Existe porque al exportar con sangrado el motor ESTIRA este
+       archivo a 1276x1876, así que es lo único que cubre el margen.
+       Generado por scripts/build-caballete-assets.mjs -->
   <defs>
-    <radialGradient id="glow" cx="50%" cy="38%" r="75%">
-      <stop offset="0%" stop-color="#fffdf6" />
-      <stop offset="60%" stop-color="#faf4e6" />
-      <stop offset="100%" stop-color="#f3ead4" />
-    </radialGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#e7cd86" />
-      <stop offset="50%" stop-color="#c19a3f" />
-      <stop offset="100%" stop-color="#9c7622" />
+    <linearGradient id="t" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#fffdf6"/><stop offset="100%" stop-color="#f3ead4"/>
     </linearGradient>
-    <!-- Filigrana de esquina reutilizable (origen en la esquina sup-izq) -->
-    <g id="corner" fill="none" stroke="url(#gold)" stroke-width="2.4" stroke-linecap="round">
-      <path d="M40 210 C40 110 110 40 210 40" />
-      <path d="M40 150 C40 92 92 40 150 40" opacity="0.75" />
-      <path d="M210 40 c 34 0 58 -8 70 -30" />
-      <path d="M40 210 c 0 34 -8 58 -30 70" />
-      <path d="M150 96 c 26 0 44 18 44 44 c 0 -30 -20 -50 -50 -50 c -6 0 -6 6 6 6 z"
-            fill="url(#gold)" stroke="none" />
-      <circle cx="150" cy="150" r="4.5" fill="url(#gold)" stroke="none" />
-    </g>
   </defs>
-
-  <!-- Fondo marfil con brillo suave -->
-  <rect width="1200" height="1800" fill="url(#glow)" />
-
-  <!-- Doble marco dorado -->
-  <rect x="46" y="46" width="1108" height="1708" fill="none"
-        stroke="url(#gold)" stroke-width="2.6" />
-  <rect x="60" y="60" width="1080" height="1680" fill="none"
-        stroke="#caa24c" stroke-width="1" opacity="0.7" />
-
-  <!-- Filigranas en las 4 esquinas -->
-  <use href="#corner" x="0" y="0" />
-  <use href="#corner" x="1200" y="0" transform="scale(-1,1)" />
-  <use href="#corner" x="0" y="1800" transform="scale(1,-1)" />
-  <use href="#corner" x="1200" y="1800" transform="scale(-1,-1)" />
-
-  <!-- Laurel superior central -->
-  <g fill="none" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round" opacity="0.95">
-    <path d="M600 108 c -40 4 -74 26 -96 60" />
-    <path d="M600 108 c 40 4 74 26 96 60" />
-    <path d="M556 128 c -14 -2 -26 4 -32 16 c 12 4 24 0 30 -12" fill="url(#gold)" stroke="none" />
-    <path d="M528 152 c -14 -2 -26 4 -32 16 c 12 4 24 0 30 -12" fill="url(#gold)" stroke="none" />
-    <path d="M644 128 c 14 -2 26 4 32 16 c -12 4 -24 0 -30 -12" fill="url(#gold)" stroke="none" />
-    <path d="M672 152 c 14 -2 26 4 32 16 c -12 4 -24 0 -30 -12" fill="url(#gold)" stroke="none" />
-    <circle cx="600" cy="104" r="5" fill="url(#gold)" stroke="none" />
-  </g>
-
-  <!-- Divisor bajo los nombres -->
-  <g stroke="url(#gold)" stroke-width="1.6" stroke-linecap="round" opacity="0.9">
-    <line x1="470" y1="1196" x2="595" y2="1196" />
-    <line x1="605" y1="1196" x2="730" y2="1196" />
-    <path d="M600 1186 l 9 10 l -9 10 l -9 -10 z" fill="url(#gold)" stroke="none" />
-  </g>
+  <rect x="0" y="0" width="1200" height="900" fill="url(#t)"/>
+  <rect x="0" y="900" width="1200" height="900" fill="#fffdf8"/>
 </svg>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    CAPA 5 / marcos de la MITAD SUPERIOR (se coloca en 0,0,1200,900).
+    Coordenadas LOCALES a la mitad.
+
+    ALINEACIÓN: cada moldura usa la MISMA transformación que Konva aplica al
+    <Group> del hueco — translate(slot.x, slot.y) rotate(slot.rotation) — con
+    los valores del .ts:
+      foto-1  translate(75,95)  rotate(-4)  sobre 505x395, moldura 20
+      foto-2  translate(640,420) rotate(5)  sobre 490x390, moldura 20
+    Si mueves un slot allí, muévelo aquí igual.
+
+    VOLUMEN: la moldura son cuatro caras en inglete con gradiente propio y
+    perpendicular a su arista. Iluminadas desde arriba-izquierda: superior e
+    izquierda reciben luz; derecha e inferior van en sombra con un rebote en
+    el filo interior. Un stroke dorado plano no daría relieve.
+  -->
+  <defs>
+    <linearGradient id="fLitT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a17629" /><stop offset="8%" stop-color="#e8cf8d" />
+      <stop offset="20%" stop-color="#fff8e0" /><stop offset="33%" stop-color="#eddba2" />
+      <stop offset="48%" stop-color="#d2ae5f" /><stop offset="62%" stop-color="#b18636" />
+      <stop offset="74%" stop-color="#8e6a26" /><stop offset="86%" stop-color="#c9a659" />
+      <stop offset="100%" stop-color="#f3e2ab" />
+    </linearGradient>
+    <linearGradient id="fLitL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a17629" /><stop offset="8%" stop-color="#e3c883" />
+      <stop offset="21%" stop-color="#fdf3d6" /><stop offset="34%" stop-color="#e7d296" />
+      <stop offset="49%" stop-color="#cba85a" /><stop offset="63%" stop-color="#ab8132" />
+      <stop offset="75%" stop-color="#8a6624" /><stop offset="87%" stop-color="#c3a054" />
+      <stop offset="100%" stop-color="#eddca4" />
+    </linearGradient>
+    <linearGradient id="fShdB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7d5719" /><stop offset="10%" stop-color="#b89042" />
+      <stop offset="24%" stop-color="#d9bd75" /><stop offset="40%" stop-color="#b98f3c" />
+      <stop offset="58%" stop-color="#916c26" /><stop offset="72%" stop-color="#6f5119" />
+      <stop offset="86%" stop-color="#a8823a" /><stop offset="100%" stop-color="#dcc287" />
+    </linearGradient>
+    <linearGradient id="fShdR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#825c1c" /><stop offset="10%" stop-color="#bd9547" />
+      <stop offset="24%" stop-color="#dec27b" /><stop offset="40%" stop-color="#bd9440" />
+      <stop offset="58%" stop-color="#957028" /><stop offset="72%" stop-color="#73551b" />
+      <stop offset="86%" stop-color="#ad873e" /><stop offset="100%" stop-color="#e0c68c" />
+    </linearGradient>
+    <linearGradient id="fOrn" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#fff8e2" /><stop offset="20%" stop-color="#eed8a0" />
+      <stop offset="40%" stop-color="#d3ae5c" /><stop offset="54%" stop-color="#fffbe9" />
+      <stop offset="70%" stop-color="#bd9548" /><stop offset="86%" stop-color="#8d6825" />
+      <stop offset="100%" stop-color="#e4c785" />
+    </linearGradient>
+    <radialGradient id="fPearl" cx="34%" cy="28%" r="74%">
+      <stop offset="0%" stop-color="#fffdf4" /><stop offset="40%" stop-color="#f2e2bb" />
+      <stop offset="100%" stop-color="#b58f3e" />
+    </radialGradient>
+
+    <linearGradient id="fIsT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d2610" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#3d2610" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="fIsB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3d2610" stop-opacity="0.19" />
+      <stop offset="100%" stop-color="#3d2610" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="fIsL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3d2610" stop-opacity="0.26" />
+      <stop offset="100%" stop-color="#3d2610" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="fIsR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3d2610" stop-opacity="0.21" />
+      <stop offset="100%" stop-color="#3d2610" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="fCast" x="-16%" y="-14%" width="138%" height="134%">
+      <feDropShadow dx="12" dy="18" stdDeviation="13"
+                    flood-color="#5a3a22" flood-opacity="0.4" />
+    </filter>
+
+    <symbol id="fCornerOrn" viewBox="0 0 110 110">
+      <g fill="url(#fOrn)">
+        <path d="M2,2 C40,7 72,24 96,52 C90,54 84,55 78,54
+                 C58,32 32,20 6,16 C3,12 2,7 2,2 Z" />
+        <path d="M2,2 C7,40 24,72 52,96 C54,90 55,84 54,78
+                 C32,58 20,32 16,6 C12,3 7,2 2,2 Z" />
+        <path d="M28,28 C46,35 61,48 70,65 C59,56 44,48 28,43 Z" opacity="0.7" />
+      </g>
+      <circle cx="13" cy="13" r="7" fill="url(#fPearl)" />
+      <circle cx="10.8" cy="10.8" r="2.2" fill="#fffdf2" opacity="0.9" />
+    </symbol>
+
+    <symbol id="fCrest" viewBox="-60 -52 120 60">
+      <g fill="url(#fOrn)">
+        <path d="M0,-46 C9,-34 21,-26 38,-22 C21,-18 9,-11 0,0
+                 C-9,-11 -21,-18 -38,-22 C-21,-26 -9,-34 0,-46 Z" />
+        <path d="M36,-23 C48,-27 56,-25 58,-19 C53,-22 45,-21 36,-19 Z" opacity="0.85" />
+        <path d="M-36,-23 C-48,-27 -56,-25 -58,-19 C-53,-22 -45,-21 -36,-19 Z" opacity="0.85" />
+      </g>
+      <circle cx="0" cy="-22" r="7" fill="url(#fPearl)" />
+      <circle cx="-2.2" cy="-24" r="2.4" fill="#fffdf2" opacity="0.9" />
+    </symbol>
+  </defs>
+
+  <!-- ============ Marco de foto-1 ============ -->
+  <g transform="translate(75,95) rotate(-4)">
+    <g filter="url(#fCast)">
+      <path d="M-20,-20 L525,-20 L505,0 L0,0 Z" fill="url(#fLitT)" />
+      <path d="M-20,-20 L0,0 L0,395 L-20,415 Z" fill="url(#fLitL)" />
+      <path d="M525,-20 L525,415 L505,395 L505,0 Z" fill="url(#fShdR)" />
+      <path d="M525,415 L-20,415 L0,395 L505,395 Z" fill="url(#fShdB)" />
+      <rect x="-20" y="-20" width="545" height="435" fill="none"
+            stroke="#77521a" stroke-width="1.4" opacity="0.85" />
+      <rect x="1.2" y="1.2" width="502.6" height="392.6" fill="none"
+            stroke="#fdf1c8" stroke-width="2.2" opacity="0.6" />
+    </g>
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(-20,-20)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(525,-20) scale(-1,1)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(-20,415) scale(1,-1)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(525,415) scale(-1,-1)" />
+    <use href="#fCrest" x="-60" y="-52" width="120" height="60" transform="translate(252,-20)" />
+    <rect x="0" y="0" width="505" height="18" fill="url(#fIsT)" />
+    <rect x="0" y="377" width="505" height="18" fill="url(#fIsB)" />
+    <rect x="0" y="0" width="18" height="395" fill="url(#fIsL)" />
+    <rect x="487" y="0" width="18" height="395" fill="url(#fIsR)" />
+  </g>
+
+  <!-- ============ Marco de foto-2 ============ -->
+  <g transform="translate(640,420) rotate(5)">
+    <g filter="url(#fCast)">
+      <path d="M-20,-20 L510,-20 L490,0 L0,0 Z" fill="url(#fLitT)" />
+      <path d="M-20,-20 L0,0 L0,390 L-20,410 Z" fill="url(#fLitL)" />
+      <path d="M510,-20 L510,410 L490,390 L490,0 Z" fill="url(#fShdR)" />
+      <path d="M510,410 L-20,410 L0,390 L490,390 Z" fill="url(#fShdB)" />
+      <rect x="-20" y="-20" width="530" height="430" fill="none"
+            stroke="#77521a" stroke-width="1.4" opacity="0.85" />
+      <rect x="1.2" y="1.2" width="487.6" height="387.6" fill="none"
+            stroke="#fdf1c8" stroke-width="2.2" opacity="0.6" />
+    </g>
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(-20,-20)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(510,-20) scale(-1,1)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(-20,410) scale(1,-1)" />
+    <use href="#fCornerOrn" x="0" y="0" width="92" height="92" transform="translate(510,410) scale(-1,-1)" />
+    <use href="#fCrest" x="-60" y="-52" width="120" height="60" transform="translate(245,-20)" />
+    <rect x="0" y="0" width="490" height="18" fill="url(#fIsT)" />
+    <rect x="0" y="372" width="490" height="18" fill="url(#fIsB)" />
+    <rect x="0" y="0" width="18" height="390" fill="url(#fIsL)" />
+    <rect x="472" y="0" width="18" height="390" fill="url(#fIsR)" />
+  </g>
+</svg>

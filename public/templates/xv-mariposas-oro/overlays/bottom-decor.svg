@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    CAPA 7 / adorno de la MITAD INFERIOR (0,900,1200,900).
+    Coordenadas LOCALES: local_y = canvas_y - 900.
+
+    Va encima de la foto de retrato para que el ramo la monte por la esquina
+    (mismo recurso de profundidad que arriba). Los filetes están atados a los
+    textFields del .ts:
+      nombre   canvas 1040 -> local 140   filete en local 348 (canvas 1248)
+      negocio  canvas 1472 -> local 572   divisor en local 545 (canvas 1445)
+  -->
+  <defs>
+    <linearGradient id="bdPt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#c9868c" /><stop offset="58%" stop-color="#f0c6c2" />
+      <stop offset="100%" stop-color="#fdf1ec" />
+    </linearGradient>
+    <linearGradient id="bdPtC" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#dcc0a4" /><stop offset="66%" stop-color="#f9ecdc" />
+      <stop offset="100%" stop-color="#fffaf2" />
+    </linearGradient>
+    <linearGradient id="bdLeaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#c3d1b4" /><stop offset="46%" stop-color="#a3b795" />
+      <stop offset="100%" stop-color="#6f8862" />
+    </linearGradient>
+    <linearGradient id="bdRule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9a45a" stop-opacity="0.12" />
+      <stop offset="26%" stop-color="#b98f3c" stop-opacity="0.72" />
+      <stop offset="50%" stop-color="#f0dca4" stop-opacity="0.96" />
+      <stop offset="74%" stop-color="#b98f3c" stop-opacity="0.72" />
+      <stop offset="100%" stop-color="#c9a45a" stop-opacity="0.12" />
+    </linearGradient>
+    <linearGradient id="bdGold" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#fff8e2" /><stop offset="40%" stop-color="#d3ae5c" />
+      <stop offset="56%" stop-color="#fffbe9" /><stop offset="86%" stop-color="#8d6825" />
+      <stop offset="100%" stop-color="#e4c785" />
+    </linearGradient>
+    <radialGradient id="bdCore" cx="42%" cy="36%" r="66%">
+      <stop offset="0%" stop-color="#f7d9cf" /><stop offset="52%" stop-color="#d99a9d" />
+      <stop offset="100%" stop-color="#b3707a" />
+    </radialGradient>
+
+    <filter id="bdDrop" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="4" dy="7" stdDeviation="6"
+                    flood-color="#6b4438" flood-opacity="0.26" />
+    </filter>
+
+    <path id="bdp" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74
+                      C40,-44 26,-10 0,4 Z" />
+
+    <symbol id="bdRose" viewBox="-100 -100 200 200">
+      <g fill="url(#bdPt)">
+        <use href="#bdp" transform="rotate(6)" /><use href="#bdp" transform="rotate(66)" />
+        <use href="#bdp" transform="rotate(126)" /><use href="#bdp" transform="rotate(186)" />
+        <use href="#bdp" transform="rotate(246)" /><use href="#bdp" transform="rotate(306)" />
+      </g>
+      <g fill="url(#bdPt)" opacity="0.97">
+        <use href="#bdp" transform="rotate(36) scale(0.66)" />
+        <use href="#bdp" transform="rotate(108) scale(0.66)" />
+        <use href="#bdp" transform="rotate(180) scale(0.66)" />
+        <use href="#bdp" transform="rotate(252) scale(0.66)" />
+        <use href="#bdp" transform="rotate(324) scale(0.66)" />
+      </g>
+      <circle r="12" fill="url(#bdCore)" />
+    </symbol>
+    <symbol id="bdRoseC" viewBox="-100 -100 200 200">
+      <g fill="url(#bdPtC)">
+        <use href="#bdp" transform="rotate(-8)" /><use href="#bdp" transform="rotate(64)" />
+        <use href="#bdp" transform="rotate(136)" /><use href="#bdp" transform="rotate(208)" />
+        <use href="#bdp" transform="rotate(280)" />
+      </g>
+      <circle r="10" fill="#e8cfa8" />
+    </symbol>
+    <symbol id="bdLf" viewBox="-100 -46 200 92">
+      <path d="M-92,0 C-56,-40 40,-44 92,-4 C40,40 -56,38 -92,0 Z" fill="url(#bdLeaf)" />
+      <path d="M-84,0 C-40,-8 40,-6 84,-3" fill="none" stroke="#6d8760"
+            stroke-width="2.4" opacity="0.6" />
+    </symbol>
+  </defs>
+
+  <!-- Ramo que monta la esquina superior izquierda del retrato -->
+  <g filter="url(#bdDrop)">
+    <use href="#bdLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(92,84) rotate(-32) scale(0.6)" />
+    <use href="#bdLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(206,72) rotate(6) scale(0.5)" />
+    <use href="#bdLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(74,182) rotate(64) scale(0.52)" />
+    <use href="#bdRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(126,118) scale(0.6)" />
+    <use href="#bdRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(214,86) rotate(18) scale(0.42)" />
+    <use href="#bdRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(74,196) rotate(-14) scale(0.36)" />
+  </g>
+
+  <!-- Acento en la esquina inferior derecha del retrato -->
+  <g filter="url(#bdDrop)">
+    <use href="#bdLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(486,748) rotate(-26) scale(0.5)" />
+    <use href="#bdRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(506,782) rotate(14) scale(0.44)" />
+    <use href="#bdRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(428,808) rotate(-18) scale(0.32)" />
+  </g>
+
+  <!-- Acento superior del panel de textos -->
+  <g filter="url(#bdDrop)" opacity="0.95">
+    <use href="#bdLf" x="-100" y="-46" width="200" height="92"
+         transform="translate(1090,116) rotate(-142) scale(0.46)" />
+    <use href="#bdRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(1084,96) rotate(20) scale(0.38)" />
+  </g>
+
+  <!-- Filete bajo el nombre (local 348 = canvas 1248) -->
+  <g>
+    <path d="M600,348 Q690,344.6 776,348 Q690,351.4 600,348 Z" fill="url(#bdRule)" />
+    <path d="M1048,348 Q958,344.6 872,348 Q958,351.4 1048,348 Z" fill="url(#bdRule)" />
+    <path d="M824,340 L831,348 L824,356 L817,348 Z" fill="url(#bdGold)" />
+  </g>
+
+  <!-- Divisor sobre el pie de negocio (local 545 = canvas 1445) -->
+  <g>
+    <path d="M576,545 Q684,541.4 780,545 Q684,548.6 576,545 Z" fill="url(#bdRule)" />
+    <path d="M1072,545 Q964,541.4 868,545 Q964,548.6 1072,545 Z" fill="url(#bdRule)" />
+    <g fill="url(#bdGold)">
+      <path d="M818,545 C808,538 796,535 786,536 C795,542 806,546 816,548 Z" />
+      <path d="M830,545 C840,538 852,535 862,536 C853,542 842,546 832,548 Z" />
+    </g>
+    <circle cx="824" cy="545" r="4.4" fill="#f4e8cb" />
+    <circle cx="822.6" cy="543.6" r="1.7" fill="#fffdf6" opacity="0.9" />
+  </g>
+</svg>

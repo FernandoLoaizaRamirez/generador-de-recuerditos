@@ -1,119 +1,21 @@
-import type { TemplateDef } from '../types'
-
-const BASE = import.meta.env.BASE_URL + 'templates/mariposas-doradas'
+import { caballete } from './_caballete'
 
 /**
- * Plantilla «Mariposas Doradas», recreación del arte de referencia:
- * fondo floral rosa con dos marcos dorados inclinados arriba, mariposas,
- * "Mis 15", y una tarjeta blanca inferior con retrato + textos del evento.
+ * «Mariposas Doradas» — caballete plegable.
  *
- * Coordenadas en px del lienzo a 300 DPI (1200×1800 = 4×6", trim).
+ * El layout (dos mitades, 2 fotos arriba, retrato + textos abajo) lo define
+ * `caballete()`, que es común a todo el catálogo; aquí solo va la identidad
+ * visual. Los assets por mitad los genera
+ * `scripts/build-caballete-assets.mjs` a partir de esta misma paleta.
  */
-export const mariposasDoradas: TemplateDef = {
+export const mariposasDoradas = caballete({
   id: 'mariposas-doradas',
   name: 'Mariposas Doradas',
   category: 'xv',
-  thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
-  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
-  background: `${BASE}/background.svg`,
-  overlays: [`${BASE}/butterflies.svg`],
-  photoSlots: [
-    {
-      id: 'foto-1',
-      x: 120,
-      y: 150,
-      width: 540,
-      height: 470,
-      rotation: -6,
-      clipShape: 'rounded',
-      cornerRadius: 10,
-      frameStyle: 'goldOrnate',
-      defaultFit: 'cover',
-    },
-    {
-      id: 'foto-2',
-      x: 650,
-      y: 430,
-      width: 470,
-      height: 420,
-      rotation: 5,
-      clipShape: 'rounded',
-      cornerRadius: 10,
-      frameStyle: 'goldOrnate',
-      defaultFit: 'cover',
-    },
-    {
-      id: 'foto-retrato',
-      x: 95,
-      y: 1035,
-      width: 420,
-      height: 650,
-      rotation: 0,
-      clipShape: 'rounded',
-      cornerRadius: 8,
-      frameStyle: 'thin',
-      defaultFit: 'cover',
-    },
-  ],
-  textFields: [
-    {
-      id: 'nombre',
-      x: 545,
-      y: 1055,
-      width: 575,
-      align: 'center',
-      fontFamily: 'Great Vibes',
-      fontSize: 96,
-      color: '#c14d86',
-      maxLines: 1,
-      role: 'quinceaneraName',
-      placeholder: 'Nombre de la quinceañera',
-      sample: 'Chelsea Valentina',
-    },
-    {
-      id: 'mensaje',
-      x: 545,
-      y: 1410,
-      width: 575,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 34,
-      color: '#5b4a52',
-      maxLines: 2,
-      role: 'message',
-      placeholder: 'Mensaje de agradecimiento',
-      sample: 'Gracias por acompañarme',
-    },
-    {
-      id: 'negocio',
-      x: 545,
-      y: 1515,
-      width: 575,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 42,
-      fontStyle: 'italic',
-      color: '#3b3a7a',
-      maxLines: 2,
-      role: 'businessName',
-      placeholder: 'Nombre del negocio',
-      sample: 'Videofilmaciones "Yesenia"',
-    },
-    {
-      id: 'telefono',
-      x: 545,
-      y: 1640,
-      width: 575,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 38,
-      fontStyle: 'bold',
-      color: '#444444',
-      maxLines: 1,
-      role: 'phone',
-      placeholder: 'Cel. 0000 00 00 00',
-      sample: 'Cel. 6672 21 62 83',
-    },
-  ],
-}
+  kind: 'xv',
+  frameStyle: 'goldOrnate',
+  nameColor: '#c8a04a',
+  ink: '#6f6252',
+  inkSoft: '#8a7355',
+  business: '#9a7434',
+})

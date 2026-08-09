@@ -12,7 +12,13 @@ const BASE = import.meta.env.BASE_URL + 'templates/universal'
 const TOP = { x: 0, y: 0, w: 1200, h: 900 } // mitad superior
 // Ventana de foto = fracción del panel superior (detectada por canal alfa en
 // MarcoArriba.png), agrandada con `pad` para quedar por debajo del filo dorado.
-const topWin = (fx: number, fy: number, fw: number, fh: number, pad: number) => ({
+const topWin = (
+  fx: number,
+  fy: number,
+  fw: number,
+  fh: number,
+  pad: number,
+) => ({
   x: Math.round(TOP.x + fx * TOP.w - pad),
   y: Math.round(TOP.y + fy * TOP.h - pad),
   width: Math.round(fw * TOP.w + 2 * pad),

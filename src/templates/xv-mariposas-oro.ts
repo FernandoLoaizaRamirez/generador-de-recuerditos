@@ -3,143 +3,227 @@ import type { TemplateDef } from '../types'
 const BASE = import.meta.env.BASE_URL + 'templates/xv-mariposas-oro'
 
 /**
- * «Mariposas de Oro» — primera pieza de la colección PREMIUM.
+ * «Mariposas de Oro» — colección PREMIUM, XV años.
  *
- * Cara única de 4×6" (sin `fold`): la composición es un collage editorial
- * continuo — foto principal, foto secundaria montada encima, ramo en diagonal
- * y bloque tipográfico — que necesita el alto completo del lienzo. Si más
- * adelante se quiere la versión caballete, basta con añadir `fold: { atY: 900 }`
- * y reubicar los elementos por mitades; el motor no requiere ningún cambio.
+ * CABALLETE PLEGABLE (v2). La v1 era de cara única; se rehizo con la
+ * estructura en dos mitades del catálogo (la misma de `universal` y
+ * `deluxe-valentina`), que es como se produce realmente un recuerdito de mesa:
+ * se imprime, se dobla por y=900 y se para en ⋀.
  *
- * PROFUNDIDAD POR CAPAS (el orden importa, es lo que da el volumen):
- *   background            fondo de papel: marfil cálido -> rosa empolvado, satén, viñeta
- *   underlays/bokeh       luces desenfocadas (aire entre planos)
- *   underlays/floral-back flores fuera de foco (plano trasero)
- *   underlays/gold-orn.   halo, arabescos y mariposas DETRÁS de las fotos
- *   [ photoSlots ]        las fotos del usuario
- *   overlays/frames       molduras de oro (4 caras biseladas, ya rotadas)
- *   overlays/flowers      flores nítidas MONTADAS sobre los bordes del marco
- *   overlays/butterflies  mariposas en tres escalas = tres planos
- *   overlays/particles    polvo de oro, destellos y perlas
- *   overlays/text-flour.  velo de luz + filetes que sostienen la tipografía
+ *   MITAD SUPERIOR (0..900)   escena rosa: 2 fotos enmarcadas + «Mis XV Años»
+ *   MITAD INFERIOR (900..1800) tarjeta marfil: retrato a la izquierda y el
+ *                              bloque de textos a la derecha
  *
- * ALINEACIÓN DE MARCOS: `overlays/frames.svg` dibuja cada moldura con
+ * EL GIRO DE 180° LO APLICA EL MOTOR, NO ESTA PLANTILLA. Con `fold` presente,
+ * `ExportStage` reparte los elementos por `y` y rota la mitad superior solo al
+ * EXPORTAR (ver `partitionByFold` y `FoldGroup`). En el editor y en la galería
+ * las dos mitades se ven al derecho, que es como el usuario necesita verlas
+ * para encuadrar. Aquí no hay que hacer nada especial.
+ *
+ * ASSETS POR MITAD. Los adornos se colocan con `PositionedOverlay` en la mitad
+ * que les toca, y su SVG usa coordenadas LOCALES (0..900), no del lienzo:
+ * en los archivos de abajo, local_y = canvas_y - 900.
+ *
+ * ALINEACIÓN DE MARCOS: `overlays/top-frames.svg` dibuja cada moldura con
  * `translate(x,y) rotate(rotation)` usando EXACTAMENTE los valores de los
- * photoSlots de abajo, que es la misma transformación que aplica Konva al
- * <Group> del hueco. Si mueves un slot aquí, muévelo también allí.
+ * photoSlots de esta mitad — la misma transformación que Konva aplica al
+ * <Group> del hueco. Si mueves un slot aquí, muévelo allí igual.
  */
 export const xvMariposasOro: TemplateDef = {
   id: 'xv-mariposas-oro',
   name: 'Mariposas de Oro',
   category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
+  version: 2,
+  fold: { atY: 900 },
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
 
   background: `${BASE}/background.svg`,
 
   underlays: [
-    `${BASE}/underlays/bokeh.svg`,
-    `${BASE}/underlays/floral-back.svg`,
-    `${BASE}/underlays/gold-ornament.svg`,
+    {
+      src: `${BASE}/underlays/top-scene.svg`,
+      x: 0,
+      y: 0,
+      width: 1200,
+      height: 900,
+    },
+    {
+      src: `${BASE}/underlays/bottom-card.svg`,
+      x: 0,
+      y: 900,
+      width: 1200,
+      height: 900,
+    },
   ],
 
   overlays: [
-    `${BASE}/overlays/frames.svg`,
-    `${BASE}/overlays/flowers-front.svg`,
-    `${BASE}/overlays/butterflies-front.svg`,
-    `${BASE}/overlays/particles.svg`,
-    `${BASE}/overlays/text-flourish.svg`,
+    {
+      src: `${BASE}/overlays/top-frames.svg`,
+      x: 0,
+      y: 0,
+      width: 1200,
+      height: 900,
+    },
+    {
+      src: `${BASE}/overlays/top-decor.svg`,
+      x: 0,
+      y: 0,
+      width: 1200,
+      height: 900,
+    },
+    {
+      src: `${BASE}/overlays/bottom-decor.svg`,
+      x: 0,
+      y: 900,
+      width: 1200,
+      height: 900,
+    },
   ],
 
   photoSlots: [
-    // Protagonista, ligeramente contra-inclinada. Ocupa el eje izquierdo del
-    // tercio superior y medio de la pieza. Esquinas ya rotadas:
-    // TL(84,166) TR(763,107) BL(161,1045) BR(840,986)
+    // ---------- MITAD SUPERIOR (se rota 180° al exportar) ----------
+    // Esquinas ya rotadas: TL(54,77) TR(597,39) BL(84,510) BR(628,472)
     {
-      id: 'foto-principal',
-      x: 112,
-      y: 190,
-      width: 630,
-      height: 830,
-      rotation: -5,
+      id: 'foto-1',
+      x: 75,
+      y: 95,
+      width: 505,
+      height: 395,
+      rotation: -4,
       clipShape: 'rounded',
       cornerRadius: 4,
-      // El marco es un overlay con relieve real; no se dibuja marco vectorial.
+      // El marco viene del overlay, con relieve real; nada de marco vectorial.
       frameStyle: 'none',
       defaultFit: 'cover',
     },
-    // Secundaria: más pequeña, rotada al contrario y SOLAPADA sobre la
-    // principal (x 652..812) para romper la cuadrícula. Esquinas ya rotadas:
-    // TL(671,484) TR(1130,516) BL(631,1067) BR(1090,1099)
+    // Esquinas ya rotadas: TL(622,398) TR(1150,445) BL(584,827) BR(1112,873)
     {
-      id: 'foto-secundaria',
-      x: 690,
-      y: 505,
-      width: 420,
-      height: 545,
-      rotation: 4,
+      id: 'foto-2',
+      x: 640,
+      y: 420,
+      width: 490,
+      height: 390,
+      rotation: 5,
       clipShape: 'rounded',
       cornerRadius: 4,
       frameStyle: 'none',
+      defaultFit: 'cover',
+    },
+
+    // ---------- MITAD INFERIOR (queda al derecho) ----------
+    // Retrato vertical a la izquierda de la tarjeta, como en el resto del
+    // catálogo. El id lleva «retrato» a propósito: SlotPanel lo etiqueta así.
+    {
+      id: 'foto-retrato',
+      x: 112,
+      y: 1012,
+      width: 400,
+      height: 655,
+      rotation: 0,
+      clipShape: 'rounded',
+      cornerRadius: 6,
+      frameStyle: 'thin',
       defaultFit: 'cover',
     },
   ],
 
   textFields: [
+    // ---------- MITAD SUPERIOR ----------
     {
+      // Va arriba, así que también se rota al exportar. En el editor se lee
+      // al derecho.
       id: 'evento',
-      x: 100,
-      y: 1112,
-      width: 1000,
+      x: 660,
+      y: 35,
+      width: 500,
       align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 40,
-      color: '#a8834a',
+      fontFamily: 'Great Vibes',
+      fontSize: 96,
+      color: '#c8a04a',
       maxLines: 1,
       role: 'custom',
       placeholder: 'Mis XV Años',
-      sample: 'Mis XV Años',
-    },
-    {
-      // Elemento tipográfico principal: script con acabado de oro pulido.
-      // El borde fino oscuro lo despega del fondo claro sin ensuciar el trazo
-      // (textStyle.ts pinta el relleno DESPUÉS del borde).
-      id: 'nombre',
-      x: 90,
-      y: 1170,
-      width: 1020,
-      align: 'center',
-      fontFamily: 'Great Vibes',
-      fontSize: 155,
-      color: '#c8a04a',
-      maxLines: 1,
-      role: 'quinceaneraName',
-      placeholder: 'Nombre',
-      sample: 'Kimberly Sinahí',
+      sample: 'Mis XV',
       gradient: {
         colorStops: [
-          0, '#fff6d8',
-          0.22, '#f0d79b',
-          0.42, '#e2bd70',
-          0.52, '#fffbe9',
-          0.62, '#c9a24e',
-          0.8, '#9c7328',
-          1, '#e8cd8a',
+          0,
+          '#fff6d8',
+          0.22,
+          '#f0d79b',
+          0.42,
+          '#e2bd70',
+          0.52,
+          '#fffbe9',
+          0.62,
+          '#c9a24e',
+          0.8,
+          '#9c7328',
+          1,
+          '#e8cd8a',
         ],
         angle: 'vertical',
       },
-      stroke: { color: '#8a6528', width: 2.2 },
-      shadow: { color: 'rgba(88,56,32,0.34)', blur: 16, offsetX: 0, offsetY: 7 },
+      stroke: { color: '#8a6528', width: 2 },
+      shadow: {
+        color: 'rgba(88,56,32,0.34)',
+        blur: 14,
+        offsetX: 0,
+        offsetY: 6,
+      },
+    },
+
+    // ---------- MITAD INFERIOR ----------
+    {
+      // Elemento tipográfico principal. Dos líneas caben de sobra: los nombres
+      // compuestos («Kimberly Sinahí») son la norma, no la excepción.
+      id: 'nombre',
+      x: 534,
+      y: 1040,
+      width: 580,
+      align: 'center',
+      fontFamily: 'Great Vibes',
+      fontSize: 100,
+      color: '#c8a04a',
+      maxLines: 2,
+      role: 'quinceaneraName',
+      placeholder: 'Nombre de la quinceañera',
+      sample: 'Kimberly Sinahí',
+      gradient: {
+        colorStops: [
+          0,
+          '#fff6d8',
+          0.22,
+          '#f0d79b',
+          0.42,
+          '#e2bd70',
+          0.52,
+          '#fffbe9',
+          0.62,
+          '#c9a24e',
+          0.8,
+          '#9c7328',
+          1,
+          '#e8cd8a',
+        ],
+        angle: 'vertical',
+      },
+      stroke: { color: '#8a6528', width: 1.8 },
+      shadow: {
+        color: 'rgba(88,56,32,0.30)',
+        blur: 13,
+        offsetX: 0,
+        offsetY: 5,
+      },
     },
     {
       id: 'fecha',
-      x: 100,
-      y: 1382,
-      width: 1000,
+      x: 544,
+      y: 1272,
+      width: 560,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 34,
+      fontSize: 28,
       color: '#8a7355',
       maxLines: 1,
       role: 'custom',
@@ -148,47 +232,47 @@ export const xvMariposasOro: TemplateDef = {
     },
     {
       id: 'mensaje',
-      x: 190,
-      y: 1470,
-      width: 820,
+      x: 544,
+      y: 1332,
+      width: 560,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 32,
+      fontSize: 29,
       fontStyle: 'italic',
       color: '#6f6252',
       maxLines: 2,
       role: 'message',
-      placeholder: 'Gracias por acompañarme',
-      sample: 'Gracias por acompañarme en una noche que no voy a olvidar',
+      placeholder: 'Mensaje de agradecimiento',
+      sample: 'Gracias por acompañarme',
     },
     {
       id: 'negocio',
-      x: 190,
-      y: 1605,
-      width: 820,
+      x: 544,
+      y: 1472,
+      width: 560,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 38,
+      fontSize: 34,
       fontStyle: 'italic bold',
       color: '#9a7434',
-      maxLines: 1,
+      maxLines: 2,
       role: 'businessName',
-      placeholder: 'Videofilmaciones',
+      placeholder: 'Nombre del negocio',
       sample: 'Videofilmaciones "Yesenia"',
     },
     {
       id: 'telefono',
-      x: 190,
-      y: 1665,
-      width: 820,
+      x: 544,
+      y: 1556,
+      width: 560,
       align: 'center',
       fontFamily: 'Playfair Display',
-      fontSize: 30,
+      fontSize: 28,
       color: '#6b5b45',
       maxLines: 1,
       role: 'phone',
-      placeholder: 'Cel. 000 000 0000',
-      sample: 'Cel. 667 221 62 83',
+      placeholder: 'Cel. 0000 00 00 00',
+      sample: 'Cel. 6672 21 62 83',
     },
   ],
 }

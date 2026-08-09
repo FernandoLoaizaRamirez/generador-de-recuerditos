@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- boda-blanco-oro — CAPA 2 / escena de la MITAD SUPERIOR (0,0,1200,900).
+       Coordenadas LOCALES a la mitad. Los adornos evitan los dos huecos de
+       foto: foto-1 x 54..628 y 39..510 y foto-2 x 584..1150 y 398..873.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="26%" r="94%">
+      <stop offset="0%" stop-color="#fffdf6"/>
+      <stop offset="46%" stop-color="#faf4e6"/>
+      <stop offset="100%" stop-color="#f3ead4"/>
+    </radialGradient>
+    <radialGradient id="bok" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="82%" stop-color="#c19a3f" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#c19a3f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#ddc795"/>
+      <stop offset="52%" stop-color="#c19a3f"/>
+      <stop offset="100%" stop-color="#9c7622"/>
+    </linearGradient>
+    <symbol id="mo" viewBox="-50 -50 100 100"><path d="M-42,0 C-26,-26 26,-28 44,-2 C26,26 -26,24 -42,0 Z"/><path d="M-36,1 C-16,-3 18,-3 38,0" fill="none" stroke="currentColor" stroke-width="2.4" opacity="0.45"/></symbol>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1046" cy="96" r="128" fill="url(#bok)"/>
+  <circle cx="872" cy="200" r="84" fill="url(#bok)"/>
+  <circle cx="1156" cy="300" r="96" fill="url(#bok)"/>
+  <circle cx="742" cy="60" r="56" fill="url(#bok)"/>
+  <circle cx="40" cy="132" r="92" fill="url(#bok)"/>
+  <circle cx="30" cy="566" r="108" fill="url(#bok)"/>
+  <circle cx="186" cy="730" r="126" fill="url(#bok)"/>
+  <circle cx="430" cy="838" r="90" fill="url(#bok)"/>
+  <circle cx="1150" cy="828" r="78" fill="url(#bok)"/>
+
+  <g fill="url(#acc)" color="#9c7622">
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(700,78) rotate(-30) scale(1)" opacity="0.50"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(880,168) rotate(7) scale(0.7)" opacity="0.68"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1064,74) rotate(-16) scale(0.86)" opacity="0.86"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1140,246) rotate(21) scale(0.6)" opacity="0.59"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(782,268) rotate(-2) scale(0.52)" opacity="0.77"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(960,318) rotate(-25) scale(0.44)" opacity="0.50"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1160,402) rotate(12) scale(0.5)" opacity="0.68"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(96,604) rotate(-11) scale(0.92)" opacity="0.86"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(246,718) rotate(26) scale(0.66)" opacity="0.59"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(64,806) rotate(3) scale(0.56)" opacity="0.77"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(366,828) rotate(-20) scale(0.74)" opacity="0.50"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(180,546) rotate(17) scale(0.42)" opacity="0.68"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(456,706) rotate(-6) scale(0.4)" opacity="0.86"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(26,350) rotate(-29) scale(0.38)" opacity="0.59"/>
+  </g>
+</svg>

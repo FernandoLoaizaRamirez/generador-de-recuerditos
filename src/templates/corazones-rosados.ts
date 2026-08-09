@@ -1,104 +1,20 @@
-import type { TemplateDef } from '../types'
-
-const BASE = import.meta.env.BASE_URL + 'templates/corazones-rosados'
+import { caballete } from './_caballete'
 
 /**
- * Plantilla «Corazones Rosados»: dos fotos inclinadas arriba sobre un fondo
- * rosa con corazones, y una tarjeta blanca inferior con los textos.
+ * «Corazones Rosados» — caballete plegable.
+ *
+ * El layout (dos mitades, 2 fotos arriba, retrato + textos abajo) lo define
+ * `caballete()`, que es común a todo el catálogo; aquí solo va la identidad
+ * visual. Los assets por mitad los genera
+ * `scripts/build-caballete-assets.mjs` a partir de esta misma paleta.
  */
-export const corazonesRosados: TemplateDef = {
+export const corazonesRosados = caballete({
   id: 'corazones-rosados',
   name: 'Corazones Rosados',
   category: 'xv',
-  thumbnail: `${BASE}/thumbnail.svg`,
-  version: 1,
-  canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
-  background: `${BASE}/background.svg`,
-  overlays: [],
-  photoSlots: [
-    {
-      id: 'foto-1',
-      x: 100,
-      y: 150,
-      width: 480,
-      height: 600,
-      rotation: -3,
-      clipShape: 'rounded',
-      cornerRadius: 16,
-      frameStyle: 'thin',
-      defaultFit: 'cover',
-    },
-    {
-      id: 'foto-2',
-      x: 620,
-      y: 230,
-      width: 480,
-      height: 600,
-      rotation: 3,
-      clipShape: 'rounded',
-      cornerRadius: 16,
-      frameStyle: 'thin',
-      defaultFit: 'cover',
-    },
-  ],
-  textFields: [
-    {
-      id: 'nombre',
-      x: 100,
-      y: 905,
-      width: 1000,
-      align: 'center',
-      fontFamily: 'Great Vibes',
-      fontSize: 112,
-      color: '#c0306a',
-      maxLines: 1,
-      role: 'quinceaneraName',
-      placeholder: 'Nombre de la quinceañera',
-      sample: 'Chelsea Valentina',
-    },
-    {
-      id: 'mensaje',
-      x: 150,
-      y: 1140,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 36,
-      color: '#5b3a45',
-      maxLines: 2,
-      role: 'message',
-      placeholder: 'Mensaje de agradecimiento',
-      sample: 'Gracias por acompañarme',
-    },
-    {
-      id: 'negocio',
-      x: 150,
-      y: 1340,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 46,
-      fontStyle: 'italic',
-      color: '#a0285a',
-      maxLines: 2,
-      role: 'businessName',
-      placeholder: 'Nombre del negocio',
-      sample: 'Videofilmaciones "Yesenia"',
-    },
-    {
-      id: 'telefono',
-      x: 150,
-      y: 1500,
-      width: 900,
-      align: 'center',
-      fontFamily: 'Playfair Display',
-      fontSize: 40,
-      fontStyle: 'bold',
-      color: '#444444',
-      maxLines: 1,
-      role: 'phone',
-      placeholder: 'Cel. 0000 00 00 00',
-      sample: 'Cel. 6672 21 62 83',
-    },
-  ],
-}
+  kind: 'xv',
+  nameColor: '#c8a04a',
+  ink: '#6f6252',
+  inkSoft: '#8a7355',
+  business: '#9a7434',
+})
