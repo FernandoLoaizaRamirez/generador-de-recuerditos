@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <!--
+    CAPA 4 / passe-partout. Va ENCIMA de las fotos: es lo que convierte un
+    hueco RECTANGULAR en una ventana en ARCO sin tocar el motor (el editor
+    solo sabe recortar rectángulos redondeados, no formas libres).
+
+    Los huecos del .ts son:
+      foto-principal   rect 290,190 620x810   -> se ve solo dentro del arco
+      foto-medallon    rect 760,805 290x290   -> con cornerRadius 145 el propio
+                                                 motor ya lo recorta en círculo
+    Si mueves un slot allí, mueve aquí el arco / el círculo igual.
+
+    POR QUÉ <mask> Y NO fill-rule: las dos ventanas se SOLAPAN (el medallón
+    pisa la esquina inferior derecha del arco). Con evenodd el solape se
+    volvería a rellenar y con nonzero también; en una máscara dos negros
+    superpuestos siguen siendo negro, que es justo lo que hace falta.
+
+    POR QUÉ EL FILTRO VA ANIDADO POR FUERA: en SVG el filtro se aplica ANTES
+    que la máscara. Si ambos fueran al mismo elemento, la sombra se calcularía
+    sobre el rectángulo macizo y luego se recortaría — sin sombra hacia dentro
+    de las ventanas y con la exterior comida. Envolviendo el grupo enmascarado
+    en otro grupo con el filtro, la sombra se calcula ya con los huecos: cae
+    sobre el mármol por fuera y sobre la foto por dentro, que es lo que hunde
+    la imagen dentro del marco.
+  -->
+  <defs>
+    <mask id="windows">
+      <rect x="196" y="96" width="808" height="1010" fill="#ffffff" />
+      <path d="M290,1000 L290,500 A310,310 0 0 1 910,500 L910,1000 Z" fill="#000000" />
+      <circle cx="905" cy="950" r="145" fill="#000000" />
+    </mask>
+
+    <filter id="matShadow" filterUnits="userSpaceOnUse"
+            x="180" y="80" width="900" height="1100">
+      <feDropShadow dx="10" dy="16" stdDeviation="14"
+                    flood-color="#5c5648" flood-opacity="0.34" />
+    </filter>
+    <filter id="ringShadow" filterUnits="userSpaceOnUse"
+            x="720" y="765" width="400" height="400">
+      <feDropShadow dx="5" dy="8" stdDeviation="7"
+                    flood-color="#5c5648" flood-opacity="0.32" />
+    </filter>
+
+    <linearGradient id="matPaper" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0%" stop-color="#fdf9f0" />
+      <stop offset="38%" stop-color="#faf5e9" />
+      <stop offset="72%" stop-color="#f4eddd" />
+      <stop offset="100%" stop-color="#ece3cf" />
+    </linearGradient>
+
+    <!-- Oro MATE: la banda de brillo es ancha y apagada. Un oro especular
+         como el de «Mariposas de Oro» leería a fiesta, no a boda. -->
+    <linearGradient id="goldMatte" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#f2e6c8" />
+      <stop offset="22%" stop-color="#dcc394" />
+      <stop offset="45%" stop-color="#c9ac74" />
+      <stop offset="58%" stop-color="#efe1bd" />
+      <stop offset="72%" stop-color="#b89a63" />
+      <stop offset="88%" stop-color="#977c4a" />
+      <stop offset="100%" stop-color="#dcc79a" />
+    </linearGradient>
+    <linearGradient id="goldMatteV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2e6c8" />
+      <stop offset="26%" stop-color="#d9be8c" />
+      <stop offset="52%" stop-color="#ece0bb" />
+      <stop offset="76%" stop-color="#b0925c" />
+      <stop offset="100%" stop-color="#d6c095" />
+    </linearGradient>
+
+    <pattern id="matGrain" width="150" height="150" patternUnits="userSpaceOnUse">
+      <g fill="#8a7f66" opacity="0.05">
+        <circle cx="12" cy="21" r="1.0" /><circle cx="48" cy="8" r="0.8" />
+        <circle cx="85" cy="35" r="1.1" /><circle cx="121" cy="15" r="0.85" />
+        <circle cx="141" cy="44" r="0.95" /><circle cx="25" cy="61" r="0.9" />
+        <circle cx="69" cy="77" r="1.05" /><circle cx="105" cy="59" r="0.8" />
+        <circle cx="138" cy="86" r="1.0" /><circle cx="8" cy="98" r="0.95" />
+        <circle cx="43" cy="117" r="0.85" /><circle cx="91" cy="108" r="1.1" />
+        <circle cx="127" cy="129" r="0.8" /><circle cx="19" cy="141" r="1.0" />
+        <circle cx="60" cy="134" r="0.85" /><circle cx="100" cy="146" r="0.9" />
+      </g>
+      <g fill="#ffffff" opacity="0.08">
+        <circle cx="32" cy="12" r="0.95" /><circle cx="74" cy="45" r="0.85" />
+        <circle cx="114" cy="28" r="1.0" /><circle cx="10" cy="80" r="0.9" />
+        <circle cx="54" cy="94" r="0.85" /><circle cx="96" cy="124" r="0.95" />
+        <circle cx="133" cy="102" r="0.9" /><circle cx="28" cy="160" r="0.85" />
+      </g>
+    </pattern>
+
+    <!-- Clave del arco: pequeño remate botánico simétrico -->
+    <symbol id="keystone" viewBox="-70 -66 140 76">
+      <g fill="url(#goldMatteV)">
+        <path d="M0,-62 C5,-46 12,-34 24,-24 C12,-20 5,-12 0,0
+                 C-5,-12 -12,-20 -24,-24 C-12,-34 -5,-46 0,-62 Z" />
+        <path d="M24,-26 C40,-34 54,-34 64,-28 C52,-26 38,-22 26,-18
+                 C25,-21 25,-24 24,-26 Z" />
+        <path d="M-24,-26 C-40,-34 -54,-34 -64,-28 C-52,-26 -38,-22 -26,-18
+                 C-25,-21 -25,-24 -24,-26 Z" />
+        <path d="M30,-14 C42,-12 52,-6 57,2 C48,-2 38,-6 28,-8 Z" opacity="0.85" />
+        <path d="M-30,-14 C-42,-12 -52,-6 -57,2 C-48,-2 -38,-6 -28,-8 Z" opacity="0.85" />
+      </g>
+      <circle cx="0" cy="-27" r="6" fill="#f6ecd2" />
+      <circle cx="-1.8" cy="-29" r="2.2" fill="#fffdf6" opacity="0.9" />
+    </symbol>
+  </defs>
+
+  <!-- ============ Passe-partout con las dos ventanas caladas ============ -->
+  <g filter="url(#matShadow)">
+    <g mask="url(#windows)">
+      <rect x="230" y="130" width="740" height="930" rx="6" fill="url(#matPaper)" />
+      <rect x="230" y="130" width="740" height="930" rx="6" fill="url(#matGrain)" />
+      <!-- filete de oro interior; queda por DEBAJO del medallón porque va
+           dentro del grupo enmascarado -->
+      <rect x="249" y="149" width="702" height="892" rx="4" fill="none"
+            stroke="url(#goldMatte)" stroke-width="1.8" opacity="0.75" />
+      <rect x="256" y="156" width="688" height="878" rx="3" fill="none"
+            stroke="#b39a6c" stroke-width="0.9" opacity="0.4" />
+    </g>
+  </g>
+
+  <!-- ============ Filetes de oro del arco (sobre el borde de la foto) ============ -->
+  <!-- línea exterior fina, separada 16 px -->
+  <path d="M274,1016 L274,500 A326,326 0 0 1 926,500 L926,1016"
+        fill="none" stroke="url(#goldMatte)" stroke-width="2" opacity="0.8" />
+  <!-- línea principal, justo en el filo de la ventana -->
+  <path d="M290,1000 L290,500 A310,310 0 0 1 910,500 L910,1000 L290,1000"
+        fill="none" stroke="url(#goldMatte)" stroke-width="5.5" />
+  <!-- bisel de luz por dentro -->
+  <path d="M293.5,996.5 L293.5,500 A306.5,306.5 0 0 1 906.5,500 L906.5,996.5"
+        fill="none" stroke="#f7edd4" stroke-width="1.4" opacity="0.6" />
+
+  <use href="#keystone" x="-70" y="-66" width="140" height="76"
+       transform="translate(600,196)" />
+
+  <!-- ============ Aro del medallón ============ -->
+  <g filter="url(#ringShadow)">
+    <circle cx="905" cy="950" r="151" fill="none"
+            stroke="url(#goldMatteV)" stroke-width="7" />
+  </g>
+  <circle cx="905" cy="950" r="146.5" fill="none" stroke="#f7edd4"
+          stroke-width="1.4" opacity="0.6" />
+  <circle cx="905" cy="950" r="162" fill="none" stroke="url(#goldMatteV)"
+          stroke-width="1.6" opacity="0.7" />
+</svg>

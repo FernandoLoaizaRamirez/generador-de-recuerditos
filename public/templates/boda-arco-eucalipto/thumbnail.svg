@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="400" height="600">
+  <!--
+    Miniatura de galería. Mismo viewBox 1200x1800 que la plantilla real, así
+    que las coordenadas del passe-partout, el arco y el medallón son idénticas
+    a las del .ts: lo que se ve aquí es lo que se ve en el editor.
+  -->
+  <defs>
+    <linearGradient id="tStone" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#fdfbf6" />
+      <stop offset="40%" stop-color="#f6f0e5" />
+      <stop offset="78%" stop-color="#eae3d5" />
+      <stop offset="100%" stop-color="#e1d9c9" />
+    </linearGradient>
+    <linearGradient id="tVein" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9c1b0" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#aca286" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#cdc5b4" stop-opacity="0.06" />
+    </linearGradient>
+    <linearGradient id="tPaper" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0%" stop-color="#fdf9f0" />
+      <stop offset="60%" stop-color="#f7f1e2" />
+      <stop offset="100%" stop-color="#ece3cf" />
+    </linearGradient>
+    <radialGradient id="tSlot" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#e6e9dd" />
+      <stop offset="58%" stop-color="#d2d9c8" />
+      <stop offset="100%" stop-color="#b8c3ac" />
+    </radialGradient>
+    <linearGradient id="tGold" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#f2e6c8" />
+      <stop offset="30%" stop-color="#d3b585" />
+      <stop offset="58%" stop-color="#efe1bd" />
+      <stop offset="82%" stop-color="#a28551" />
+      <stop offset="100%" stop-color="#dcc79a" />
+    </linearGradient>
+    <radialGradient id="tLeaf" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#c2d3ba" />
+      <stop offset="50%" stop-color="#9db396" />
+      <stop offset="100%" stop-color="#748a70" />
+    </radialGradient>
+
+    <mask id="tWindows">
+      <rect x="196" y="96" width="808" height="1010" fill="#ffffff" />
+      <path d="M290,1000 L290,500 A310,310 0 0 1 910,500 L910,1000 Z" fill="#000" />
+      <circle cx="905" cy="950" r="145" fill="#000" />
+    </mask>
+
+    <symbol id="tLf" viewBox="-34 -30 68 60">
+      <ellipse cx="0" cy="0" rx="30" ry="26" fill="url(#tLeaf)" />
+      <path d="M-26,3 C-10,-2 12,-3 27,1" fill="none" stroke="#6d8368"
+            stroke-width="1.7" opacity="0.45" />
+    </symbol>
+    <symbol id="tSprig" viewBox="0 0 330 150">
+      <path d="M8,120 C70,108 140,88 208,60 C252,42 290,30 320,24"
+            fill="none" stroke="#788e73" stroke-width="3.6" stroke-linecap="round" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(34,132) rotate(38)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(42,88) rotate(-142) scale(0.95)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(84,118) rotate(44) scale(0.98)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(94,74) rotate(-136) scale(0.9)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(130,104) rotate(40) scale(0.88)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(140,58) rotate(-140) scale(0.82)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(178,88) rotate(42) scale(0.78)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(186,44) rotate(-138) scale(0.72)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(224,70) rotate(40) scale(0.64)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(232,30) rotate(-140) scale(0.58)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(268,54) rotate(38) scale(0.5)" />
+      <use href="#tLf" x="-34" y="-30" width="68" height="60" transform="translate(276,20) rotate(-142) scale(0.44)" />
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#tStone)" />
+  <g fill="url(#tVein)">
+    <path d="M-30,196 C160,300 300,470 366,690 C420,872 402,1060 330,1236
+             C286,1344 214,1444 128,1524 C220,1440 296,1338 344,1230
+             C420,1054 440,864 386,680 C318,456 176,282 -18,180 Z" />
+    <path d="M1236,120 C1082,236 986,404 950,596 C918,772 950,940 1032,1090
+             C1084,1186 1152,1268 1230,1332 C1160,1262 1098,1178 1050,1082
+             C972,934 942,770 972,600 C1006,414 1098,250 1246,136 Z" opacity="0.8" />
+  </g>
+
+  <!-- eucalipto trasero -->
+  <g opacity="0.6">
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(-60,-18) rotate(24) scale(1.28)" />
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(1250,150) rotate(158) scale(1.2)" />
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(-64,1820) rotate(-28) scale(1.18)" />
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(1268,1836) rotate(202) scale(1.26)" />
+  </g>
+
+  <!-- fotos (placeholder) -->
+  <path d="M290,1000 L290,500 A310,310 0 0 1 910,500 L910,1000 Z" fill="url(#tSlot)" />
+  <circle cx="905" cy="950" r="145" fill="url(#tSlot)" />
+
+  <!-- passe-partout -->
+  <g mask="url(#tWindows)">
+    <rect x="230" y="130" width="740" height="930" rx="6" fill="url(#tPaper)" />
+    <rect x="249" y="149" width="702" height="892" rx="4" fill="none"
+          stroke="url(#tGold)" stroke-width="1.8" opacity="0.75" />
+  </g>
+  <path d="M274,1016 L274,500 A326,326 0 0 1 926,500 L926,1016"
+        fill="none" stroke="url(#tGold)" stroke-width="2" opacity="0.8" />
+  <path d="M290,1000 L290,500 A310,310 0 0 1 910,500 L910,1000 L290,1000"
+        fill="none" stroke="url(#tGold)" stroke-width="5.5" />
+  <circle cx="905" cy="950" r="151" fill="none" stroke="url(#tGold)" stroke-width="7" />
+  <circle cx="905" cy="950" r="162" fill="none" stroke="url(#tGold)" stroke-width="1.6" opacity="0.7" />
+  <path d="M600,134 C605,150 612,162 624,172 C612,176 605,184 600,196
+           C595,184 588,176 576,172 C588,162 595,150 600,134 Z" fill="url(#tGold)" />
+
+  <!-- eucalipto delantero -->
+  <g opacity="0.95">
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(96,1150) rotate(-58) scale(1.02)" />
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(1052,146) rotate(128) scale(0.94)" />
+    <use href="#tSprig" x="0" y="0" width="330" height="150" transform="translate(1108,1096) rotate(-152) scale(0.9)" />
+  </g>
+
+  <!-- insinuación de los textos (el real lo dibuja Konva) -->
+  <g opacity="0.92">
+    <rect x="516" y="1160" width="168" height="14" rx="7" fill="#7c8a76" opacity="0.6" />
+    <path d="M292,1310 C336,1250 372,1248 382,1292 C390,1328 366,1344 353,1326
+             C341,1310 361,1282 394,1277 C446,1269 472,1305 487,1318
+             C505,1334 528,1318 535,1287 C543,1249 576,1241 590,1273
+             C602,1299 584,1325 569,1317 C554,1309 566,1278 598,1272
+             C646,1262 676,1298 694,1316 C712,1334 736,1326 746,1295
+             C756,1264 789,1257 803,1283 C816,1307 800,1332 784,1322
+             C769,1314 782,1281 816,1276 C849,1271 875,1291 895,1310"
+          fill="none" stroke="#b39257" stroke-width="10" stroke-linecap="round" opacity="0.9" />
+    <path d="M406,1382 Q492,1378.6 570,1382 Q492,1385.4 406,1382 Z" fill="url(#tGold)" opacity="0.8" />
+    <path d="M794,1382 Q708,1378.6 630,1382 Q708,1385.4 794,1382 Z" fill="url(#tGold)" opacity="0.8" />
+    <rect x="522" y="1412" width="156" height="12" rx="6" fill="#6b7364" opacity="0.5" />
+    <rect x="338" y="1478" width="524" height="11" rx="5.5" fill="#5f6659" opacity="0.42" />
+    <rect x="410" y="1510" width="380" height="11" rx="5.5" fill="#5f6659" opacity="0.42" />
+    <path d="M216,1570 Q380,1565.4 536,1570 Q380,1574.6 216,1570 Z" fill="url(#tGold)" opacity="0.8" />
+    <path d="M984,1570 Q820,1565.4 664,1570 Q820,1574.6 984,1570 Z" fill="url(#tGold)" opacity="0.8" />
+    <circle cx="600" cy="1570" r="7" fill="url(#tGold)" />
+    <rect x="392" y="1602" width="416" height="14" rx="7" fill="#977d4a" opacity="0.62" />
+    <rect x="478" y="1658" width="244" height="11" rx="5.5" fill="#5f6659" opacity="0.5" />
+  </g>
+</svg>

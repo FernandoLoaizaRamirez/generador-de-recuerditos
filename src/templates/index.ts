@@ -1,5 +1,6 @@
 import type { TemplateCategory, TemplateDef } from '../types'
 import { xvMariposasOro } from './xv-mariposas-oro'
+import { bodaArcoEucalipto } from './boda-arco-eucalipto'
 import { universal } from './universal'
 import { deluxeValentina } from './deluxe-valentina'
 import { bodaBlancoOro } from './boda-blanco-oro'
@@ -28,6 +29,7 @@ import { togaDigital } from './toga-digital'
 export const templates: TemplateDef[] = [
   // --- Colección Premium ---
   xvMariposasOro,
+  bodaArcoEucalipto,
   // --- Catálogo previo ---
   universal,
   consolaNeon,

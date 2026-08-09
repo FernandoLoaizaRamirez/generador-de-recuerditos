@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <!--
+    CAPA 5 / eucalipto del plano delantero.
+    Cruza POR DELANTE del passe-partout y del medallón: ese solape es lo que
+    convierte dos planos en tres (rama detrás -> tarjeta -> rama delante) y lo
+    que impide que la pieza se lea como un montaje plano.
+    Frente a la capa trasera: más saturación, nervadura visible, sombra propia.
+  -->
+  <defs>
+    <radialGradient id="lfA2" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#c2d3ba" />
+      <stop offset="46%" stop-color="#9db396" />
+      <stop offset="100%" stop-color="#748a70" />
+    </radialGradient>
+    <radialGradient id="lfB2" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#d2ddc7" />
+      <stop offset="50%" stop-color="#adc0a4" />
+      <stop offset="100%" stop-color="#84997e" />
+    </radialGradient>
+    <radialGradient id="lfC2" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#a9bfa2" />
+      <stop offset="48%" stop-color="#87a081" />
+      <stop offset="100%" stop-color="#5e7659" />
+    </radialGradient>
+    <radialGradient id="lfBronze" cx="32%" cy="26%" r="80%">
+      <stop offset="0%" stop-color="#cfcdab" />
+      <stop offset="50%" stop-color="#b0ab86" />
+      <stop offset="100%" stop-color="#8a8562" />
+    </radialGradient>
+    <radialGradient id="budG" cx="34%" cy="30%" r="74%">
+      <stop offset="0%" stop-color="#c9d6c0" />
+      <stop offset="60%" stop-color="#a3b79b" />
+      <stop offset="100%" stop-color="#7d9376" />
+    </radialGradient>
+
+    <filter id="leafShadow" x="-24%" y="-24%" width="150%" height="150%">
+      <feDropShadow dx="5" dy="9" stdDeviation="7"
+                    flood-color="#4a4a3c" flood-opacity="0.28" />
+    </filter>
+
+    <symbol id="fA" viewBox="-34 -30 68 60">
+      <ellipse cx="0" cy="0" rx="31" ry="26" fill="url(#lfA2)" />
+      <path d="M-27,3 C-10,-2 12,-3 28,1" fill="none" stroke="#6d8368"
+            stroke-width="1.7" opacity="0.5" />
+      <path d="M-16,-12 C-4,-16 10,-17 22,-14" fill="none" stroke="#d7e2cf"
+            stroke-width="1.6" opacity="0.34" />
+    </symbol>
+    <symbol id="fB" viewBox="-34 -30 68 60">
+      <ellipse cx="0" cy="0" rx="30" ry="25" fill="url(#lfB2)" />
+      <path d="M-26,3 C-10,-2 12,-3 27,1" fill="none" stroke="#7b9075"
+            stroke-width="1.6" opacity="0.45" />
+      <path d="M-15,-11 C-3,-15 10,-16 21,-13" fill="none" stroke="#e4ecdd"
+            stroke-width="1.5" opacity="0.32" />
+    </symbol>
+    <symbol id="fC" viewBox="-34 -30 68 60">
+      <ellipse cx="0" cy="0" rx="30" ry="26" fill="url(#lfC2)" />
+      <path d="M-26,3 C-10,-2 12,-3 27,1" fill="none" stroke="#556c51"
+            stroke-width="1.6" opacity="0.5" />
+    </symbol>
+    <symbol id="fBr" viewBox="-34 -30 68 60">
+      <ellipse cx="0" cy="0" rx="29" ry="25" fill="url(#lfBronze)" />
+      <path d="M-25,3 C-10,-2 12,-3 26,1" fill="none" stroke="#7f7a5a"
+            stroke-width="1.5" opacity="0.45" />
+    </symbol>
+
+    <!-- Racimo de botones (eucalipto "semillado"): detalle que da veracidad -->
+    <symbol id="buds" viewBox="-40 -34 80 68">
+      <g stroke="#8a9d83" stroke-width="2" fill="none" opacity="0.7">
+        <path d="M-34,26 C-18,10 -4,0 12,-8" />
+        <path d="M-20,20 C-12,6 -4,-4 6,-14" />
+      </g>
+      <g fill="url(#budG)">
+        <circle cx="14" cy="-12" r="10" /><circle cx="-2" cy="-20" r="8" />
+        <circle cx="24" cy="2" r="8.5" /><circle cx="6" cy="0" r="7" />
+        <circle cx="-12" cy="-6" r="6.5" /><circle cx="20" cy="-24" r="6" />
+      </g>
+      <g fill="#e2ead9" opacity="0.5">
+        <circle cx="11" cy="-15" r="3" /><circle cx="-4" cy="-22" r="2.4" />
+        <circle cx="22" cy="-1" r="2.6" />
+      </g>
+    </symbol>
+
+    <symbol id="sprigFront" viewBox="0 0 330 150">
+      <!-- Al 60 %, igual que la capa trasera: la escala de la hoja tiene que
+           coincidir entre planos o el solape delata que son el mismo dibujo. -->
+      <g transform="scale(0.6)">
+      <path d="M8,120 C70,108 140,88 208,60 C252,42 290,30 320,24"
+            fill="none" stroke="#788e73" stroke-width="3.8"
+            stroke-linecap="round" />
+      <use href="#fA" x="-34" y="-30" width="68" height="60"
+           transform="translate(34,132) rotate(38)" />
+      <use href="#fB" x="-34" y="-30" width="68" height="60"
+           transform="translate(42,88) rotate(-142) scale(0.95)" />
+      <use href="#fC" x="-34" y="-30" width="68" height="60"
+           transform="translate(84,118) rotate(44) scale(0.98)" />
+      <use href="#fA" x="-34" y="-30" width="68" height="60"
+           transform="translate(94,74) rotate(-136) scale(0.9)" />
+      <use href="#fBr" x="-34" y="-30" width="68" height="60"
+           transform="translate(130,104) rotate(40) scale(0.88)" />
+      <use href="#fB" x="-34" y="-30" width="68" height="60"
+           transform="translate(140,58) rotate(-140) scale(0.82)" />
+      <use href="#fC" x="-34" y="-30" width="68" height="60"
+           transform="translate(178,88) rotate(42) scale(0.78)" />
+      <use href="#fA" x="-34" y="-30" width="68" height="60"
+           transform="translate(186,44) rotate(-138) scale(0.72)" />
+      <use href="#fB" x="-34" y="-30" width="68" height="60"
+           transform="translate(224,70) rotate(40) scale(0.64)" />
+      <use href="#fC" x="-34" y="-30" width="68" height="60"
+           transform="translate(232,30) rotate(-140) scale(0.58)" />
+      <use href="#fA" x="-34" y="-30" width="68" height="60"
+           transform="translate(268,54) rotate(38) scale(0.5)" />
+      <use href="#fB" x="-34" y="-30" width="68" height="60"
+           transform="translate(276,20) rotate(-142) scale(0.44)" />
+      <use href="#fC" x="-34" y="-30" width="68" height="60"
+           transform="translate(310,32) rotate(18) scale(0.36)" />
+      </g>
+    </symbol>
+  </defs>
+
+  <!-- ===== Esquina inferior izquierda del passe-partout ===== -->
+  <g filter="url(#leafShadow)">
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(96,1150) rotate(-58) scale(1.02)" />
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(150,1122) rotate(-14) scale(0.86)" />
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(196,1188) rotate(-96) scale(0.72)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(268,1046) rotate(-24) scale(1.05)" />
+  </g>
+
+  <!-- ===== Esquina superior derecha del passe-partout ===== -->
+  <g filter="url(#leafShadow)">
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(1052,146) rotate(128) scale(0.94)" />
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(1006,92) rotate(168) scale(0.78)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(940,190) rotate(146) scale(0.9)" />
+  </g>
+
+  <!-- ===== Acompaña al medallón: una rama pasa por delante del aro ===== -->
+  <g filter="url(#leafShadow)">
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(1108,1096) rotate(-152) scale(0.9)" />
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(1046,1160) rotate(-108) scale(0.7)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(1076,1044) rotate(-138) scale(0.85)" />
+  </g>
+
+  <!-- ===== Esquina superior izquierda: entra desde el mármol ===== -->
+  <g filter="url(#leafShadow)">
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(126,286) rotate(-104) scale(0.8)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(196,196) rotate(-56) scale(0.8)" />
+  </g>
+
+  <!-- ===== Pie: cierra bajo el bloque de texto ===== -->
+  <g filter="url(#leafShadow)" opacity="0.96">
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(74,1782) rotate(-36) scale(0.86)" />
+    <use href="#sprigFront" x="0" y="0" width="330" height="150"
+         transform="translate(1136,1794) rotate(-146) scale(0.86)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(214,1716) rotate(-18) scale(0.72)" />
+    <use href="#buds" x="-40" y="-34" width="80" height="68"
+         transform="translate(996,1724) rotate(162) scale(0.72)" />
+  </g>
+</svg>
