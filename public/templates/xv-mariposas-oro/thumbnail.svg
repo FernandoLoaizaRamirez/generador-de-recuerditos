@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="400" height="600">
+  <!--
+    Miniatura de galería. Usa el MISMO viewBox 1200x1800 que la plantilla real,
+    así que las coordenadas de marcos y textos son idénticas a las del .ts:
+    lo que se ve aquí es lo que se ve en el editor, a un tercio de escala.
+    Los huecos de foto se representan con un relleno rosado suave, igual que
+    hace PhotoSlotView en la vista previa.
+  -->
+  <defs>
+    <radialGradient id="tBg" cx="34%" cy="24%" r="96%">
+      <stop offset="0%" stop-color="#fdfaf5" />
+      <stop offset="26%" stop-color="#faf2e7" />
+      <stop offset="52%" stop-color="#f3e0d6" />
+      <stop offset="76%" stop-color="#eaccc7" />
+      <stop offset="100%" stop-color="#dcb0b2" />
+    </radialGradient>
+    <radialGradient id="tBokeh" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffeec2" stop-opacity="0.16" />
+      <stop offset="84%" stop-color="#ffdf9c" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#ffefcc" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tSlot" cx="42%" cy="34%" r="76%">
+      <stop offset="0%" stop-color="#f6e2dc" />
+      <stop offset="60%" stop-color="#eccdc6" />
+      <stop offset="100%" stop-color="#ddb1ae" />
+    </radialGradient>
+    <linearGradient id="tLitT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a17629" />
+      <stop offset="20%" stop-color="#fff8e0" />
+      <stop offset="48%" stop-color="#d2ae5f" />
+      <stop offset="74%" stop-color="#8e6a26" />
+      <stop offset="100%" stop-color="#f3e2ab" />
+    </linearGradient>
+    <linearGradient id="tLitL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a17629" />
+      <stop offset="21%" stop-color="#fdf3d6" />
+      <stop offset="49%" stop-color="#cba85a" />
+      <stop offset="75%" stop-color="#8a6624" />
+      <stop offset="100%" stop-color="#eddca4" />
+    </linearGradient>
+    <linearGradient id="tShdB" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7d5719" />
+      <stop offset="24%" stop-color="#d9bd75" />
+      <stop offset="58%" stop-color="#916c26" />
+      <stop offset="100%" stop-color="#dcc287" />
+    </linearGradient>
+    <linearGradient id="tShdR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#825c1c" />
+      <stop offset="24%" stop-color="#dec27b" />
+      <stop offset="58%" stop-color="#957028" />
+      <stop offset="100%" stop-color="#e0c68c" />
+    </linearGradient>
+    <linearGradient id="tGold" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#fff8e2" />
+      <stop offset="40%" stop-color="#d3ae5c" />
+      <stop offset="54%" stop-color="#fffbe9" />
+      <stop offset="86%" stop-color="#8d6825" />
+      <stop offset="100%" stop-color="#e4c785" />
+    </linearGradient>
+    <linearGradient id="tPetal" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#c9868c" />
+      <stop offset="58%" stop-color="#f0c6c2" />
+      <stop offset="100%" stop-color="#fdf1ec" />
+    </linearGradient>
+    <linearGradient id="tPetalC" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#dcc0a4" />
+      <stop offset="62%" stop-color="#f9ecdc" />
+      <stop offset="100%" stop-color="#fffaf2" />
+    </linearGradient>
+    <linearGradient id="tLeaf" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#c3d1b4" />
+      <stop offset="60%" stop-color="#9db08f" />
+      <stop offset="100%" stop-color="#6f8862" />
+    </linearGradient>
+    <radialGradient id="tWing" cx="10%" cy="80%" r="104%">
+      <stop offset="0%" stop-color="#c9727f" stop-opacity="0.95" />
+      <stop offset="58%" stop-color="#e8b08f" stop-opacity="0.84" />
+      <stop offset="100%" stop-color="#f7e2b0" stop-opacity="0.46" />
+    </radialGradient>
+    <linearGradient id="tRule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9a45a" stop-opacity="0.15" />
+      <stop offset="50%" stop-color="#f0dca4" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#c9a45a" stop-opacity="0.15" />
+    </linearGradient>
+
+    <path id="tPt" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74
+                      C40,-44 26,-10 0,4 Z" />
+
+    <symbol id="tRose" viewBox="-100 -100 200 200">
+      <g fill="url(#tPetal)">
+        <use href="#tPt" transform="rotate(6)" />
+        <use href="#tPt" transform="rotate(66)" />
+        <use href="#tPt" transform="rotate(126)" />
+        <use href="#tPt" transform="rotate(186)" />
+        <use href="#tPt" transform="rotate(246)" />
+        <use href="#tPt" transform="rotate(306)" />
+      </g>
+      <g fill="url(#tPetal)">
+        <use href="#tPt" transform="rotate(36) scale(0.66)" />
+        <use href="#tPt" transform="rotate(108) scale(0.66)" />
+        <use href="#tPt" transform="rotate(180) scale(0.66)" />
+        <use href="#tPt" transform="rotate(252) scale(0.66)" />
+        <use href="#tPt" transform="rotate(324) scale(0.66)" />
+      </g>
+      <circle r="13" fill="#d99a9d" />
+    </symbol>
+    <symbol id="tRoseC" viewBox="-100 -100 200 200">
+      <g fill="url(#tPetalC)">
+        <use href="#tPt" transform="rotate(-8)" />
+        <use href="#tPt" transform="rotate(64)" />
+        <use href="#tPt" transform="rotate(136)" />
+        <use href="#tPt" transform="rotate(208)" />
+        <use href="#tPt" transform="rotate(280)" />
+      </g>
+      <circle r="11" fill="#e8cfa8" />
+    </symbol>
+    <symbol id="tLeafS" viewBox="-100 -46 200 92">
+      <path d="M-92,0 C-56,-40 40,-44 92,-4 C40,40 -56,38 -92,0 Z" fill="url(#tLeaf)" />
+      <path d="M-84,0 C-40,-8 40,-6 84,-3" fill="none" stroke="#6d8760"
+            stroke-width="2.4" opacity="0.6" />
+    </symbol>
+    <symbol id="tBf" viewBox="-115 -110 230 220">
+      <g>
+        <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#tWing)" />
+        <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#tWing)" />
+        <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#e8c67c" stroke-width="2.6" />
+        <g transform="scale(-1,1)">
+          <path d="M4,-38 C34,-96 96,-92 96,-44 C96,-8 44,6 8,-2 Z" fill="url(#tWing)" />
+          <path d="M6,2 C46,4 78,26 68,62 C58,92 20,84 8,44 Z" fill="url(#tWing)" />
+          <path d="M4,-38 C34,-96 96,-92 96,-44" fill="none" stroke="#e8c67c" stroke-width="2.6" />
+        </g>
+        <path d="M0,-48 C7,-41 8,-10 6,26 C5,52 2,68 0,76 C-2,68 -5,52 -6,26
+                 C-8,-10 -7,-41 0,-48 Z" fill="#9a7433" />
+      </g>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#tBg)" />
+
+  <!-- bokeh -->
+  <circle cx="1042" cy="118" r="148" fill="url(#tBokeh)" />
+  <circle cx="58" cy="196" r="112" fill="url(#tBokeh)" />
+  <circle cx="1074" cy="1178" r="126" fill="url(#tBokeh)" />
+  <circle cx="132" cy="1216" r="132" fill="url(#tBokeh)" />
+  <circle cx="620" cy="1772" r="120" fill="url(#tBokeh)" />
+
+  <!-- halo -->
+  <circle cx="600" cy="600" r="556" fill="none" stroke="#dcb96a"
+          stroke-width="5" opacity="0.34" />
+
+  <!-- ===== marco principal (mismas coords que el .ts) ===== -->
+  <g transform="translate(112,190) rotate(-5)">
+    <rect width="630" height="830" fill="url(#tSlot)" />
+    <path d="M-26,-26 L656,-26 L630,0 L0,0 Z" fill="url(#tLitT)" />
+    <path d="M-26,-26 L0,0 L0,830 L-26,856 Z" fill="url(#tLitL)" />
+    <path d="M656,-26 L656,856 L630,830 L630,0 Z" fill="url(#tShdR)" />
+    <path d="M656,856 L-26,856 L0,830 L630,830 Z" fill="url(#tShdB)" />
+    <rect x="1.4" y="1.4" width="627.2" height="827.2" fill="none"
+          stroke="#fdf1c8" stroke-width="2.6" opacity="0.6" />
+    <path d="M315,-80 C326,-66 340,-57 361,-53 C340,-49 326,-40 315,-26
+             C304,-40 290,-49 269,-53 C290,-57 304,-66 315,-80 Z" fill="url(#tGold)" />
+  </g>
+
+  <!-- ===== marco secundario ===== -->
+  <g transform="translate(690,505) rotate(4)">
+    <rect width="420" height="545" fill="url(#tSlot)" />
+    <path d="M-20,-20 L440,-20 L420,0 L0,0 Z" fill="url(#tLitT)" />
+    <path d="M-20,-20 L0,0 L0,545 L-20,565 Z" fill="url(#tLitL)" />
+    <path d="M440,-20 L440,565 L420,545 L420,0 Z" fill="url(#tShdR)" />
+    <path d="M440,565 L-20,565 L0,545 L420,545 Z" fill="url(#tShdB)" />
+    <rect x="1.2" y="1.2" width="417.6" height="542.6" fill="none"
+          stroke="#fdf1c8" stroke-width="2.2" opacity="0.6" />
+  </g>
+
+  <!-- ===== flores delanteras (racimos principales) ===== -->
+  <g>
+    <use href="#tLeafS" x="-100" y="-46" width="200" height="92"
+         transform="translate(52,120) rotate(-38) scale(0.86)" />
+    <use href="#tLeafS" x="-100" y="-46" width="200" height="92"
+         transform="translate(196,96) rotate(-8) scale(0.72)" />
+    <use href="#tRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(104,168) scale(0.92)" />
+    <use href="#tRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(228,110) rotate(18) scale(0.66)" />
+    <use href="#tRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(46,272) rotate(-14) scale(0.5)" />
+  </g>
+  <g>
+    <use href="#tLeafS" x="-100" y="-46" width="200" height="92"
+         transform="translate(618,452) rotate(-52) scale(0.7)" />
+    <use href="#tRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(672,494) rotate(10) scale(0.72)" />
+    <use href="#tRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(772,428) rotate(-16) scale(0.5)" />
+  </g>
+  <g>
+    <use href="#tLeafS" x="-100" y="-46" width="200" height="92"
+         transform="translate(96,1006) rotate(28) scale(0.8)" />
+    <use href="#tRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(152,1046) rotate(-10) scale(0.84)" />
+    <use href="#tRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(272,1006) rotate(22) scale(0.52)" />
+  </g>
+  <g>
+    <use href="#tRoseC" x="-100" y="-100" width="200" height="200"
+         transform="translate(1094,1092) rotate(14) scale(0.66)" />
+    <use href="#tRose" x="-100" y="-100" width="200" height="200"
+         transform="translate(1006,1148) rotate(-18) scale(0.44)" />
+  </g>
+
+  <!-- ===== mariposas ===== -->
+  <use href="#tBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(884,392) rotate(-24) scale(1.18)" />
+  <use href="#tBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(292,1216) rotate(-14) scale(0.64)" />
+  <use href="#tBf" x="-115" y="-110" width="230" height="220"
+       transform="translate(1016,904) rotate(36) scale(0.44)" />
+
+  <!-- ===== insinuación de los textos (el texto real lo dibuja Konva) ===== -->
+  <g opacity="0.92">
+    <!-- "Mis XV Años" -->
+    <rect x="500" y="1124" width="200" height="15" rx="7.5" fill="#b08d55" opacity="0.55" />
+    <!-- nombre en script -->
+    <path d="M232,1290 C286,1216 330,1214 342,1268 C352,1312 322,1332 306,1310
+             C292,1290 316,1256 356,1250 C420,1240 452,1284 470,1300
+             C492,1320 520,1300 528,1262 C538,1216 578,1206 596,1246
+             C610,1278 588,1310 570,1300 C552,1290 566,1252 606,1244
+             C664,1232 700,1276 722,1298 C744,1320 774,1310 786,1272
+             C798,1234 838,1226 856,1258 C872,1288 852,1318 832,1306
+             C814,1296 830,1256 872,1250 C912,1244 944,1268 968,1292"
+          fill="none" stroke="#c8a24e" stroke-width="11" stroke-linecap="round"
+          opacity="0.9" />
+    <path d="M416,1358 Q498,1354.6 574,1358 Q498,1361.4 416,1358 Z" fill="url(#tRule)" />
+    <path d="M784,1358 Q702,1354.6 626,1358 Q702,1361.4 784,1358 Z" fill="url(#tRule)" />
+    <path d="M600,1350 L607,1358 L600,1366 L593,1358 Z" fill="url(#tGold)" />
+    <!-- fecha + mensaje -->
+    <rect x="516" y="1390" width="168" height="12" rx="6" fill="#8a7355" opacity="0.5" />
+    <rect x="330" y="1476" width="540" height="11" rx="5.5" fill="#6f6252" opacity="0.42" />
+    <rect x="404" y="1508" width="392" height="11" rx="5.5" fill="#6f6252" opacity="0.42" />
+    <!-- filete con medallón -->
+    <path d="M188,1578 Q372,1573.2 546,1578 Q372,1582.8 188,1578 Z" fill="url(#tRule)" />
+    <path d="M1012,1578 Q828,1573.2 654,1578 Q828,1582.8 1012,1578 Z" fill="url(#tRule)" />
+    <path d="M600,1560 C606,1570 614,1574 626,1578 C614,1582 606,1586 600,1596
+             C594,1586 586,1582 574,1578 C586,1574 594,1570 600,1560 Z" fill="url(#tGold)" />
+    <!-- negocio + teléfono -->
+    <rect x="382" y="1612" width="436" height="14" rx="7" fill="#9a7434" opacity="0.6" />
+    <rect x="470" y="1672" width="260" height="11" rx="5.5" fill="#6b5b45" opacity="0.5" />
+  </g>
+</svg>

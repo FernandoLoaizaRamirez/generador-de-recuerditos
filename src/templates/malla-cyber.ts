@@ -11,6 +11,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/malla-cyber'
 export const mallaCyber: TemplateDef = {
   id: 'malla-cyber',
   name: 'Malla Cyber',
+  category: 'graduacion',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

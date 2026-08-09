@@ -11,6 +11,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/consola-neon'
 export const consolaNeon: TemplateDef = {
   id: 'consola-neon',
   name: 'Consola Neón',
+  category: 'graduacion',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

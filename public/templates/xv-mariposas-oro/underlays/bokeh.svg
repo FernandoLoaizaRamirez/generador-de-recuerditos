@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <!--
+    CAPA 2 / ambiente. Bokeh de estudio: círculos desenfocados con el borde
+    más luminoso que el centro (así se comporta el desenfoque real de un
+    objetivo luminoso). Se logra con radialGradient de alfa, sin feGaussianBlur,
+    para que el lienzo siga siendo barato de redibujar en el editor.
+  -->
+  <defs>
+    <radialGradient id="bkGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffeec2" stop-opacity="0.14" />
+      <stop offset="58%" stop-color="#ffe6ae" stop-opacity="0.18" />
+      <stop offset="84%" stop-color="#ffdf9c" stop-opacity="0.32" />
+      <stop offset="95%" stop-color="#fff3d4" stop-opacity="0.36" />
+      <stop offset="100%" stop-color="#ffefcc" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="bkRose" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffdcdc" stop-opacity="0.13" />
+      <stop offset="62%" stop-color="#ffd2d4" stop-opacity="0.17" />
+      <stop offset="88%" stop-color="#ffc6ca" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#ffd4d6" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="bkWhite" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffdf6" stop-opacity="0.20" />
+      <stop offset="76%" stop-color="#fffaea" stop-opacity="0.24" />
+      <stop offset="94%" stop-color="#ffffff" stop-opacity="0.34" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="bkSage" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#cfd9c4" stop-opacity="0.12" />
+      <stop offset="86%" stop-color="#bfcdb2" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#c6d3ba" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Cuadrante superior derecho: el foco desenfocado más presente -->
+  <circle cx="1042" cy="118" r="148" fill="url(#bkGold)" />
+  <circle cx="885" cy="252" r="96" fill="url(#bkWhite)" />
+  <circle cx="1136" cy="330" r="118" fill="url(#bkRose)" />
+  <circle cx="962" cy="404" r="62" fill="url(#bkGold)" />
+  <circle cx="1088" cy="512" r="84" fill="url(#bkWhite)" />
+  <circle cx="812" cy="126" r="54" fill="url(#bkRose)" />
+  <circle cx="1174" cy="196" r="70" fill="url(#bkWhite)" />
+  <circle cx="906" cy="60" r="44" fill="url(#bkGold)" />
+
+  <!-- Borde izquierdo y esquina superior izquierda -->
+  <circle cx="58" cy="196" r="112" fill="url(#bkRose)" />
+  <circle cx="146" cy="86" r="66" fill="url(#bkWhite)" />
+  <circle cx="30" cy="430" r="78" fill="url(#bkGold)" />
+  <circle cx="96" cy="614" r="52" fill="url(#bkSage)" />
+  <circle cx="24" cy="806" r="94" fill="url(#bkRose)" />
+
+  <!-- Banda inferior: sostiene la zona de textos con luz difusa -->
+  <circle cx="132" cy="1216" r="132" fill="url(#bkRose)" />
+  <circle cx="1074" cy="1178" r="126" fill="url(#bkGold)" />
+  <circle cx="1160" cy="1382" r="88" fill="url(#bkWhite)" />
+  <circle cx="52" cy="1428" r="86" fill="url(#bkGold)" />
+  <circle cx="1108" cy="1612" r="106" fill="url(#bkRose)" />
+  <circle cx="118" cy="1690" r="74" fill="url(#bkWhite)" />
+  <circle cx="620" cy="1772" r="120" fill="url(#bkGold)" />
+  <circle cx="352" cy="1748" r="58" fill="url(#bkSage)" />
+  <circle cx="880" cy="1738" r="66" fill="url(#bkRose)" />
+
+  <!-- Motas pequeñas dispersas (aire entre los planos) -->
+  <g>
+    <circle cx="758" cy="336" r="22" fill="url(#bkWhite)" />
+    <circle cx="1006" cy="686" r="30" fill="url(#bkGold)" />
+    <circle cx="176" cy="1052" r="26" fill="url(#bkRose)" />
+    <circle cx="1152" cy="884" r="34" fill="url(#bkWhite)" />
+    <circle cx="66" cy="1140" r="20" fill="url(#bkGold)" />
+    <circle cx="930" cy="1290" r="28" fill="url(#bkWhite)" />
+    <circle cx="252" cy="1616" r="24" fill="url(#bkGold)" />
+    <circle cx="1044" cy="1476" r="18" fill="url(#bkRose)" />
+  </g>
+</svg>

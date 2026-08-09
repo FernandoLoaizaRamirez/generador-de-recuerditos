@@ -133,6 +133,16 @@ export interface TextField {
   shadow?: TextShadow
 }
 
+/**
+ * Evento al que sirve la plantilla. Agrupa la galería para que el usuario
+ * llegue a su sección sin recorrer todo el catálogo.
+ *
+ * Es un slug, no la etiqueta visible: el rótulo y el orden de las secciones
+ * viven en `CATEGORIES` (`src/templates/index.ts`), así que se puede cambiar
+ * el texto mostrado sin tocar ni una plantilla.
+ */
+export type TemplateCategory = 'xv' | 'boda' | 'graduacion'
+
 /** Dimensiones del lienzo de la plantilla (px a 300 DPI). */
 export interface CanvasSpec {
   /** Ancho del área de corte (trim). Ej.: 1200 px = 4". */
@@ -158,6 +168,9 @@ export interface FoldSpec {
 export interface TemplateDef {
   id: string
   name: string
+  /** Evento al que pertenece. Obligatorio: agrupa la galería y el
+   *  type-checker avisa si una plantilla nueva se queda sin clasificar. */
+  category: TemplateCategory
   thumbnail: AssetRef
   /** Versión del esquema/plantilla para migraciones futuras. */
   version: number

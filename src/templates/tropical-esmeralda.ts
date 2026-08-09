@@ -9,6 +9,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/tropical-esmeralda'
 export const tropicalEsmeralda: TemplateDef = {
   id: 'tropical-esmeralda',
   name: 'Tropical Esmeralda',
+  category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

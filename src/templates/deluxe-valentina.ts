@@ -23,6 +23,7 @@ const marco2 = topWin(0.572, 0.58, 0.285, 0.237, 10)
 export const deluxeValentina: TemplateDef = {
   id: 'deluxe-valentina',
   name: 'Deluxe Valentina',
+  category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 4,
   fold: { atY: 900 },

@@ -24,6 +24,7 @@ const marcoDer = topWin(0.59, 0.291, 0.222, 0.42, 10)
 export const universal: TemplateDef = {
   id: 'universal',
   name: 'Universal — Marfil & Oro',
+  category: 'boda',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   fold: { atY: 900 },

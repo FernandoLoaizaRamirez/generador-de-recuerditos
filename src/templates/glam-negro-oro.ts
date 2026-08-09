@@ -9,6 +9,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/glam-negro-oro'
 export const glamNegroOro: TemplateDef = {
   id: 'glam-negro-oro',
   name: 'Glam Negro y Oro',
+  category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

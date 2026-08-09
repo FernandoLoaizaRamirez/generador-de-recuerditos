@@ -10,6 +10,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/azul-cristal'
 export const azulCristal: TemplateDef = {
   id: 'azul-cristal',
   name: 'Azul Cristal',
+  category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

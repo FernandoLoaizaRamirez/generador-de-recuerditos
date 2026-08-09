@@ -6,6 +6,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/lila-encanto'
 export const lilaEncanto: TemplateDef = {
   id: 'lila-encanto',
   name: 'Lila Encanto',
+  category: 'xv',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

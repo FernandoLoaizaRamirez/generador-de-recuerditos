@@ -11,6 +11,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/toga-digital'
 export const togaDigital: TemplateDef = {
   id: 'toga-digital',
   name: 'Toga Digital',
+  category: 'graduacion',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },

@@ -8,6 +8,7 @@ export type {
   OverlayLayer,
   PhotoSlot,
   PositionedOverlay,
+  TemplateCategory,
   TemplateDef,
   TextAlign,
   TextField,

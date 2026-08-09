@@ -11,6 +11,7 @@ const BASE = import.meta.env.BASE_URL + 'templates/boda-blanco-oro'
 export const bodaBlancoOro: TemplateDef = {
   id: 'boda-blanco-oro',
   name: 'Boda Blanco y Oro',
+  category: 'boda',
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 1,
   canvas: { width: 1200, height: 1800, bleedPx: 38, safePx: 38 },
