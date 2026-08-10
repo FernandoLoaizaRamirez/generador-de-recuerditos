@@ -36,8 +36,30 @@ export default defineConfig(({ command }) => ({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,woff2}'],
+        // Solo el ARMAZÓN de la app va precargado. Antes entraban también los
+        // SVG de las plantillas: 161 entradas y 2 MB en la primera visita, y
+        // sobre todo, cada publicación dejaba obsoleta esa caché entera y los
+        // cambios tardaban en verse. La app se usa siempre con conexión, así
+        // que no compensa.
+        globPatterns: ['**/*.{js,css,html,woff2}'],
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
+          {
+            // Las plantillas se piden a la RED primero, así un rediseño se ve
+            // al recargar. La caché queda de respaldo por si la red falla o
+            // tarda, para no dejar la galería en blanco.
+            urlPattern: /\/templates\/.*\.(?:svg|png|webp|jpe?g)$/i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'plantillas',
+              networkTimeoutSeconds: 3,
+              expiration: {
+                maxEntries: 400,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
