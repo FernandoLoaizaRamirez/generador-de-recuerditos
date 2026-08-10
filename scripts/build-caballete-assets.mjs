@@ -478,8 +478,11 @@ ${frame(f2)}
     <rect x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" rx="18" fill="${card}"/>
     <rect x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" rx="18" fill="none" stroke="url(#g)" stroke-width="5"/>
     <rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="14" fill="${panel}" opacity="0.92"/>
-    <rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="6" fill="${slot}"/>
-    <rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="6" fill="none" stroke="url(#g)" stroke-width="8"/>
+    ${t.arch
+      ? `<path d="M${r.x},${r.y + r.h} L${r.x},${r.y + r.w / 2} A${r.w / 2},${r.w / 2} 0 0 1 ${r.x + r.w},${r.y + r.w / 2} L${r.x + r.w},${r.y + r.h} Z" fill="${slot}"/>
+    <path d="M${r.x},${r.y + r.h} L${r.x},${r.y + r.w / 2} A${r.w / 2},${r.w / 2} 0 0 1 ${r.x + r.w},${r.y + r.w / 2} L${r.x + r.w},${r.y + r.h}" fill="none" stroke="url(#g)" stroke-width="8"/>`
+      : `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="6" fill="${slot}"/>
+    <rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="6" fill="none" stroke="url(#g)" stroke-width="8"/>`}
     <rect x="600" y="140" width="448" height="26" rx="13" fill="url(#g)" opacity="0.9"/>
     <rect x="660" y="196" width="328" height="26" rx="13" fill="url(#g)" opacity="0.9"/>
     <path d="M600,348 Q690,344.6 776,348 Q690,351.4 600,348 Z" fill="url(#g)" opacity="0.8"/>
@@ -516,7 +519,9 @@ const TEMPLATES = [
   { id: 'malla-cyber',        bg: ['#0a0b1e', '#140a26', '#1e0b32'], acc: ['#f5c542', '#e451ff'], motif: 'sparkle', dark: true },
   { id: 'toga-digital',       bg: ['#0c1226', '#080c18', '#050710'], acc: ['#f5c542', '#c79a1e'], motif: 'star', dark: true },
   { id: 'boda-blanco-oro',    bg: ['#fffdf6', '#faf4e6', '#f3ead4'], acc: ['#c19a3f', '#9c7622'], motif: 'leaf' },
-  { id: 'boda-arco-eucalipto', bg: ['#fdfbf6', '#f3ece0', '#e1d9c9'], acc: ['#c9ac74', '#8a9d83'], motif: 'sprig' },
+  // `arch`: su retrato se recorta en arco (ver overlays/bottom-arch.svg), así
+  // que la miniatura tiene que enseñarlo con arco y no con rectángulo.
+  { id: 'boda-arco-eucalipto', bg: ['#fdfbf6', '#f3ece0', '#e1d9c9'], acc: ['#c9ac74', '#8a9d83'], motif: 'sprig', arch: true },
 ]
 
 const only = process.argv.slice(2)

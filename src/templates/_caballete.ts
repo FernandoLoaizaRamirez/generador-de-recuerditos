@@ -79,6 +79,13 @@ export interface CaballeteSpec {
   version?: number
   /** Marco vectorial de las fotos. 'none' si el adorno lo pone un overlay. */
   frameStyle?: 'goldOrnate' | 'thin' | 'silver' | 'none'
+  /**
+   * Marco solo del retrato, si necesita uno distinto al de las fotos de
+   * arriba. Se añadió para «Arco de Eucalipto»: su retrato se recorta en arco
+   * con una máscara, y el marco vectorial dibujaría el RECTÁNGULO del hueco
+   * asomando por dentro del arco.
+   */
+  retratoFrame?: 'goldOrnate' | 'thin' | 'silver' | 'none'
   /** Tipografía del nombre y del lettering del evento. */
   displayFont?: string
   /** Tipografía del resto de la tarjeta. */
@@ -206,7 +213,7 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
         rotation: 0,
         clipShape: 'rounded',
         cornerRadius: 6,
-        frameStyle,
+        frameStyle: spec.retratoFrame ?? frameStyle,
         defaultFit: 'cover',
       },
     ],

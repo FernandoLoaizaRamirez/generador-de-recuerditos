@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!--
+    Arco de Eucalipto — ventana en ARCO del retrato. Overlay de la MITAD
+    INFERIOR (0,900,1200,900). Coordenadas LOCALES: local_y = canvas_y - 900.
+
+    El motor solo recorta rectángulos redondeados, así que el arco se hace al
+    revés: la foto ocupa su hueco RECTANGULAR normal (112,112 400x655) y aquí
+    se tapan las dos esquinas que sobran por encima de la curva. Radio 200
+    (= ancho/2), arranque en y=312, vértice en y=112.
+
+    SOLO SE TAPAN LAS ESQUINAS, no se vuelve a pintar la tarjeta entera: son
+    ~17.000 px² en vez de 864.000, y así no hay que duplicar el panel ni los
+    filetes de bottom-card.svg, que se desincronizarían al primer cambio.
+
+    CONTINUIDAD DEL PAPEL: el degradado replica exactamente el de la tarjeta.
+    Aquel usa objectBoundingBox (x1=.15 y1=0 x2=.85 y2=1) sobre el rect
+    60,50 1080x800, que en coordenadas de usuario es de (222,50) a (978,850).
+    Por eso este va en userSpaceOnUse con esos puntos: cualquier otra cosa
+    dejaría un escalón de color en el borde de la caladura.
+  -->
+  <defs>
+    <linearGradient id="paper" gradientUnits="userSpaceOnUse"
+                    x1="222" y1="50" x2="978" y2="850">
+      <stop offset="0%" stop-color="#fffdf8" />
+      <stop offset="100%" stop-color="#f4e9d8" />
+    </linearGradient>
+
+    <linearGradient id="goldMatte" gradientUnits="userSpaceOnUse"
+                    x1="112" y1="112" x2="512" y2="767">
+      <stop offset="0%" stop-color="#f2e6c8" />
+      <stop offset="22%" stop-color="#dcc394" />
+      <stop offset="45%" stop-color="#c9ac74" />
+      <stop offset="58%" stop-color="#efe1bd" />
+      <stop offset="72%" stop-color="#b89a63" />
+      <stop offset="88%" stop-color="#977c4a" />
+      <stop offset="100%" stop-color="#dcc79a" />
+    </linearGradient>
+
+    <linearGradient id="isT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d3a28" stop-opacity="0.26" />
+      <stop offset="100%" stop-color="#3d3a28" stop-opacity="0" />
+    </linearGradient>
+
+    <radialGradient id="lf" cx="34%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#c2d3ba" />
+      <stop offset="50%" stop-color="#9db396" />
+      <stop offset="100%" stop-color="#748a70" />
+    </radialGradient>
+
+    <filter id="lfSh" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="4" dy="7" stdDeviation="6"
+                    flood-color="#4a4a3c" flood-opacity="0.26" />
+    </filter>
+
+    <symbol id="sprig" viewBox="0 0 330 150">
+      <g transform="scale(0.6)">
+        <path d="M8,120 C70,108 140,88 208,60 C252,42 290,30 320,24"
+              fill="none" stroke="#788e73" stroke-width="3.8" stroke-linecap="round" />
+        <g fill="url(#lf)">
+          <ellipse cx="34" cy="132" rx="31" ry="26" transform="rotate(38 34 132)" />
+          <ellipse cx="42" cy="88" rx="29" ry="24" transform="rotate(-142 42 88)" />
+          <ellipse cx="84" cy="118" rx="30" ry="25" transform="rotate(44 84 118)" />
+          <ellipse cx="94" cy="74" rx="28" ry="23" transform="rotate(-136 94 74)" />
+          <ellipse cx="130" cy="104" rx="27" ry="23" transform="rotate(40 130 104)" />
+          <ellipse cx="140" cy="58" rx="25" ry="21" transform="rotate(-140 140 58)" />
+          <ellipse cx="178" cy="88" rx="24" ry="20" transform="rotate(42 178 88)" />
+          <ellipse cx="186" cy="44" rx="22" ry="19" transform="rotate(-138 186 44)" />
+          <ellipse cx="224" cy="70" rx="20" ry="17" transform="rotate(40 224 70)" />
+          <ellipse cx="232" cy="30" rx="18" ry="15" transform="rotate(-140 232 30)" />
+          <ellipse cx="268" cy="54" rx="15" ry="13" transform="rotate(38 268 54)" />
+          <ellipse cx="276" cy="20" rx="14" ry="12" transform="rotate(-142 276 20)" />
+        </g>
+      </g>
+    </symbol>
+  </defs>
+
+  <!--
+    Las dos esquinas: rect 112,112..512,312 MENOS el semidisco superior.
+    Con fill-rule evenodd el subtrazo del arco se resta del rectángulo.
+    El arco va con sweep=1: desde (112,312), en un sistema con la y hacia
+    abajo, el sentido horario sube — que es el semidisco que queremos.
+  -->
+  <path fill="url(#paper)" fill-rule="evenodd"
+        d="M112,112 H512 V312 H112 Z
+           M112,312 A200,200 0 0 1 512,312 Z" />
+
+  <!-- Sombra del canto sobre la foto: hunde la imagen dentro de la ventana -->
+  <path fill="url(#isT)"
+        d="M112,312 A200,200 0 0 1 512,312 L512,330 A182,182 0 0 0 112,330 Z" />
+
+  <!-- Filete de oro que enmarca la ventana -->
+  <path d="M112,767 L112,312 A200,200 0 0 1 512,312 L512,767"
+        fill="none" stroke="url(#goldMatte)" stroke-width="5" />
+  <path d="M115.5,763.5 L115.5,312 A196.5,196.5 0 0 1 508.5,312 L508.5,763.5"
+        fill="none" stroke="#f7edd4" stroke-width="1.4" opacity="0.55" />
+  <path d="M98,767 L98,312 A214,214 0 0 1 526,312 L526,767"
+        fill="none" stroke="url(#goldMatte)" stroke-width="1.8" opacity="0.75" />
+
+  <!--
+    Eucalipto abrazando los hombros del arco: recupera el motivo que da nombre
+    a la plantilla. Las ramas arrancan por FUERA de la ventana y entran sobre
+    el filete, que es lo que las hace leer como plano delantero. A menos de
+    escala 1.2 se empastan y parecen cuentas en vez de rama.
+  -->
+  <g filter="url(#lfSh)">
+    <!-- Izquierda: sube pegada al costado y cae sobre el hombro del arco. -->
+    <use href="#sprig" x="0" y="0" width="330" height="150"
+         transform="translate(74,398) rotate(-64) scale(1.32)" />
+    <!--
+      Derecha: crece hacia DENTRO (arriba-izquierda). La rama tiende a ir
+      hacia +x, así que sin girarla ~208° se metía en el panel de textos, que
+      empieza en x=528.
+    -->
+    <use href="#sprig" x="0" y="0" width="330" height="150"
+         transform="translate(532,364) rotate(208) scale(0.95)" />
+  </g>
+</svg>

@@ -1,23 +1,42 @@
 import { caballete } from './_caballete'
 
+const BASE = import.meta.env.BASE_URL + 'templates/boda-arco-eucalipto'
+
 /**
  * «Arco de Eucalipto» — caballete plegable, bodas.
  *
- * v3. Las versiones anteriores eran de cara única con una ventana en ARCO
- * calada por máscara. Al pasar todo el catálogo a caballete, el arco no
- * sobrevivió: sus proporciones (620×810) no caben en una mitad de 900 px de
- * alto. La identidad —mármol marfil, eucalipto y oro mate— sí se conserva, y
- * el arco puede recuperarse como ventana del RETRATO de la mitad inferior
- * (400×655 admite un arco de radio 200), que es donde ahora manda la foto.
+ * v4. La ventana en ARCO vuelve, ahora en el RETRATO de la mitad inferior.
+ * En v2 era una pieza de cara única con un arco de 620×810 que no cabía en
+ * una mitad de 900 px; el hueco del retrato (400×655) sí admite uno de radio
+ * 200, y además es donde la foto manda de verdad en un caballete.
  *
- * El layout lo define `caballete()`; aquí solo va la identidad visual.
+ * CÓMO SE HACE EL ARCO SIN TOCAR EL MOTOR: el editor solo recorta rectángulos
+ * redondeados —`clipShape: 'custom'` está en el tipo pero no implementado—, así
+ * que la foto va en su hueco rectangular y `overlays/bottom-arch.svg` tapa las
+ * dos esquinas que sobran por encima de la curva, igual que un pase-partout
+ * físico. Por eso el retrato lleva `retratoFrame: 'none'`: un marco vectorial
+ * dibujaría el rectángulo del hueco asomando por dentro del arco.
+ *
+ * El resto del layout lo define `caballete()`.
  */
 export const bodaArcoEucalipto = caballete({
   id: 'boda-arco-eucalipto',
   name: 'Arco de Eucalipto',
   category: 'boda',
   kind: 'boda',
+  version: 4,
   frameStyle: 'thin',
+  // El arco lo pone el overlay; aquí sobra el marco vectorial.
+  retratoFrame: 'none',
+  overlays: [
+    {
+      src: `${BASE}/overlays/bottom-arch.svg`,
+      x: 0,
+      y: 900,
+      width: 1200,
+      height: 900,
+    },
+  ],
   nameColor: '#b39257',
   // Oro MATE: banda de brillo ancha y apagada. El oro especular lee a fiesta,
   // no a boda.
