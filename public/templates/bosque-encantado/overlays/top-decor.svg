@@ -6,9 +6,9 @@
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
     <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
-      <stop offset="0%" stop-color="#aab3a1"/>
-      <stop offset="58%" stop-color="#dae6cf"/>
-      <stop offset="100%" stop-color="#f0f5ec"/>
+      <stop offset="0%" stop-color="#9daa93"/>
+      <stop offset="58%" stop-color="#c9dabc"/>
+      <stop offset="100%" stop-color="#e9f0e4"/>
     </linearGradient>
     <symbol id="mot" viewBox="-50 -50 100 100"><path d="M-42,0 C-26,-26 26,-28 44,-2 C26,26 -26,24 -42,0 Z"/><path d="M-36,1 C-16,-3 18,-3 38,0" fill="none" stroke="currentColor" stroke-width="2.4" opacity="0.45"/></symbol>
     <symbol id="dec" viewBox="-100 -100 200 200">

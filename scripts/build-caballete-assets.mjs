@@ -28,8 +28,8 @@ const GEO = {
   card: { x: 60, y: 50, w: 1080, h: 800 },
   retrato: { x: 112, y: 112, w: 400, h: 655 },
   panel: { x: 528, y: 96, w: 592, h: 708 },
-  ruleName: 348, // bajo el nombre  (canvas 1248)
-  ruleFoot: 545, // sobre el negocio (canvas 1445)
+  ruleName: 396, // bajo el nombre  (canvas 1296)
+  ruleFoot: 594, // sobre el negocio (canvas 1494)
 }
 
 // ---------------------------------------------------------------- motivos
@@ -47,23 +47,27 @@ const MOTIF = {
       .join('') +
     '</g><circle r="10" opacity="0.75"/>',
   palm:
-    '<path d="M0,44 C2,10 6,-16 12,-44" fill="none" stroke="currentColor" stroke-width="3"/>' +
-    [-34, -14, 6, 26]
+    // Fronda: raquis curvo con folíolos afilados que menguan hacia la punta.
+    // La versión anterior eran pares rectos y se leía como un peine.
+    '<path d="M2,46 C0,16 4,-14 14,-44" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>' +
+    [[36, 1.0], [16, 0.92], [-6, 0.8], [-24, 0.62], [-38, 0.42]]
       .map(
-        (dy) =>
-          `<path d="M2,${dy} C-18,${dy - 14} -34,${dy - 6} -44,${dy + 8} C-28,${dy + 6} -12,${dy + 6} 2,${dy}Z"/>` +
-          `<path d="M4,${dy} C24,${dy - 14} 40,${dy - 6} 48,${dy + 8} C32,${dy + 6} 16,${dy + 6} 4,${dy}Z"/>`,
+        ([dy, k]) =>
+          `<path d="M3,${dy} C${-22 * k},${dy - 10 * k} ${-40 * k},${dy - 24 * k} ${-46 * k},${dy - 42 * k} C${-30 * k},${dy - 26 * k} ${-12 * k},${dy - 10 * k} 3,${dy} Z"/>` +
+          `<path d="M5,${dy} C${24 * k},${dy - 12 * k} ${42 * k},${dy - 26 * k} ${48 * k},${dy - 44 * k} C${32 * k},${dy - 28 * k} ${14 * k},${dy - 11 * k} 5,${dy} Z"/>`,
       )
       .join(''),
   sprig:
-    '<path d="M-40,34 C-16,14 10,-6 40,-30" fill="none" stroke="currentColor" stroke-width="3"/>' +
-    [
-      [-26, 16], [-8, 0], [10, -14], [26, -26],
-    ]
+    // Rama con hojas alternas y nervadura. Antes eran pares de elipses
+    // pegadas al tallo y salía un rosario de cuentas.
+    '<path d="M-42,38 C-20,16 6,-8 40,-34" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>' +
+    [[-30, 24, -1, 1.0], [-12, 6, 1, 0.92], [6, -12, -1, 0.8], [24, -30, 1, 0.64]]
       .map(
-        ([x, y]) =>
-          `<ellipse cx="${x}" cy="${y - 12}" rx="12" ry="9" transform="rotate(-30 ${x} ${y - 12})"/>` +
-          `<ellipse cx="${x + 6}" cy="${y + 10}" rx="12" ry="9" transform="rotate(-30 ${x + 6} ${y + 10})"/>`,
+        ([x, y, side, k]) =>
+          `<g transform="translate(${x + side * 13 * k},${y - side * 13 * k}) rotate(${-38 + side * 26}) scale(${k})">` +
+          `<ellipse cx="0" cy="0" rx="17" ry="13"/>` +
+          `<path d="M-14,0 C-5,-3 6,-3 14,0" fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.5"/>` +
+          `</g>`,
       )
       .join(''),
   dot: '<circle r="22"/>',
@@ -417,10 +421,37 @@ function bottomDecor(t) {
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
     ${decorSymbol(t)}
+    <linearGradient id="pnl" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="${mix(t.acc[0], '#ffffff', 0.45)}"/>
+      <stop offset="52%" stop-color="${t.acc[0]}"/>
+      <stop offset="100%" stop-color="${t.acc[1]}"/>
+    </linearGradient>
+    <symbol id="pmo" viewBox="-50 -50 100 100">${MOTIF[t.motif] ?? MOTIF.dot}</symbol>
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="4" dy="7" stdDeviation="6" flood-color="#000000" flood-opacity="0.26"/>
     </filter>
   </defs>
+  <!--
+    Tratamiento del PANEL de textos. Sin esto se leía como una caja blanca
+    vacía: el bloque tipográfico solo ocupa la franja central y deja mucho
+    aire a los lados, sobre todo cuando el nombre cabe en una línea.
+    Todo va en los márgenes del panel (x 528..1120, y 96..804 en local), que
+    es donde no hay texto nunca.
+  -->
+  <g fill="none" stroke="url(#pnl)" stroke-linecap="round" opacity="0.85">
+    <path d="M556,124 C556,110 566,102 580,102" stroke-width="2"/>
+    <path d="M1092,124 C1092,110 1082,102 1068,102" stroke-width="2"/>
+    <path d="M556,776 C556,790 566,798 580,798" stroke-width="2"/>
+    <path d="M1092,776 C1092,790 1082,798 1068,798" stroke-width="2"/>
+    <path d="M542,300 C534,360 534,440 542,500" stroke-width="1.6" opacity="0.6"/>
+    <path d="M1106,300 C1114,360 1114,440 1106,500" stroke-width="1.6" opacity="0.6"/>
+  </g>
+  <g fill="url(#pnl)" opacity="0.9">
+    <use href="#pmo" x="-50" y="-50" width="100" height="100" transform="translate(824,742) scale(0.34)"/>
+    <use href="#pmo" x="-50" y="-50" width="100" height="100" transform="translate(742,754) scale(0.19)" opacity="0.7"/>
+    <use href="#pmo" x="-50" y="-50" width="100" height="100" transform="translate(906,754) scale(0.19)" opacity="0.7"/>
+  </g>
+
   <g filter="url(#dr)">
     <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
     <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
@@ -525,20 +556,20 @@ const TEMPLATES = [
   { id: 'mariposas-doradas',  bg: ['#fdeef2', '#f7cdd8', '#efb0c2'], acc: ['#dcbb62', '#a9791f'], motif: 'flower', premium: true },
   { id: 'elegante-dorado',    bg: ['#fffaf0', '#f6ead2', '#f3e7bd'], acc: ['#c8a04a', '#a9791f'], motif: 'flower', premium: true },
   { id: 'corazones-rosados',  bg: ['#fff1f5', '#f8c5d6', '#f09fbb'], acc: ['#c8a04a', '#a9791f'], motif: 'heart', premium: true, decor: 'rose' },
-  { id: 'azul-cristal',       bg: ['#eef6ff', '#cfe2f6', '#a9caea'], acc: ['#c9d2da', '#8b97a3'], motif: 'sparkle', premium: true, decor: 'motif' },
+  { id: 'azul-cristal',       bg: ['#eef6ff', '#cfe2f6', '#9dc0e4'], acc: ['#9fb2c6', '#5e7186'], motif: 'sparkle', premium: true, decor: 'motif' },
   { id: 'lila-encanto',       bg: ['#f8f1fd', '#ddc6f0', '#c4a4e2'], acc: ['#c8a04a', '#a9791f'], motif: 'sparkle', premium: true, decor: 'rose' },
-  { id: 'bosque-encantado',   bg: ['#f6f8f1', '#e3ecda', '#cdddbf'], acc: ['#c8a04a', '#a9791f'], motif: 'leaf', premium: true, decor: 'motif' },
+  { id: 'bosque-encantado',   bg: ['#f6f8f1', '#dfe9d4', '#b7cda6'], acc: ['#c8a04a', '#a9791f'], motif: 'leaf', premium: true, decor: 'motif' },
   { id: 'noche-estelar',      bg: ['#202a47', '#141c33', '#0b1124'], acc: ['#d4af52', '#a9791f'], motif: 'star', dark: true, premium: true, decor: 'motif' },
   { id: 'durazno-suave',      bg: ['#fff5ef', '#f9d8c6', '#f2bca2'], acc: ['#cfa15c', '#a9791f'], motif: 'flower', premium: true, decor: 'rose' },
   { id: 'rojo-pasion',        bg: ['#7a1830', '#4a0f20', '#280812'], acc: ['#d4af52', '#a9791f'], motif: 'heart', dark: true, premium: true, decor: 'motif' },
   { id: 'tropical-esmeralda', bg: ['#fbfdf8', '#eef4e6', '#cfe3d4'], acc: ['#c8a04a', '#1f5e3c'], motif: 'palm', premium: true, decor: 'motif' },
   { id: 'glam-negro-oro',     bg: ['#2a2a2a', '#141414', '#000000'], acc: ['#d4af52', '#a9791f'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
   { id: 'atardecer-coral',    bg: ['#ffe1b0', '#ffb088', '#f77e93'], acc: ['#e0aa5c', '#c07a3a'], motif: 'sparkle', premium: true, decor: 'rose' },
-  { id: 'aqua-menta',         bg: ['#f1fbf7', '#cdeee2', '#a7ddca'], acc: ['#c8a04a', '#a9791f'], motif: 'sprig', premium: true, decor: 'motif' },
+  { id: 'aqua-menta',         bg: ['#f1fbf7', '#c6ebde', '#8ccbb4'], acc: ['#c8a04a', '#a9791f'], motif: 'sprig', premium: true, decor: 'motif' },
   { id: 'consola-neon',       bg: ['#070a16', '#05070f', '#03040a'], acc: ['#22d3ee', '#8b5cf6'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
   { id: 'malla-cyber',        bg: ['#0a0b1e', '#140a26', '#1e0b32'], acc: ['#f5c542', '#e451ff'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
   { id: 'toga-digital',       bg: ['#0c1226', '#080c18', '#050710'], acc: ['#f5c542', '#c79a1e'], motif: 'star', dark: true, premium: true, decor: 'motif' },
-  { id: 'boda-blanco-oro',    bg: ['#fffdf6', '#faf4e6', '#f3ead4'], acc: ['#c19a3f', '#9c7622'], motif: 'leaf', premium: true, decor: 'motif' },
+  { id: 'boda-blanco-oro',    bg: ['#fffdf6', '#f7efdd', '#e8dcbd'], acc: ['#c19a3f', '#9c7622'], motif: 'leaf', premium: true, decor: 'motif' },
   // `arch`: su retrato se recorta en arco (ver overlays/bottom-arch.svg), así
   // que la miniatura tiene que enseñarlo con arco y no con rectángulo.
   { id: 'boda-arco-eucalipto', bg: ['#fdfbf6', '#f3ece0', '#e1d9c9'], acc: ['#c9ac74', '#8a9d83'], motif: 'sprig', arch: true, premium: true, decor: 'motif' },

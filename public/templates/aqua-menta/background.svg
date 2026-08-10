@@ -5,7 +5,7 @@
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
     <linearGradient id="t" x1="0.3" y1="0" x2="0.7" y2="1">
-      <stop offset="0%" stop-color="#f1fbf7"/><stop offset="100%" stop-color="#a7ddca"/>
+      <stop offset="0%" stop-color="#f1fbf7"/><stop offset="100%" stop-color="#8ccbb4"/>
     </linearGradient>
   </defs>
   <rect x="0" y="0" width="1200" height="900" fill="url(#t)"/>

@@ -28,11 +28,14 @@ export const CAB = {
   evento: { x: 660, y: 35, width: 500 },
   /** Mitad inferior */
   retrato: { x: 112, y: 1012, width: 400, height: 655 },
-  nombre: { x: 534, y: 1040, width: 580 },
-  fecha: { x: 544, y: 1272, width: 560 },
-  mensaje: { x: 544, y: 1332, width: 560 },
-  negocio: { x: 544, y: 1472, width: 560 },
-  telefono: { x: 544, y: 1556, width: 560 },
+  // Ritmo del panel (canvas 996..1704). Antes el bloque quedaba pegado
+  // arriba: 44 px de aire encima y 118 muertos debajo. Ahora reparte ~56/65
+  // y los filetes de `bottom-card` acompañan (GEO.ruleName / ruleFoot).
+  nombre: { x: 534, y: 1052, width: 580 },
+  fecha: { x: 544, y: 1318, width: 560 },
+  mensaje: { x: 544, y: 1378, width: 560 },
+  negocio: { x: 544, y: 1516, width: 560 },
+  telefono: { x: 544, y: 1608, width: 560 },
 } as const
 
 /** Qué celebra la pieza: cambia los textos guía, no el layout. */

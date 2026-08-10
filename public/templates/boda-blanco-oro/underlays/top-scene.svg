@@ -6,8 +6,8 @@
   <defs>
     <radialGradient id="bg" cx="40%" cy="26%" r="94%">
       <stop offset="0%" stop-color="#fffdf6"/>
-      <stop offset="46%" stop-color="#faf4e6"/>
-      <stop offset="100%" stop-color="#f3ead4"/>
+      <stop offset="46%" stop-color="#f7efdd"/>
+      <stop offset="100%" stop-color="#e8dcbd"/>
     </radialGradient>
     <radialGradient id="bok" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>

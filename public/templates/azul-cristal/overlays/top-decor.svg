@@ -6,27 +6,27 @@
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
     <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
-      <stop offset="0%" stop-color="#95a8ba"/>
-      <stop offset="58%" stop-color="#bfd7ef"/>
-      <stop offset="100%" stop-color="#e5eff9"/>
+      <stop offset="0%" stop-color="#8ea2b7"/>
+      <stop offset="58%" stop-color="#b6d0eb"/>
+      <stop offset="100%" stop-color="#e2ecf7"/>
     </linearGradient>
     <symbol id="mot" viewBox="-50 -50 100 100"><path d="M0,-46 Q6,-6 46,0 Q6,6 0,46 Q-6,6 -46,0 Q-6,-6 0,-46 Z"/></symbol>
     <symbol id="dec" viewBox="-100 -100 200 200">
-      <g fill="url(#pt)" color="#8b97a3">
+      <g fill="url(#pt)" color="#5e7186">
         <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(-22,10) rotate(-18) scale(1.5)"/>
         <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(30,-14) rotate(22) scale(1.15)"/>
         <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(6,44) rotate(6) scale(0.85)"/>
       </g>
     </symbol>
     <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
-      <stop offset="0%" stop-color="#e7ebee"/>
-      <stop offset="50%" stop-color="#c9d2da"/>
-      <stop offset="100%" stop-color="#8b97a3"/>
+      <stop offset="0%" stop-color="#d4dce5"/>
+      <stop offset="50%" stop-color="#9fb2c6"/>
+      <stop offset="100%" stop-color="#5e7186"/>
     </linearGradient>
     <radialGradient id="dust" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-      <stop offset="44%" stop-color="#dfe4e9" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#c9d2da" stop-opacity="0"/>
+      <stop offset="44%" stop-color="#c5d1dd" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#9fb2c6" stop-opacity="0"/>
     </radialGradient>
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
@@ -47,7 +47,7 @@
     <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1108,868) scale(0.5)"/>
     <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1024,884) scale(0.36)"/>
   </g>
-  <g fill="url(#acc)" color="#8b97a3" filter="url(#dr)">
+  <g fill="url(#acc)" color="#5e7186" filter="url(#dr)">
     <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(596,258) scale(1.2480000000000002)"/>
     <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(940,352) scale(0.8)"/>
     <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(160,626) scale(0.672)"/>

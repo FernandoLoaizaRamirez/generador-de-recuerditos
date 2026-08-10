@@ -41,16 +41,16 @@
         stroke="url(#gold)" stroke-width="1.4" opacity="0.45"/>
 
   <!-- Filete bajo el nombre -->
-  <path d="M600,348 Q690,344.6 776,348 Q690,351.4 600,348 Z" fill="url(#rule)"/>
-  <path d="M1048,348 Q958,344.6 872,348 Q958,351.4 1048,348 Z" fill="url(#rule)"/>
+  <path d="M600,396 Q690,392.6 776,396 Q690,399.4 600,396 Z" fill="url(#rule)"/>
+  <path d="M1048,396 Q958,392.6 872,396 Q958,399.4 1048,396 Z" fill="url(#rule)"/>
   <use href="#mo" x="-50" y="-50" width="100" height="100"
-       transform="translate(824,348) scale(0.2)" fill="url(#gold)" color="#9c7622"/>
+       transform="translate(824,396) scale(0.2)" fill="url(#gold)" color="#9c7622"/>
 
   <!-- Divisor sobre el pie de negocio -->
-  <path d="M576,545 Q684,541.4 780,545 Q684,548.6 576,545 Z" fill="url(#rule)"/>
-  <path d="M1072,545 Q964,541.4 868,545 Q964,548.6 1072,545 Z" fill="url(#rule)"/>
+  <path d="M576,594 Q684,590.4 780,594 Q684,597.6 576,594 Z" fill="url(#rule)"/>
+  <path d="M1072,594 Q964,590.4 868,594 Q964,597.6 1072,594 Z" fill="url(#rule)"/>
   <use href="#mo" x="-50" y="-50" width="100" height="100"
-       transform="translate(824,545) scale(0.26)" fill="url(#gold)" color="#9c7622"/>
+       transform="translate(824,594) scale(0.26)" fill="url(#gold)" color="#9c7622"/>
 
   <!-- Acentos en las esquinas de la tarjeta -->
   <g fill="url(#gold)" color="#9c7622" opacity="0.8">
