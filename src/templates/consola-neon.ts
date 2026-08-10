@@ -13,7 +13,7 @@ export const consolaNeon = caballete({
   name: 'Consola Neón',
   category: 'graduacion',
   kind: 'graduacion',
-  frameStyle: 'silver',
+  premium: true,
   displayFont: 'Orbitron',
   bodyFont: 'Space Grotesk',
   nameColor: '#22d3ee',

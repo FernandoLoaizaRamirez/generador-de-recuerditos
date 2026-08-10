@@ -13,6 +13,7 @@ export const bosqueEncantado = caballete({
   name: 'Bosque Encantado',
   category: 'xv',
   kind: 'xv',
+  premium: true,
   nameColor: '#c8a04a',
   ink: '#6f6252',
   inkSoft: '#8a7355',

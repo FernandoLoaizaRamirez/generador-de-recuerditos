@@ -13,7 +13,7 @@ export const bodaBlancoOro = caballete({
   name: 'Boda Blanco y Oro',
   category: 'boda',
   kind: 'boda',
-  frameStyle: 'goldOrnate',
+  premium: true,
   nameColor: '#c19a3f',
   ink: '#6f6252',
   inkSoft: '#8a7355',

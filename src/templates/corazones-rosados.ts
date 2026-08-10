@@ -13,6 +13,7 @@ export const corazonesRosados = caballete({
   name: 'Corazones Rosados',
   category: 'xv',
   kind: 'xv',
+  premium: true,
   nameColor: '#c8a04a',
   ink: '#6f6252',
   inkSoft: '#8a7355',

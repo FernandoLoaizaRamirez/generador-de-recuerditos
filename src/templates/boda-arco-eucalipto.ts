@@ -24,8 +24,8 @@ export const bodaArcoEucalipto = caballete({
   name: 'Arco de Eucalipto',
   category: 'boda',
   kind: 'boda',
+  premium: true,
   version: 4,
-  frameStyle: 'thin',
   // El arco lo pone el overlay; aquí sobra el marco vectorial.
   retratoFrame: 'none',
   overlays: [

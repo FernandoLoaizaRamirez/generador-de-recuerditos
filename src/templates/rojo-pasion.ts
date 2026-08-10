@@ -13,6 +13,7 @@ export const rojoPasion = caballete({
   name: 'Rojo Pasión',
   category: 'xv',
   kind: 'xv',
+  premium: true,
   nameColor: '#d4af52',
   ink: '#ddd6c8',
   inkSoft: '#a9a294',

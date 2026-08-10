@@ -13,6 +13,7 @@ export const duraznoSuave = caballete({
   name: 'Durazno Suave',
   category: 'xv',
   kind: 'xv',
+  premium: true,
   nameColor: '#cfa15c',
   ink: '#6f6252',
   inkSoft: '#8a7355',

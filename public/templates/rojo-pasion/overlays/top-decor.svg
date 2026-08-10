@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- rojo-pasion — CAPA 6 / decoración delantera de la MITAD SUPERIOR.
+       Va MONTADA sobre las esquinas de los marcos: parte del adorno queda
+       detrás de la foto (top-scene) y parte delante. Ese solape es lo que
+       convierte dos planos en tres.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="#b3a176"/>
+      <stop offset="58%" stop-color="#e5cf97"/>
+      <stop offset="100%" stop-color="#f5ecd5"/>
+    </linearGradient>
+    <symbol id="mot" viewBox="-50 -50 100 100"><path d="M0,32 C-46,-8 -32,-52 0,-22 C32,-52 46,-8 0,32 Z"/></symbol>
+    <symbol id="dec" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)" color="#a9791f">
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(-22,10) rotate(-18) scale(1.5)"/>
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(30,-14) rotate(22) scale(1.15)"/>
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(6,44) rotate(6) scale(0.85)"/>
+      </g>
+    </symbol>
+    <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#ecdbb1"/>
+      <stop offset="50%" stop-color="#d4af52"/>
+      <stop offset="100%" stop-color="#a9791f"/>
+    </linearGradient>
+    <radialGradient id="dust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="44%" stop-color="#e5cf97" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#d4af52" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    <path id="spk" d="M0,-10 Q1.2,-1.2 10,0 Q1.2,1.2 0,10 Q-1.2,1.2 -10,0 Q-1.2,-1.2 0,-10 Z"/>
+    <symbol id="mo" viewBox="-50 -50 100 100"><path d="M0,32 C-46,-8 -32,-52 0,-22 C32,-52 46,-8 0,32 Z"/></symbol>
+  </defs>
+
+  <g filter="url(#dr)">
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(62,84) scale(0.72)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(158,40) scale(0.52)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(20,182) scale(0.46)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(618,432) scale(0.6)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(712,382) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(568,506) scale(0.36)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(84,522) scale(0.64)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(178,498) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1108,868) scale(0.5)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1024,884) scale(0.36)"/>
+  </g>
+  <g fill="url(#acc)" color="#a9791f" filter="url(#dr)">
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(596,258) scale(1.2480000000000002)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(940,352) scale(0.8)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(160,626) scale(0.672)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(1160,660) scale(0.41600000000000004)"/>
+    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(414,796) scale(0.35200000000000004)"/>
+  </g>
+  <g fill="url(#dust)">
+    <use href="#spk" transform="translate(842,104) scale(2.2)"/>
+    <use href="#spk" transform="translate(1116,206) scale(1.4)"/>
+    <use href="#spk" transform="translate(206,600) scale(1.7)"/>
+    <use href="#spk" transform="translate(660,830) scale(1.2)"/>
+    <circle cx="908" cy="196" r="3"/><circle cx="1010" cy="128" r="2.2"/>
+    <circle cx="786" cy="240" r="2.6"/><circle cx="1160" cy="352" r="2.4"/>
+    <circle cx="96" cy="470" r="2.8"/><circle cx="286" cy="672" r="2.2"/>
+    <circle cx="520" cy="796" r="2.5"/><circle cx="1064" cy="758" r="2.3"/>
+  </g>
+</svg>

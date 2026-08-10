@@ -136,9 +136,14 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
   const copy = COPY[spec.kind]
   const display = spec.displayFont ?? 'Great Vibes'
   const body = spec.bodyFont ?? 'Playfair Display'
-  // En premium el marco lo pone `overlays/top-frames.svg`, que dibuja una
-  // moldura de cuatro caras en inglete; el marco vectorial sobraría.
+  // En premium el marco de las fotos de ARRIBA lo pone
+  // `overlays/top-frames.svg`, que dibuja una moldura de cuatro caras en
+  // inglete; ahí el marco vectorial sobraría.
   const frameStyle = spec.premium ? 'none' : (spec.frameStyle ?? 'thin')
+  // El retrato es otra historia: esa capa no le dibuja marco, así que si se
+  // le aplicara el 'none' de premium se quedaría sin ninguno.
+  const retratoFrame =
+    spec.retratoFrame ?? (spec.premium ? 'thin' : frameStyle)
   const half = (src: string, y: number) => ({
     src: `${BASE}/${src}`,
     x: 0,
@@ -213,7 +218,7 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
         rotation: 0,
         clipShape: 'rounded',
         cornerRadius: 6,
-        frameStyle: spec.retratoFrame ?? frameStyle,
+        frameStyle: retratoFrame,
         defaultFit: 'cover',
       },
     ],

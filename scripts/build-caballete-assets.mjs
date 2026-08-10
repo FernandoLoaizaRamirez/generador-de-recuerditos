@@ -317,9 +317,52 @@ const MOTES = [
   [596, 258, 0.78], [940, 352, 0.5], [160, 626, 0.42], [1160, 660, 0.26], [414, 796, 0.22],
 ]
 
+/**
+ * Cuerpo del racimo de la capa premium.
+ *
+ * `decor: 'rose'` reparte rosas — encaja en las románticas, pero en una
+ * plantilla cyber o de graduación sería un disparate. `decor: 'motif'` usa el
+ * MOTIVO propio de la plantilla agrupado de tres en tres, que da una masa
+ * visual parecida sin traicionar su identidad.
+ *
+ * El color del pétalo se deriva del fondo, y en las oscuras eso daba manchas
+ * negras: ahí se toma del acento aclarado.
+ */
+const decorSymbol = (t) => {
+  const petal = t.dark
+    ? mix(t.acc[0], '#ffffff', 0.4)
+    : mix(t.bg[2], '#ffffff', 0.25)
+  const grad = `<linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="${mix(petal, '#000000', 0.22)}"/>
+      <stop offset="58%" stop-color="${petal}"/>
+      <stop offset="100%" stop-color="${mix(petal, '#ffffff', 0.6)}"/>
+    </linearGradient>`
+  if ((t.decor ?? 'rose') === 'motif') {
+    const m = MOTIF[t.motif] ?? MOTIF.dot
+    // Tres copias a distinta escala y giro: sin eso, un motivo suelto se lee
+    // como icono pegado y no como adorno.
+    return `${grad}
+    <symbol id="mot" viewBox="-50 -50 100 100">${m}</symbol>
+    <symbol id="dec" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)" color="${t.acc[1]}">
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(-22,10) rotate(-18) scale(1.5)"/>
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(30,-14) rotate(22) scale(1.15)"/>
+        <use href="#mot" x="-50" y="-50" width="100" height="100" transform="translate(6,44) rotate(6) scale(0.85)"/>
+      </g>
+    </symbol>`
+  }
+  return `${grad}
+    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
+    <symbol id="dec" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)">${[6, 66, 126, 186, 246, 306].map((a) => `<use href="#p" transform="rotate(${a})"/>`).join('')}</g>
+      <g fill="url(#pt)" opacity="0.97">${[36, 108, 180, 252, 324].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.68)"/>`).join('')}</g>
+      <g fill="url(#pt)">${[20, 110, 200, 290].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.4)"/>`).join('')}</g>
+      <circle r="13" fill="${mix(petal, '#000000', 0.3)}"/>
+    </symbol>`
+}
+
 function topDecor(t) {
   const [a1, a2] = t.acc
-  const petal = mix(t.bg[2], '#ffffff', 0.25)
   const m = MOTIF[t.motif] ?? MOTIF.dot
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
   <!-- ${t.id} — CAPA 6 / decoración delantera de la MITAD SUPERIOR.
@@ -328,11 +371,7 @@ function topDecor(t) {
        convierte dos planos en tres.
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
-    <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
-      <stop offset="0%" stop-color="${mix(petal, '#000000', 0.22)}"/>
-      <stop offset="58%" stop-color="${petal}"/>
-      <stop offset="100%" stop-color="${mix(petal, '#ffffff', 0.6)}"/>
-    </linearGradient>
+    ${decorSymbol(t)}
     <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
       <stop offset="0%" stop-color="${mix(a1, '#ffffff', 0.55)}"/>
       <stop offset="50%" stop-color="${a1}"/>
@@ -346,19 +385,12 @@ function topDecor(t) {
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
     </filter>
-    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
     <path id="spk" d="M0,-10 Q1.2,-1.2 10,0 Q1.2,1.2 0,10 Q-1.2,1.2 -10,0 Q-1.2,-1.2 0,-10 Z"/>
-    <symbol id="rose" viewBox="-100 -100 200 200">
-      <g fill="url(#pt)">${[6, 66, 126, 186, 246, 306].map((a) => `<use href="#p" transform="rotate(${a})"/>`).join('')}</g>
-      <g fill="url(#pt)" opacity="0.97">${[36, 108, 180, 252, 324].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.68)"/>`).join('')}</g>
-      <g fill="url(#pt)">${[20, 110, 200, 290].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.4)"/>`).join('')}</g>
-      <circle r="13" fill="${mix(petal, '#000000', 0.3)}"/>
-    </symbol>
     <symbol id="mo" viewBox="-50 -50 100 100">${m}</symbol>
   </defs>
 
   <g filter="url(#dr)">
-${CLUSTERS.map(([x, y, s]) => `    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(${x},${y}) scale(${s})"/>`).join('\n')}
+${CLUSTERS.map(([x, y, s]) => `    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(${x},${y}) scale(${s})"/>`).join('\n')}
   </g>
   <g fill="url(#acc)" color="${a2}" filter="url(#dr)">
 ${MOTES.map(([x, y, s]) => `    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(${x},${y}) scale(${s * 1.6})"/>`).join('\n')}
@@ -378,36 +410,24 @@ ${MOTES.map(([x, y, s]) => `    <use href="#mo" x="-50" y="-50" width="100" heig
 }
 
 function bottomDecor(t) {
-  const [a1, a2] = t.acc
-  const petal = mix(t.bg[2], '#ffffff', 0.25)
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
   <!-- ${t.id} — CAPA 7 / adorno de la MITAD INFERIOR (0,900,1200,900).
        Coordenadas LOCALES: local_y = canvas_y - 900. Monta la esquina del
        retrato para que el ramo lo pise, igual que arriba.
        Generado por scripts/build-caballete-assets.mjs -->
   <defs>
-    <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
-      <stop offset="0%" stop-color="${mix(petal, '#000000', 0.22)}"/>
-      <stop offset="58%" stop-color="${petal}"/>
-      <stop offset="100%" stop-color="${mix(petal, '#ffffff', 0.6)}"/>
-    </linearGradient>
+    ${decorSymbol(t)}
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="4" dy="7" stdDeviation="6" flood-color="#000000" flood-opacity="0.26"/>
     </filter>
-    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
-    <symbol id="rose" viewBox="-100 -100 200 200">
-      <g fill="url(#pt)">${[6, 66, 126, 186, 246, 306].map((a) => `<use href="#p" transform="rotate(${a})"/>`).join('')}</g>
-      <g fill="url(#pt)" opacity="0.97">${[36, 108, 180, 252, 324].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.66)"/>`).join('')}</g>
-      <circle r="12" fill="${mix(petal, '#000000', 0.3)}"/>
-    </symbol>
   </defs>
   <g filter="url(#dr)">
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(74,196) rotate(-14) scale(0.36)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(506,782) rotate(14) scale(0.44)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(428,808) rotate(-18) scale(0.32)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(1084,96) rotate(20) scale(0.38)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(74,196) rotate(-14) scale(0.36)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(506,782) rotate(14) scale(0.44)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(428,808) rotate(-18) scale(0.32)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1084,96) rotate(20) scale(0.38)"/>
   </g>
 </svg>
 `
@@ -504,24 +524,24 @@ ${frame(f2)}
 const TEMPLATES = [
   { id: 'mariposas-doradas',  bg: ['#fdeef2', '#f7cdd8', '#efb0c2'], acc: ['#dcbb62', '#a9791f'], motif: 'flower', premium: true },
   { id: 'elegante-dorado',    bg: ['#fffaf0', '#f6ead2', '#f3e7bd'], acc: ['#c8a04a', '#a9791f'], motif: 'flower', premium: true },
-  { id: 'corazones-rosados',  bg: ['#fff1f5', '#f8c5d6', '#f09fbb'], acc: ['#c8a04a', '#a9791f'], motif: 'heart' },
-  { id: 'azul-cristal',       bg: ['#eef6ff', '#cfe2f6', '#a9caea'], acc: ['#c9d2da', '#8b97a3'], motif: 'sparkle' },
-  { id: 'lila-encanto',       bg: ['#f8f1fd', '#ddc6f0', '#c4a4e2'], acc: ['#c8a04a', '#a9791f'], motif: 'sparkle' },
-  { id: 'bosque-encantado',   bg: ['#f6f8f1', '#e3ecda', '#cdddbf'], acc: ['#c8a04a', '#a9791f'], motif: 'leaf' },
-  { id: 'noche-estelar',      bg: ['#202a47', '#141c33', '#0b1124'], acc: ['#d4af52', '#a9791f'], motif: 'star', dark: true },
-  { id: 'durazno-suave',      bg: ['#fff5ef', '#f9d8c6', '#f2bca2'], acc: ['#cfa15c', '#a9791f'], motif: 'flower' },
-  { id: 'rojo-pasion',        bg: ['#7a1830', '#4a0f20', '#280812'], acc: ['#d4af52', '#a9791f'], motif: 'heart', dark: true },
-  { id: 'tropical-esmeralda', bg: ['#fbfdf8', '#eef4e6', '#cfe3d4'], acc: ['#c8a04a', '#1f5e3c'], motif: 'palm' },
-  { id: 'glam-negro-oro',     bg: ['#2a2a2a', '#141414', '#000000'], acc: ['#d4af52', '#a9791f'], motif: 'sparkle', dark: true },
-  { id: 'atardecer-coral',    bg: ['#ffe1b0', '#ffb088', '#f77e93'], acc: ['#e0aa5c', '#c07a3a'], motif: 'sparkle' },
-  { id: 'aqua-menta',         bg: ['#f1fbf7', '#cdeee2', '#a7ddca'], acc: ['#c8a04a', '#a9791f'], motif: 'sprig' },
-  { id: 'consola-neon',       bg: ['#070a16', '#05070f', '#03040a'], acc: ['#22d3ee', '#8b5cf6'], motif: 'sparkle', dark: true },
-  { id: 'malla-cyber',        bg: ['#0a0b1e', '#140a26', '#1e0b32'], acc: ['#f5c542', '#e451ff'], motif: 'sparkle', dark: true },
-  { id: 'toga-digital',       bg: ['#0c1226', '#080c18', '#050710'], acc: ['#f5c542', '#c79a1e'], motif: 'star', dark: true },
-  { id: 'boda-blanco-oro',    bg: ['#fffdf6', '#faf4e6', '#f3ead4'], acc: ['#c19a3f', '#9c7622'], motif: 'leaf' },
+  { id: 'corazones-rosados',  bg: ['#fff1f5', '#f8c5d6', '#f09fbb'], acc: ['#c8a04a', '#a9791f'], motif: 'heart', premium: true, decor: 'rose' },
+  { id: 'azul-cristal',       bg: ['#eef6ff', '#cfe2f6', '#a9caea'], acc: ['#c9d2da', '#8b97a3'], motif: 'sparkle', premium: true, decor: 'motif' },
+  { id: 'lila-encanto',       bg: ['#f8f1fd', '#ddc6f0', '#c4a4e2'], acc: ['#c8a04a', '#a9791f'], motif: 'sparkle', premium: true, decor: 'rose' },
+  { id: 'bosque-encantado',   bg: ['#f6f8f1', '#e3ecda', '#cdddbf'], acc: ['#c8a04a', '#a9791f'], motif: 'leaf', premium: true, decor: 'motif' },
+  { id: 'noche-estelar',      bg: ['#202a47', '#141c33', '#0b1124'], acc: ['#d4af52', '#a9791f'], motif: 'star', dark: true, premium: true, decor: 'motif' },
+  { id: 'durazno-suave',      bg: ['#fff5ef', '#f9d8c6', '#f2bca2'], acc: ['#cfa15c', '#a9791f'], motif: 'flower', premium: true, decor: 'rose' },
+  { id: 'rojo-pasion',        bg: ['#7a1830', '#4a0f20', '#280812'], acc: ['#d4af52', '#a9791f'], motif: 'heart', dark: true, premium: true, decor: 'motif' },
+  { id: 'tropical-esmeralda', bg: ['#fbfdf8', '#eef4e6', '#cfe3d4'], acc: ['#c8a04a', '#1f5e3c'], motif: 'palm', premium: true, decor: 'motif' },
+  { id: 'glam-negro-oro',     bg: ['#2a2a2a', '#141414', '#000000'], acc: ['#d4af52', '#a9791f'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
+  { id: 'atardecer-coral',    bg: ['#ffe1b0', '#ffb088', '#f77e93'], acc: ['#e0aa5c', '#c07a3a'], motif: 'sparkle', premium: true, decor: 'rose' },
+  { id: 'aqua-menta',         bg: ['#f1fbf7', '#cdeee2', '#a7ddca'], acc: ['#c8a04a', '#a9791f'], motif: 'sprig', premium: true, decor: 'motif' },
+  { id: 'consola-neon',       bg: ['#070a16', '#05070f', '#03040a'], acc: ['#22d3ee', '#8b5cf6'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
+  { id: 'malla-cyber',        bg: ['#0a0b1e', '#140a26', '#1e0b32'], acc: ['#f5c542', '#e451ff'], motif: 'sparkle', dark: true, premium: true, decor: 'motif' },
+  { id: 'toga-digital',       bg: ['#0c1226', '#080c18', '#050710'], acc: ['#f5c542', '#c79a1e'], motif: 'star', dark: true, premium: true, decor: 'motif' },
+  { id: 'boda-blanco-oro',    bg: ['#fffdf6', '#faf4e6', '#f3ead4'], acc: ['#c19a3f', '#9c7622'], motif: 'leaf', premium: true, decor: 'motif' },
   // `arch`: su retrato se recorta en arco (ver overlays/bottom-arch.svg), así
   // que la miniatura tiene que enseñarlo con arco y no con rectángulo.
-  { id: 'boda-arco-eucalipto', bg: ['#fdfbf6', '#f3ece0', '#e1d9c9'], acc: ['#c9ac74', '#8a9d83'], motif: 'sprig', arch: true },
+  { id: 'boda-arco-eucalipto', bg: ['#fdfbf6', '#f3ece0', '#e1d9c9'], acc: ['#c9ac74', '#8a9d83'], motif: 'sprig', arch: true, premium: true, decor: 'motif' },
 ]
 
 const only = process.argv.slice(2)

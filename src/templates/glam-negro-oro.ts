@@ -13,7 +13,7 @@ export const glamNegroOro = caballete({
   name: 'Glam Negro y Oro',
   category: 'xv',
   kind: 'xv',
-  frameStyle: 'goldOrnate',
+  premium: true,
   nameColor: '#d4af52',
   ink: '#ddd6c8',
   inkSoft: '#a9a294',

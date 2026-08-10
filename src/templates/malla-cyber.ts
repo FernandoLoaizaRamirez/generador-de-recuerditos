@@ -13,7 +13,7 @@ export const mallaCyber = caballete({
   name: 'Malla Cyber',
   category: 'graduacion',
   kind: 'graduacion',
-  frameStyle: 'silver',
+  premium: true,
   displayFont: 'Orbitron',
   bodyFont: 'Space Grotesk',
   nameColor: '#f5c542',

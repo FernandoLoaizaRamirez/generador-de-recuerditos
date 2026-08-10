@@ -13,7 +13,7 @@ export const togaDigital = caballete({
   name: 'Toga Digital',
   category: 'graduacion',
   kind: 'graduacion',
-  frameStyle: 'thin',
+  premium: true,
   displayFont: 'Orbitron',
   bodyFont: 'Space Grotesk',
   nameColor: '#f5c542',

@@ -13,6 +13,7 @@ export const atardecerCoral = caballete({
   name: 'Atardecer Coral',
   category: 'xv',
   kind: 'xv',
+  premium: true,
   nameColor: '#e0aa5c',
   ink: '#6f6252',
   inkSoft: '#8a7355',

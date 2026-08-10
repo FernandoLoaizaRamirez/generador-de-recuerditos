@@ -10,6 +10,13 @@
       <stop offset="58%" stop-color="#f3c4d1"/>
       <stop offset="100%" stop-color="#fae7ed"/>
     </linearGradient>
+    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
+    <symbol id="dec" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)"><use href="#p" transform="rotate(6)"/><use href="#p" transform="rotate(66)"/><use href="#p" transform="rotate(126)"/><use href="#p" transform="rotate(186)"/><use href="#p" transform="rotate(246)"/><use href="#p" transform="rotate(306)"/></g>
+      <g fill="url(#pt)" opacity="0.97"><use href="#p" transform="rotate(36) scale(0.68)"/><use href="#p" transform="rotate(108) scale(0.68)"/><use href="#p" transform="rotate(180) scale(0.68)"/><use href="#p" transform="rotate(252) scale(0.68)"/><use href="#p" transform="rotate(324) scale(0.68)"/></g>
+      <g fill="url(#pt)"><use href="#p" transform="rotate(20) scale(0.4)"/><use href="#p" transform="rotate(110) scale(0.4)"/><use href="#p" transform="rotate(200) scale(0.4)"/><use href="#p" transform="rotate(290) scale(0.4)"/></g>
+      <circle r="13" fill="#aa8992"/>
+    </symbol>
     <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
       <stop offset="0%" stop-color="#efe0b8"/>
       <stop offset="50%" stop-color="#dcbb62"/>
@@ -23,28 +30,21 @@
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
     </filter>
-    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
     <path id="spk" d="M0,-10 Q1.2,-1.2 10,0 Q1.2,1.2 0,10 Q-1.2,1.2 -10,0 Q-1.2,-1.2 0,-10 Z"/>
-    <symbol id="rose" viewBox="-100 -100 200 200">
-      <g fill="url(#pt)"><use href="#p" transform="rotate(6)"/><use href="#p" transform="rotate(66)"/><use href="#p" transform="rotate(126)"/><use href="#p" transform="rotate(186)"/><use href="#p" transform="rotate(246)"/><use href="#p" transform="rotate(306)"/></g>
-      <g fill="url(#pt)" opacity="0.97"><use href="#p" transform="rotate(36) scale(0.68)"/><use href="#p" transform="rotate(108) scale(0.68)"/><use href="#p" transform="rotate(180) scale(0.68)"/><use href="#p" transform="rotate(252) scale(0.68)"/><use href="#p" transform="rotate(324) scale(0.68)"/></g>
-      <g fill="url(#pt)"><use href="#p" transform="rotate(20) scale(0.4)"/><use href="#p" transform="rotate(110) scale(0.4)"/><use href="#p" transform="rotate(200) scale(0.4)"/><use href="#p" transform="rotate(290) scale(0.4)"/></g>
-      <circle r="13" fill="#aa8992"/>
-    </symbol>
     <symbol id="mo" viewBox="-50 -50 100 100"><g><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(0)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(288)"/></g><circle r="10" opacity="0.75"/></symbol>
   </defs>
 
   <g filter="url(#dr)">
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(62,84) scale(0.72)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(158,40) scale(0.52)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(20,182) scale(0.46)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(618,432) scale(0.6)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(712,382) scale(0.42)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(568,506) scale(0.36)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(84,522) scale(0.64)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(178,498) scale(0.42)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(1108,868) scale(0.5)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(1024,884) scale(0.36)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(62,84) scale(0.72)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(158,40) scale(0.52)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(20,182) scale(0.46)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(618,432) scale(0.6)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(712,382) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(568,506) scale(0.36)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(84,522) scale(0.64)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(178,498) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1108,868) scale(0.5)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1024,884) scale(0.36)"/>
   </g>
   <g fill="url(#acc)" color="#a9791f" filter="url(#dr)">
     <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(596,258) scale(1.2480000000000002)"/>

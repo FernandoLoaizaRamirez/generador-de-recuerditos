@@ -13,7 +13,7 @@ export const azulCristal = caballete({
   name: 'Azul Cristal',
   category: 'xv',
   kind: 'xv',
-  frameStyle: 'silver',
+  premium: true,
   nameColor: '#8b97a3',
   nameGradient: [
     0,

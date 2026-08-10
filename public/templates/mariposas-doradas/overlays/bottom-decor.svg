@@ -9,22 +9,23 @@
       <stop offset="58%" stop-color="#f3c4d1"/>
       <stop offset="100%" stop-color="#fae7ed"/>
     </linearGradient>
+    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
+    <symbol id="dec" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)"><use href="#p" transform="rotate(6)"/><use href="#p" transform="rotate(66)"/><use href="#p" transform="rotate(126)"/><use href="#p" transform="rotate(186)"/><use href="#p" transform="rotate(246)"/><use href="#p" transform="rotate(306)"/></g>
+      <g fill="url(#pt)" opacity="0.97"><use href="#p" transform="rotate(36) scale(0.68)"/><use href="#p" transform="rotate(108) scale(0.68)"/><use href="#p" transform="rotate(180) scale(0.68)"/><use href="#p" transform="rotate(252) scale(0.68)"/><use href="#p" transform="rotate(324) scale(0.68)"/></g>
+      <g fill="url(#pt)"><use href="#p" transform="rotate(20) scale(0.4)"/><use href="#p" transform="rotate(110) scale(0.4)"/><use href="#p" transform="rotate(200) scale(0.4)"/><use href="#p" transform="rotate(290) scale(0.4)"/></g>
+      <circle r="13" fill="#aa8992"/>
+    </symbol>
     <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
       <feDropShadow dx="4" dy="7" stdDeviation="6" flood-color="#000000" flood-opacity="0.26"/>
     </filter>
-    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
-    <symbol id="rose" viewBox="-100 -100 200 200">
-      <g fill="url(#pt)"><use href="#p" transform="rotate(6)"/><use href="#p" transform="rotate(66)"/><use href="#p" transform="rotate(126)"/><use href="#p" transform="rotate(186)"/><use href="#p" transform="rotate(246)"/><use href="#p" transform="rotate(306)"/></g>
-      <g fill="url(#pt)" opacity="0.97"><use href="#p" transform="rotate(36) scale(0.66)"/><use href="#p" transform="rotate(108) scale(0.66)"/><use href="#p" transform="rotate(180) scale(0.66)"/><use href="#p" transform="rotate(252) scale(0.66)"/><use href="#p" transform="rotate(324) scale(0.66)"/></g>
-      <circle r="12" fill="#aa8992"/>
-    </symbol>
   </defs>
   <g filter="url(#dr)">
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(74,196) rotate(-14) scale(0.36)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(506,782) rotate(14) scale(0.44)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(428,808) rotate(-18) scale(0.32)"/>
-    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(1084,96) rotate(20) scale(0.38)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(74,196) rotate(-14) scale(0.36)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(506,782) rotate(14) scale(0.44)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(428,808) rotate(-18) scale(0.32)"/>
+    <use href="#dec" x="-100" y="-100" width="200" height="200" transform="translate(1084,96) rotate(20) scale(0.38)"/>
   </g>
 </svg>
