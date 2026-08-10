@@ -52,6 +52,36 @@ export const templates: TemplateDef[] = [
   aquaMenta,
 ]
 
+/**
+ * Comprobación de formato, solo en desarrollo.
+ *
+ * Todo el catálogo es un CABALLETE PLEGABLE: hoja VERTICAL de 4×6" (1200×1800
+ * a 300 DPI) que se dobla por la mitad. Si una plantilla se sale de ahí —un
+ * lienzo apaisado, o un doblez que no cae en el centro— la pieza no cierra al
+ * doblarla y el fallo no se ve hasta que ya está impresa.
+ *
+ * Se avisa al abrir la app en dev y no en producción: es un error de autoría,
+ * no algo que deba tumbar el sitio de un cliente.
+ */
+if (import.meta.env.DEV) {
+  const problemas = templates.flatMap((t) => {
+    const { width, height } = t.canvas
+    const errs: string[] = []
+    if (width !== 1200 || height !== 1800)
+      errs.push(`lienzo ${width}×${height}, se espera 1200×1800 (vertical 2:3)`)
+    if (height <= width) errs.push('el lienzo tiene que ser VERTICAL')
+    if (!t.fold) errs.push('le falta `fold`: sin doblez no es un caballete')
+    else if (t.fold.atY !== height / 2)
+      errs.push(
+        `dobla en y=${t.fold.atY}, tiene que ser el centro (${height / 2})`,
+      )
+    return errs.map((e) => `  · ${t.id}: ${e}`)
+  })
+  if (problemas.length > 0) {
+    console.error('Plantillas con formato inválido:\n' + problemas.join('\n'))
+  }
+}
+
 /** Busca una plantilla por id. */
 export function getTemplate(id: string): TemplateDef | undefined {
   return templates.find((t) => t.id === id)
