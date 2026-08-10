@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 610 680" width="610" height="680">
+  <!--
+    Universal — panel del bloque de textos. Se coloca como overlay en
+    545,1015 (610x680), a la derecha del retrato.
+
+    La mitad inferior de esta plantilla estaba prácticamente vacía: papel,
+    la foto y una ramita. Los textos flotaban sin soporte. Este panel les da
+    caja sin romper su carácter: es la plantilla EDITORIAL del catálogo, así
+    que el tratamiento es mucho más contenido que en Deluxe Valentina — un
+    solo filete fino, esquinas marcadas con ticks en vez de volutas, y laurel
+    en lugar de floritura, que es el motivo que ya usa arriba.
+
+    Los textos ocupan de y~75 a y~605 en coordenadas locales
+    (canvas 1090..1620), así que el adorno se queda en los márgenes.
+  -->
+  <defs>
+    <filter id="uSh" filterUnits="userSpaceOnUse" x="-16" y="-16" width="642" height="712">
+      <feDropShadow dx="2" dy="6" stdDeviation="7"
+                    flood-color="#6b6152" flood-opacity="0.20" />
+    </filter>
+
+    <linearGradient id="uPaper" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#fffefb" />
+      <stop offset="52%" stop-color="#fdf9f0" />
+      <stop offset="100%" stop-color="#f7f0e1" />
+    </linearGradient>
+
+    <linearGradient id="uGold" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#f6ecd0" />
+      <stop offset="30%" stop-color="#dccb9e" />
+      <stop offset="52%" stop-color="#b99a5e" />
+      <stop offset="64%" stop-color="#f3e8ca" />
+      <stop offset="86%" stop-color="#8f7434" />
+      <stop offset="100%" stop-color="#dfcb9c" />
+    </linearGradient>
+
+    <!-- Laurel: mismo motivo que el de la mitad superior, a menor escala -->
+    <symbol id="uLaurel" viewBox="-60 -26 120 52">
+      <g fill="url(#uGold)">
+        <path d="M-4,10 C-16,4 -26,-6 -30,-18 C-20,-12 -10,-4 -4,4 Z" />
+        <path d="M-6,16 C-20,14 -32,8 -40,-2 C-28,0 -16,6 -8,12 Z" />
+        <path d="M-8,22 C-24,24 -38,22 -48,14 C-36,14 -22,16 -12,20 Z" />
+        <path d="M4,10 C16,4 26,-6 30,-18 C20,-12 10,-4 4,4 Z" />
+        <path d="M6,16 C20,14 32,8 40,-2 C28,0 16,6 8,12 Z" />
+        <path d="M8,22 C24,24 38,22 48,14 C36,14 22,16 12,20 Z" />
+      </g>
+      <circle cx="0" cy="6" r="3.4" fill="url(#uGold)" />
+    </symbol>
+  </defs>
+
+  <g filter="url(#uSh)">
+    <rect x="8" y="8" width="594" height="664" rx="10" fill="url(#uPaper)" />
+  </g>
+
+  <!-- Un solo filete: la plantilla es editorial, no ornamental -->
+  <rect x="8" y="8" width="594" height="664" rx="10" fill="none"
+        stroke="url(#uGold)" stroke-width="1.6" opacity="0.85" />
+
+  <!-- Ticks de esquina en vez de volutas -->
+  <g stroke="url(#uGold)" stroke-width="1.6" fill="none" opacity="0.9">
+    <path d="M26,8 L26,30 M8,26 L30,26" />
+    <path d="M584,8 L584,30 M602,26 L580,26" />
+    <path d="M26,672 L26,650 M8,654 L30,654" />
+    <path d="M584,672 L584,650 M602,654 L580,654" />
+  </g>
+
+  <!-- Laurel arriba, sobre el nombre -->
+  <use href="#uLaurel" x="-60" y="-26" width="120" height="52"
+       transform="translate(305,44) scale(0.9)" />
+
+  <!-- Filete de cierre abajo -->
+  <g transform="translate(305,644)">
+    <path d="M-92,0 Q-50,-2.4 -16,0 Q-50,2.4 -92,0 Z" fill="url(#uGold)" opacity="0.8" />
+    <path d="M92,0 Q50,-2.4 16,0 Q50,2.4 92,0 Z" fill="url(#uGold)" opacity="0.8" />
+    <circle cx="0" cy="0" r="3" fill="url(#uGold)" />
+  </g>
+</svg>

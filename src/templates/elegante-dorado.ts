@@ -13,7 +13,7 @@ export const eleganteDorado = caballete({
   name: 'Elegante Dorado',
   category: 'xv',
   kind: 'xv',
-  frameStyle: 'goldOrnate',
+  premium: true,
   nameColor: '#c8a04a',
   ink: '#6f6252',
   inkSoft: '#8a7355',

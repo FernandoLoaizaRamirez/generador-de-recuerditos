@@ -43,6 +43,10 @@ export const universal: TemplateDef = {
   overlays: [
     // 2 marcos finos de oro + laurel (mitad superior, encima de las fotos).
     { src: `${BASE}/MarcoArriba.png`, x: 0, y: 0, width: 1200, height: 900 },
+    // Panel del bloque de textos. La tarjeta de esta plantilla es papel liso:
+    // sin él los textos flotaban sin caja y la mitad inferior se leía a medio
+    // terminar. Va a la derecha del retrato (que ocupa x 119..518).
+    { src: `${BASE}/panel.svg`, x: 545, y: 1015, width: 610, height: 680 },
   ],
   photoSlots: [
     // --- mitad superior (rotada 180° al exportar) ---

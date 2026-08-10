@@ -207,6 +207,212 @@ function bottomCard(t) {
 `
 }
 
+// ---------------------------------------------------------- nivel premium
+// Tres capas que separan una plantilla decente de una de escaparate. Son el
+// mismo diseño validado en «Mariposas de Oro», parametrizado por paleta.
+
+/** Rampa de bisel: clara en la cresta, oscura en la garganta, rebote al filo. */
+const bevel = (a1, a2, dir) => {
+  const L = mix(a1, '#ffffff', 0.72), M = a1, D = mix(a2, '#000000', 0.25)
+  const stops = [
+    [0, mix(a2, '#000000', 0.1)], [0.08, mix(a1, '#ffffff', 0.55)],
+    [0.2, L], [0.33, mix(a1, '#ffffff', 0.35)], [0.48, M],
+    [0.62, mix(a2, '#000000', 0.05)], [0.74, D],
+    [0.86, mix(a1, '#ffffff', 0.15)], [1, mix(a1, '#ffffff', 0.6)],
+  ]
+  const v = dir === 'T' ? 'x1="0" y1="0" x2="0" y2="1"'
+    : dir === 'L' ? 'x1="0" y1="0" x2="1" y2="0"'
+    : dir === 'B' ? 'x1="0" y1="1" x2="0" y2="0"'
+    : 'x1="1" y1="0" x2="0" y2="0"'
+  return `<linearGradient id="bv${dir}" ${v}>` +
+    stops.map(([o, c]) => `<stop offset="${o * 100}%" stop-color="${c}"/>`).join('') +
+    `</linearGradient>`
+}
+
+/** Moldura de cuatro caras en inglete alrededor de (0,0,w,h). */
+const moulding = (w, h, tk) => `
+      <path d="M-${tk},-${tk} L${w + tk},-${tk} L${w},0 L0,0 Z" fill="url(#bvT)"/>
+      <path d="M-${tk},-${tk} L0,0 L0,${h} L-${tk},${h + tk} Z" fill="url(#bvL)"/>
+      <path d="M${w + tk},-${tk} L${w + tk},${h + tk} L${w},${h} L${w},0 Z" fill="url(#bvR)"/>
+      <path d="M${w + tk},${h + tk} L-${tk},${h + tk} L0,${h} L${w},${h} Z" fill="url(#bvB)"/>
+      <rect x="-${tk}" y="-${tk}" width="${w + 2 * tk}" height="${h + 2 * tk}" fill="none" stroke="#00000055" stroke-width="1.4"/>
+      <rect x="1.2" y="1.2" width="${w - 2.4}" height="${h - 2.4}" fill="none" stroke="#ffffffaa" stroke-width="2.2"/>
+      <rect x="0" y="0" width="${w}" height="18" fill="url(#isT)"/>
+      <rect x="0" y="${h - 18}" width="${w}" height="18" fill="url(#isB)"/>
+      <rect x="0" y="0" width="18" height="${h}" fill="url(#isL)"/>
+      <rect x="${w - 18}" y="0" width="18" height="${h}" fill="url(#isR)"/>`
+
+function topFrames(t) {
+  const [a1, a2] = t.acc, f1 = GEO.foto1, f2 = GEO.foto2
+  const is = (id, v) => `<linearGradient id="${id}" ${v}><stop offset="0%" stop-color="#3d2610" stop-opacity="0.3"/><stop offset="100%" stop-color="#3d2610" stop-opacity="0"/></linearGradient>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- ${t.id} — CAPA 5 / molduras de la MITAD SUPERIOR (0,0,1200,900).
+       ALINEACIÓN: cada moldura usa la MISMA transformación que Konva aplica al
+       <Group> del hueco — translate(x,y) rotate(rotation) — con los valores de
+       CAB en src/templates/_caballete.ts. Si mueves un hueco allí, muévelo aquí.
+       El relieve sale de cuatro caras en inglete con gradiente perpendicular a
+       su arista, no de un stroke: un borde plano no da volumen.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    ${bevel(a1, a2, 'T')}${bevel(a1, a2, 'L')}${bevel(a1, a2, 'B')}${bevel(a1, a2, 'R')}
+    ${is('isT', 'x1="0" y1="0" x2="0" y2="1"')}${is('isB', 'x1="0" y1="1" x2="0" y2="0"')}
+    ${is('isL', 'x1="0" y1="0" x2="1" y2="0"')}${is('isR', 'x1="1" y1="0" x2="0" y2="0"')}
+    <linearGradient id="orn" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="${mix(a1, '#ffffff', 0.7)}"/>
+      <stop offset="45%" stop-color="${a1}"/>
+      <stop offset="60%" stop-color="${mix(a1, '#ffffff', 0.75)}"/>
+      <stop offset="88%" stop-color="${mix(a2, '#000000', 0.2)}"/>
+      <stop offset="100%" stop-color="${mix(a1, '#ffffff', 0.45)}"/>
+    </linearGradient>
+    <radialGradient id="prl" cx="34%" cy="28%" r="74%">
+      <stop offset="0%" stop-color="#fffdf4"/><stop offset="44%" stop-color="${mix(a1, '#ffffff', 0.6)}"/>
+      <stop offset="100%" stop-color="${a2}"/>
+    </radialGradient>
+    <filter id="cast" x="-16%" y="-14%" width="138%" height="134%">
+      <feDropShadow dx="12" dy="18" stdDeviation="13" flood-color="#000000" flood-opacity="0.36"/>
+    </filter>
+    <symbol id="cor" viewBox="0 0 110 110">
+      <g fill="url(#orn)">
+        <path d="M2,2 C40,7 72,24 96,52 C90,54 84,55 78,54 C58,32 32,20 6,16 C3,12 2,7 2,2 Z"/>
+        <path d="M2,2 C7,40 24,72 52,96 C54,90 55,84 54,78 C32,58 20,32 16,6 C12,3 7,2 2,2 Z"/>
+        <path d="M28,28 C46,35 61,48 70,65 C59,56 44,48 28,43 Z" opacity="0.7"/>
+      </g>
+      <circle cx="13" cy="13" r="7" fill="url(#prl)"/>
+      <circle cx="10.8" cy="10.8" r="2.2" fill="#fffdf2" opacity="0.9"/>
+    </symbol>
+    <symbol id="crest" viewBox="-60 -52 120 60">
+      <g fill="url(#orn)">
+        <path d="M0,-46 C9,-34 21,-26 38,-22 C21,-18 9,-11 0,0 C-9,-11 -21,-18 -38,-22 C-21,-26 -9,-34 0,-46 Z"/>
+        <path d="M36,-23 C48,-27 56,-25 58,-19 C53,-22 45,-21 36,-19 Z" opacity="0.85"/>
+        <path d="M-36,-23 C-48,-27 -56,-25 -58,-19 C-53,-22 -45,-21 -36,-19 Z" opacity="0.85"/>
+      </g>
+      <circle cx="0" cy="-22" r="7" fill="url(#prl)"/>
+    </symbol>
+  </defs>
+${[f1, f2]
+  .map(
+    (f) => `  <g transform="translate(${f.x},${f.y}) rotate(${f.r})">
+    <g filter="url(#cast)">${moulding(f.w, f.h, 20)}
+    </g>
+    <use href="#cor" x="0" y="0" width="92" height="92" transform="translate(-20,-20)"/>
+    <use href="#cor" x="0" y="0" width="92" height="92" transform="translate(${f.w + 20},-20) scale(-1,1)"/>
+    <use href="#cor" x="0" y="0" width="92" height="92" transform="translate(-20,${f.h + 20}) scale(1,-1)"/>
+    <use href="#cor" x="0" y="0" width="92" height="92" transform="translate(${f.w + 20},${f.h + 20}) scale(-1,-1)"/>
+    <use href="#crest" x="-60" y="-52" width="120" height="60" transform="translate(${Math.round(f.w / 2)},-20)"/>
+  </g>`,
+  )
+  .join('\n')}
+</svg>
+`
+}
+
+// Racimos montados sobre las esquinas de los marcos (esquinas ya rotadas).
+const CLUSTERS = [
+  [62, 84, 0.72], [158, 40, 0.52], [20, 182, 0.46],
+  [618, 432, 0.6], [712, 382, 0.42], [568, 506, 0.36],
+  [84, 522, 0.64], [178, 498, 0.42],
+  [1108, 868, 0.5], [1024, 884, 0.36],
+]
+const MOTES = [
+  [596, 258, 0.78], [940, 352, 0.5], [160, 626, 0.42], [1160, 660, 0.26], [414, 796, 0.22],
+]
+
+function topDecor(t) {
+  const [a1, a2] = t.acc
+  const petal = mix(t.bg[2], '#ffffff', 0.25)
+  const m = MOTIF[t.motif] ?? MOTIF.dot
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- ${t.id} — CAPA 6 / decoración delantera de la MITAD SUPERIOR.
+       Va MONTADA sobre las esquinas de los marcos: parte del adorno queda
+       detrás de la foto (top-scene) y parte delante. Ese solape es lo que
+       convierte dos planos en tres.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="${mix(petal, '#000000', 0.22)}"/>
+      <stop offset="58%" stop-color="${petal}"/>
+      <stop offset="100%" stop-color="${mix(petal, '#ffffff', 0.6)}"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="${mix(a1, '#ffffff', 0.55)}"/>
+      <stop offset="50%" stop-color="${a1}"/>
+      <stop offset="100%" stop-color="${a2}"/>
+    </linearGradient>
+    <radialGradient id="dust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="44%" stop-color="${mix(a1, '#ffffff', 0.4)}" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="${a1}" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
+    <path id="spk" d="M0,-10 Q1.2,-1.2 10,0 Q1.2,1.2 0,10 Q-1.2,1.2 -10,0 Q-1.2,-1.2 0,-10 Z"/>
+    <symbol id="rose" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)">${[6, 66, 126, 186, 246, 306].map((a) => `<use href="#p" transform="rotate(${a})"/>`).join('')}</g>
+      <g fill="url(#pt)" opacity="0.97">${[36, 108, 180, 252, 324].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.68)"/>`).join('')}</g>
+      <g fill="url(#pt)">${[20, 110, 200, 290].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.4)"/>`).join('')}</g>
+      <circle r="13" fill="${mix(petal, '#000000', 0.3)}"/>
+    </symbol>
+    <symbol id="mo" viewBox="-50 -50 100 100">${m}</symbol>
+  </defs>
+
+  <g filter="url(#dr)">
+${CLUSTERS.map(([x, y, s]) => `    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(${x},${y}) scale(${s})"/>`).join('\n')}
+  </g>
+  <g fill="url(#acc)" color="${a2}" filter="url(#dr)">
+${MOTES.map(([x, y, s]) => `    <use href="#mo" x="-50" y="-50" width="100" height="100" transform="translate(${x},${y}) scale(${s * 1.6})"/>`).join('\n')}
+  </g>
+  <g fill="url(#dust)">
+    <use href="#spk" transform="translate(842,104) scale(2.2)"/>
+    <use href="#spk" transform="translate(1116,206) scale(1.4)"/>
+    <use href="#spk" transform="translate(206,600) scale(1.7)"/>
+    <use href="#spk" transform="translate(660,830) scale(1.2)"/>
+    <circle cx="908" cy="196" r="3"/><circle cx="1010" cy="128" r="2.2"/>
+    <circle cx="786" cy="240" r="2.6"/><circle cx="1160" cy="352" r="2.4"/>
+    <circle cx="96" cy="470" r="2.8"/><circle cx="286" cy="672" r="2.2"/>
+    <circle cx="520" cy="796" r="2.5"/><circle cx="1064" cy="758" r="2.3"/>
+  </g>
+</svg>
+`
+}
+
+function bottomDecor(t) {
+  const [a1, a2] = t.acc
+  const petal = mix(t.bg[2], '#ffffff', 0.25)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- ${t.id} — CAPA 7 / adorno de la MITAD INFERIOR (0,900,1200,900).
+       Coordenadas LOCALES: local_y = canvas_y - 900. Monta la esquina del
+       retrato para que el ramo lo pise, igual que arriba.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    <linearGradient id="pt" x1="0" y1="1" x2="0.15" y2="0">
+      <stop offset="0%" stop-color="${mix(petal, '#000000', 0.22)}"/>
+      <stop offset="58%" stop-color="${petal}"/>
+      <stop offset="100%" stop-color="${mix(petal, '#ffffff', 0.6)}"/>
+    </linearGradient>
+    <filter id="dr" x="-26%" y="-26%" width="154%" height="154%">
+      <feDropShadow dx="4" dy="7" stdDeviation="6" flood-color="#000000" flood-opacity="0.26"/>
+    </filter>
+    <path id="p" d="M0,4 C-26,-10 -40,-44 -26,-74 C-16,-95 16,-95 26,-74 C40,-44 26,-10 0,4 Z"/>
+    <symbol id="rose" viewBox="-100 -100 200 200">
+      <g fill="url(#pt)">${[6, 66, 126, 186, 246, 306].map((a) => `<use href="#p" transform="rotate(${a})"/>`).join('')}</g>
+      <g fill="url(#pt)" opacity="0.97">${[36, 108, 180, 252, 324].map((a) => `<use href="#p" transform="rotate(${a}) scale(0.66)"/>`).join('')}</g>
+      <circle r="12" fill="${mix(petal, '#000000', 0.3)}"/>
+    </symbol>
+  </defs>
+  <g filter="url(#dr)">
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(126,118) scale(0.6)"/>
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(214,86) rotate(18) scale(0.42)"/>
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(74,196) rotate(-14) scale(0.36)"/>
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(506,782) rotate(14) scale(0.44)"/>
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(428,808) rotate(-18) scale(0.32)"/>
+    <use href="#rose" x="-100" y="-100" width="200" height="200" transform="translate(1084,96) rotate(20) scale(0.38)"/>
+  </g>
+</svg>
+`
+}
+
 function background(t) {
   const [b1, , b3] = t.bg
   const card = t.dark ? mix(t.bg[0], '#ffffff', 0.07) : '#fffdf8'
@@ -293,8 +499,8 @@ ${frame(f2)}
 // Paletas y motivos tomados de los background.svg originales, para que cada
 // plantilla conserve su identidad al cambiar de estructura.
 const TEMPLATES = [
-  { id: 'mariposas-doradas',  bg: ['#fdeef2', '#f7cdd8', '#efb0c2'], acc: ['#dcbb62', '#a9791f'], motif: 'flower' },
-  { id: 'elegante-dorado',    bg: ['#fffaf0', '#f6ead2', '#f3e7bd'], acc: ['#c8a04a', '#a9791f'], motif: 'flower' },
+  { id: 'mariposas-doradas',  bg: ['#fdeef2', '#f7cdd8', '#efb0c2'], acc: ['#dcbb62', '#a9791f'], motif: 'flower', premium: true },
+  { id: 'elegante-dorado',    bg: ['#fffaf0', '#f6ead2', '#f3e7bd'], acc: ['#c8a04a', '#a9791f'], motif: 'flower', premium: true },
   { id: 'corazones-rosados',  bg: ['#fff1f5', '#f8c5d6', '#f09fbb'], acc: ['#c8a04a', '#a9791f'], motif: 'heart' },
   { id: 'azul-cristal',       bg: ['#eef6ff', '#cfe2f6', '#a9caea'], acc: ['#c9d2da', '#8b97a3'], motif: 'sparkle' },
   { id: 'lila-encanto',       bg: ['#f8f1fd', '#ddc6f0', '#c4a4e2'], acc: ['#c8a04a', '#a9791f'], motif: 'sparkle' },
@@ -328,6 +534,13 @@ for (const t of list) {
   put(join(d, 'underlays', 'top-scene.svg'), topScene(t))
   put(join(d, 'underlays', 'bottom-card.svg'), bottomCard(t))
   put(join(d, 'thumbnail.svg'), thumbnail(t))
-  console.log(`  ${t.id.padEnd(20)} 4 assets`)
+  let n = 4
+  if (t.premium) {
+    put(join(d, 'overlays', 'top-frames.svg'), topFrames(t))
+    put(join(d, 'overlays', 'top-decor.svg'), topDecor(t))
+    put(join(d, 'overlays', 'bottom-decor.svg'), bottomDecor(t))
+    n = 7
+  }
+  console.log(`  ${t.id.padEnd(20)} ${n} assets${t.premium ? '  (premium)' : ''}`)
 }
 console.log(`\n${list.length} plantillas procesadas.`)

@@ -93,6 +93,15 @@ export interface CaballeteSpec {
   /** Tinta atenuada (fecha) y color del pie de negocio. */
   inkSoft: string
   business: string
+  /**
+   * Nivel PREMIUM: añade las tres capas de adorno que separan una plantilla
+   * decente de una de escaparate — molduras biseladas con relieve real,
+   * decoración delantera que monta sobre los marcos (el solape es lo que da
+   * profundidad) y adornos sobre la tarjeta. Implica `frameStyle: 'none'`,
+   * porque el marco pasa a venir del overlay y no del dibujo vectorial.
+   * Los assets los emite `scripts/build-caballete-assets.mjs`.
+   */
+  premium?: boolean
   /** Adornos extra, ya posicionados por mitad. */
   overlays?: TemplateDef['overlays']
 }
@@ -120,7 +129,23 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
   const copy = COPY[spec.kind]
   const display = spec.displayFont ?? 'Great Vibes'
   const body = spec.bodyFont ?? 'Playfair Display'
-  const frameStyle = spec.frameStyle ?? 'thin'
+  // En premium el marco lo pone `overlays/top-frames.svg`, que dibuja una
+  // moldura de cuatro caras en inglete; el marco vectorial sobraría.
+  const frameStyle = spec.premium ? 'none' : (spec.frameStyle ?? 'thin')
+  const half = (src: string, y: number) => ({
+    src: `${BASE}/${src}`,
+    x: 0,
+    y,
+    width: 1200,
+    height: 900,
+  })
+  const premiumOverlays = spec.premium
+    ? [
+        half('overlays/top-frames.svg', 0),
+        half('overlays/top-decor.svg', 0),
+        half('overlays/bottom-decor.svg', 900),
+      ]
+    : []
   // Contorno por defecto: un script dorado sin borde se lava sobre los fondos
   // claros de la mitad superior. `textStyle` pinta el relleno DESPUÉS del
   // borde, así que actúa de contorno y no ensucia el trazo.
@@ -154,7 +179,7 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
       },
     ],
 
-    overlays: spec.overlays ?? [],
+    overlays: [...premiumOverlays, ...(spec.overlays ?? [])],
 
     photoSlots: [
       // ---- mitad superior (se rota 180° al exportar) ----
