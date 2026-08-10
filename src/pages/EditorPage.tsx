@@ -3,7 +3,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import type Konva from 'konva'
 import { useEditorStore } from '../store/editorStore'
 import { getTemplate } from '../templates'
-import { deleteImage, getProject, putImage, saveProject } from '../lib/db'
+import {
+  collectOrphanImages,
+  deleteImage,
+  getProject,
+  putImage,
+  saveProject,
+} from '../lib/db'
 import { EditorCanvas } from '../components/EditorCanvas'
 import { SlotPanel } from '../components/editor/SlotPanel'
 import { TextPanel } from '../components/editor/TextPanel'
@@ -54,8 +60,19 @@ export function EditorPage() {
     }
   }, [projectId, init])
 
-  // Limpiar el store al salir.
-  useEffect(() => () => useEditorStore.getState().reset(), [])
+  // Limpiar el store al salir y barrer las fotos que quedaron huérfanas.
+  //
+  // Reemplazar o quitar la foto de un hueco solo cambia la referencia; el
+  // archivo anterior se quedaba en IndexedDB para siempre. No se puede borrar
+  // en el momento porque deshacer volvería a apuntar a él: este es el primer
+  // instante seguro, con el historial ya descartado por `reset()`.
+  useEffect(
+    () => () => {
+      useEditorStore.getState().reset()
+      void collectOrphanImages()
+    },
+    [],
+  )
 
   const save = useCallback(async () => {
     const current = useEditorStore.getState().project

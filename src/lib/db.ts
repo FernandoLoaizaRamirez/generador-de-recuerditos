@@ -75,6 +75,33 @@ function imageIdsOf(project: Project): string[] {
   return ids
 }
 
+/**
+ * Borra los Blobs que ya no referencia NINGÚN proyecto y devuelve cuántos.
+ *
+ * Hacían falta porque reemplazar o quitar la foto de un hueco solo cambia la
+ * referencia: el archivo anterior se quedaba en IndexedDB para siempre. En un
+ * negocio que produce por lotes eso llena el almacenamiento del navegador sin
+ * avisar, y el síntoma final es que la app deja de poder guardar.
+ *
+ * NO se puede borrar en el momento del reemplazo: el editor tiene deshacer, y
+ * al deshacer el proyecto volvería a apuntar a un archivo ya borrado. Por eso
+ * esto se llama al SALIR del editor, cuando `reset()` ya tiró el historial y
+ * nada puede volver atrás.
+ *
+ * Barre contra todos los proyectos, no solo el actual: los Blobs viven en una
+ * tabla común.
+ */
+export async function collectOrphanImages(): Promise<number> {
+  const projects = await db.projects.toArray()
+  const usados = new Set<string>()
+  for (const p of projects) for (const id of imageIdsOf(p)) usados.add(id)
+
+  const todos = await db.images.toCollection().primaryKeys()
+  const huerfanos = todos.filter((id) => !usados.has(id))
+  if (huerfanos.length > 0) await db.images.bulkDelete(huerfanos)
+  return huerfanos.length
+}
+
 /** Borra un proyecto y sus imágenes asociadas. */
 export async function deleteProject(id: string): Promise<void> {
   const project = await db.projects.get(id)
