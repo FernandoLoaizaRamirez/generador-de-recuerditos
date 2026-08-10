@@ -4,7 +4,7 @@ import { Group, Image as KonvaImage, Rect, Text } from 'react-konva'
 import type { PhotoSlot, SlotTransform } from '../../types'
 import { slotImageLayout } from '../../lib/image'
 import { SlotFrame } from './frames'
-import { roundedRectClip } from './clip'
+import { slotClip } from './clip'
 
 interface Props {
   slot: PhotoSlot
@@ -173,7 +173,7 @@ export function EditablePhotoSlot({
         applyZoom(clampZoom(transform.scale * factor))
       }}
     >
-      <Group clipFunc={roundedRectClip(W, H, cornerRadius)}>{content}</Group>
+      <Group clipFunc={slotClip(slot)}>{content}</Group>
       <SlotFrame
         frameStyle={slot.frameStyle}
         width={W}

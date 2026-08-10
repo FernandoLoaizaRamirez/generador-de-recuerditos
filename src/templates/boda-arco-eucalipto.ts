@@ -10,12 +10,15 @@ const BASE = import.meta.env.BASE_URL + 'templates/boda-arco-eucalipto'
  * una mitad de 900 px; el hueco del retrato (400×655) sí admite uno de radio
  * 200, y además es donde la foto manda de verdad en un caballete.
  *
- * CÓMO SE HACE EL ARCO SIN TOCAR EL MOTOR: el editor solo recorta rectángulos
- * redondeados —`clipShape: 'custom'` está en el tipo pero no implementado—, así
- * que la foto va en su hueco rectangular y `overlays/bottom-arch.svg` tapa las
- * dos esquinas que sobran por encima de la curva, igual que un pase-partout
- * físico. Por eso el retrato lleva `retratoFrame: 'none'`: un marco vectorial
- * dibujaría el rectángulo del hueco asomando por dentro del arco.
+ * EL ARCO ES AHORA UN RECORTE DE VERDAD. Antes la foto ocupaba un hueco
+ * rectangular y el overlay tapaba a mano las dos esquinas que sobraban por
+ * encima de la curva, porque `clipShape: 'custom'` estaba en el tipo pero sin
+ * implementar. Ya está implementado, así que basta con declarar el path: el
+ * motor recorta la foto en arco y el overlay solo pone el filete de oro y el
+ * eucalipto.
+ *
+ * El retrato lleva `retratoFrame: 'none'` porque un marco vectorial dibujaría
+ * el RECTÁNGULO del hueco asomando por dentro del arco.
  *
  * El resto del layout lo define `caballete()`.
  */
@@ -26,7 +29,10 @@ export const bodaArcoEucalipto = caballete({
   kind: 'boda',
   premium: true,
   version: 4,
-  // El arco lo pone el overlay; aquí sobra el marco vectorial.
+  // Arco de radio 200 (= ancho/2) sobre el hueco de 400×655: arranca en
+  // y=200 y el vértice queda en y=0. Coordenadas locales del hueco.
+  retratoClipPath: 'M0,655 L0,200 A200,200 0 0 1 400,200 L400,655 Z',
+  // El filete lo pone el overlay; un marco vectorial dibujaría el rectángulo.
   retratoFrame: 'none',
   overlays: [
     {

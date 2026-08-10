@@ -14,7 +14,7 @@ import { fitFontSize, slotImageLayout } from '../lib/image'
 import { textStyleProps } from '../lib/textStyle'
 import { partitionByFold } from '../lib/fold'
 import { SlotFrame } from './canvas/frames'
-import { roundedRectClip } from './canvas/clip'
+import { slotClip } from './canvas/clip'
 import { FoldGroup } from './canvas/FoldGroup'
 
 interface Props {
@@ -73,7 +73,7 @@ export function ExportStage({
     const cr = slot.cornerRadius ?? 0
     return (
       <Group key={slot.id} x={slot.x} y={slot.y} rotation={slot.rotation ?? 0}>
-        <Group clipFunc={roundedRectClip(slot.width, slot.height, cr)}>
+        <Group clipFunc={slotClip(slot)}>
           {img ? (
             (() => {
               const g = slotImageLayout(

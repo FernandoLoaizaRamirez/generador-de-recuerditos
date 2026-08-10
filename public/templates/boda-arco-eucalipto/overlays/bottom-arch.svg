@@ -3,28 +3,17 @@
     Arco de Eucalipto — ventana en ARCO del retrato. Overlay de la MITAD
     INFERIOR (0,900,1200,900). Coordenadas LOCALES: local_y = canvas_y - 900.
 
-    El motor solo recorta rectángulos redondeados, así que el arco se hace al
-    revés: la foto ocupa su hueco RECTANGULAR normal (112,112 400x655) y aquí
-    se tapan las dos esquinas que sobran por encima de la curva. Radio 200
-    (= ancho/2), arranque en y=312, vértice en y=112.
+    El recorte en arco ya lo hace el MOTOR: el hueco declara
+    `clipShape: 'custom'` con su path (ver src/templates/boda-arco-eucalipto.ts),
+    así que aquí solo van los adornos — filete de oro, sombra del canto y
+    eucalipto. Antes este archivo tenía además que tapar a mano las dos
+    esquinas que sobraban por encima de la curva, replicando el degradado del
+    papel para que no se viera el escalón; con el recorte de verdad eso sobra.
 
-    SOLO SE TAPAN LAS ESQUINAS, no se vuelve a pintar la tarjeta entera: son
-    ~17.000 px² en vez de 864.000, y así no hay que duplicar el panel ni los
-    filetes de bottom-card.svg, que se desincronizarían al primer cambio.
-
-    CONTINUIDAD DEL PAPEL: el degradado replica exactamente el de la tarjeta.
-    Aquel usa objectBoundingBox (x1=.15 y1=0 x2=.85 y2=1) sobre el rect
-    60,50 1080x800, que en coordenadas de usuario es de (222,50) a (978,850).
-    Por eso este va en userSpaceOnUse con esos puntos: cualquier otra cosa
-    dejaría un escalón de color en el borde de la caladura.
+    Radio 200 (= ancho/2), arranque en y=312, vértice en y=112, en
+    coordenadas LOCALES de la mitad (local_y = canvas_y - 900).
   -->
   <defs>
-    <linearGradient id="paper" gradientUnits="userSpaceOnUse"
-                    x1="222" y1="50" x2="978" y2="850">
-      <stop offset="0%" stop-color="#fffdf8" />
-      <stop offset="100%" stop-color="#f4e9d8" />
-    </linearGradient>
-
     <linearGradient id="goldMatte" gradientUnits="userSpaceOnUse"
                     x1="112" y1="112" x2="512" y2="767">
       <stop offset="0%" stop-color="#f2e6c8" />
@@ -73,16 +62,6 @@
       </g>
     </symbol>
   </defs>
-
-  <!--
-    Las dos esquinas: rect 112,112..512,312 MENOS el semidisco superior.
-    Con fill-rule evenodd el subtrazo del arco se resta del rectángulo.
-    El arco va con sweep=1: desde (112,312), en un sistema con la y hacia
-    abajo, el sentido horario sube — que es el semidisco que queremos.
-  -->
-  <path fill="url(#paper)" fill-rule="evenodd"
-        d="M112,112 H512 V312 H112 Z
-           M112,312 A200,200 0 0 1 512,312 Z" />
 
   <!-- Sombra del canto sobre la foto: hunde la imagen dentro de la ventana -->
   <path fill="url(#isT)"

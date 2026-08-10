@@ -84,11 +84,17 @@ export interface CaballeteSpec {
   frameStyle?: 'goldOrnate' | 'thin' | 'silver' | 'none'
   /**
    * Marco solo del retrato, si necesita uno distinto al de las fotos de
-   * arriba. Se añadió para «Arco de Eucalipto»: su retrato se recorta en arco
-   * con una máscara, y el marco vectorial dibujaría el RECTÁNGULO del hueco
-   * asomando por dentro del arco.
+   * arriba. Se añadió para «Arco de Eucalipto»: su retrato va recortado en
+   * arco, y el marco vectorial dibujaría el RECTÁNGULO del hueco asomando por
+   * dentro de la curva.
    */
   retratoFrame?: 'goldOrnate' | 'thin' | 'silver' | 'none'
+  /**
+   * Recorte libre del retrato: path de SVG en coordenadas LOCALES del hueco
+   * (de 0,0 a 400,655). Para ventanas en arco, óvalo o corazón sin dibujar
+   * una máscara a medida.
+   */
+  retratoClipPath?: string
   /** Tipografía del nombre y del lettering del evento. */
   displayFont?: string
   /** Tipografía del resto de la tarjeta. */
@@ -145,8 +151,7 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
   const frameStyle = spec.premium ? 'none' : (spec.frameStyle ?? 'thin')
   // El retrato es otra historia: esa capa no le dibuja marco, así que si se
   // le aplicara el 'none' de premium se quedaría sin ninguno.
-  const retratoFrame =
-    spec.retratoFrame ?? (spec.premium ? 'thin' : frameStyle)
+  const retratoFrame = spec.retratoFrame ?? (spec.premium ? 'thin' : frameStyle)
   const half = (src: string, y: number) => ({
     src: `${BASE}/${src}`,
     x: 0,
@@ -219,8 +224,9 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
         id: 'foto-retrato',
         ...CAB.retrato,
         rotation: 0,
-        clipShape: 'rounded',
-        cornerRadius: 6,
+        ...(spec.retratoClipPath
+          ? { clipShape: 'custom' as const, clipPath: spec.retratoClipPath }
+          : { clipShape: 'rounded' as const, cornerRadius: 6 }),
         frameStyle: retratoFrame,
         defaultFit: 'cover',
       },
