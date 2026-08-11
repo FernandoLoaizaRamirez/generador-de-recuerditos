@@ -81,7 +81,7 @@ export function ExportModal({ project, template, onClose }: Props) {
       await new Promise((r) => setTimeout(r, 60))
       const base = safeFileName(project.name)
       if (format === 'pdf') {
-        downloadBlob(stageToPdf(stage, withBleed), `${base}.pdf`)
+        downloadBlob(stageToPdf(stage), `${base}.pdf`)
       } else if (format === 'png') {
         downloadBlob(await stageToPng(stage), `${base}.png`)
       } else {
