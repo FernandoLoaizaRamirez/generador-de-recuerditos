@@ -11,6 +11,7 @@ import {
   stageToPng,
   type ExportImages,
 } from '../../lib/export'
+import { DPI } from '../../lib/print'
 import { ExportStage } from '../ExportStage'
 
 interface Props {
@@ -21,13 +22,31 @@ interface Props {
 
 const PREVIEW_W = 280
 
+/**
+ * A dónde va el archivo. Antes esto era una casilla de «incluir sangrado»
+ * marcada por defecto, y el pie decía «Tamaño final: 4×6"» aunque el archivo
+ * saliera de 4,25×6,25: quien lo llevaba a imprimir fotos 4×6 se encontraba
+ * con que el laboratorio se lo escalaba o recortaba.
+ *
+ * Ahora se elige el destino y el pie canta las medidas REALES.
+ */
+type Destino = 'foto' | 'imprenta'
+
+/** Píxeles a pulgadas a 300 DPI, sin decimales de más: 4, 6, 4.25… */
+const inchLabel = (px: number) =>
+  Number((px / DPI).toFixed(2))
+    .toString()
+    .replace('.', ',')
+
 export function ExportModal({ project, template, onClose }: Props) {
   const [images, setImages] = useState<ExportImages | null>(null)
   const [warnings, setWarnings] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState<string | null>(null)
-  const [withBleed, setWithBleed] = useState(true)
+  // Por defecto, 4×6 exacto: es el caso normal del negocio.
+  const [destino, setDestino] = useState<Destino>('foto')
   const [cropMarks, setCropMarks] = useState(false)
+  const withBleed = destino === 'imprenta'
   const stageRef = useRef<Konva.Stage>(null)
 
   useEffect(() => {
@@ -155,23 +174,56 @@ export function ExportModal({ project, template, onClose }: Props) {
             {/* Opciones y descarga */}
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={withBleed}
-                    onChange={(e) => setWithBleed(e.target.checked)}
-                  />
-                  Incluir sangrado (margen para imprenta)
-                </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={cropMarks}
-                    disabled={!withBleed}
-                    onChange={(e) => setCropMarks(e.target.checked)}
-                  />
-                  Marcas de corte
-                </label>
+                <p className="text-xs font-medium text-brand-ink/70">
+                  ¿A dónde lo vas a llevar?
+                </p>
+                {(
+                  [
+                    {
+                      id: 'foto',
+                      titulo: 'Laboratorio de fotos — 4×6 exacto',
+                      ayuda: `${W} × ${H} px, sin márgenes que recortar`,
+                    },
+                    {
+                      id: 'imprenta',
+                      titulo: 'Imprenta — con sangrado',
+                      ayuda: `${fullW} × ${fullH} px, para recortar a 4×6 después`,
+                    },
+                  ] as const
+                ).map((op) => (
+                  <label
+                    key={op.id}
+                    className={`flex cursor-pointer gap-2 rounded-lg border p-2.5 text-sm transition ${
+                      destino === op.id
+                        ? 'border-brand-gold bg-brand-pink-soft/50'
+                        : 'border-brand-gold-soft'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="destino"
+                      className="mt-0.5"
+                      checked={destino === op.id}
+                      onChange={() => setDestino(op.id)}
+                    />
+                    <span>
+                      <span className="block font-medium">{op.titulo}</span>
+                      <span className="block text-xs text-brand-ink/55">
+                        {op.ayuda}
+                      </span>
+                    </span>
+                  </label>
+                ))}
+                {withBleed && (
+                  <label className="flex items-center gap-2 pl-2.5 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={cropMarks}
+                      onChange={(e) => setCropMarks(e.target.checked)}
+                    />
+                    Marcas de corte
+                  </label>
+                )}
               </div>
 
               {warnings.length > 0 && (
@@ -216,10 +268,16 @@ export function ExportModal({ project, template, onClose }: Props) {
                 </button>
               </div>
 
+              {/* Medidas REALES del archivo que se descarga, no las del diseño. */}
               <p className="text-[11px] text-brand-ink/50">
-                Tamaño final: 4×6&quot; (10×15 cm) a 300 DPI
-                {withBleed ? ' con sangrado de 0.125″ por lado' : ''}. Espacio
-                de color sRGB.
+                El archivo sale de{' '}
+                <strong className="font-medium text-brand-ink/70">
+                  {inchLabel(fullW)} × {inchLabel(fullH)} pulgadas
+                </strong>{' '}
+                ({fullW} × {fullH} px a 300 DPI, sRGB)
+                {withBleed
+                  ? '. Incluye 0.125″ de sangrado por lado: hay que recortarlo a 4×6.'
+                  : ', que es justo el tamaño de una foto 4×6.'}
               </p>
             </div>
           </div>
