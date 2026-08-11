@@ -7,6 +7,12 @@ import { caballete } from './_caballete'
  * `caballete()`, que es común a todo el catálogo; aquí solo va la identidad
  * visual. Los assets por mitad los genera
  * `scripts/build-caballete-assets.mjs` a partir de esta misma paleta.
+ *
+ * `retratoFrame: 'silver'` no es un capricho: en premium el retrato hereda
+ * 'thin', y 'thin' dibuja con `GOLD_STOPS`, que están fijos en frames.tsx. En
+ * una plantilla dorada eso pasa desapercibido, pero ésta es plateada entera
+ * —molduras, lettering, adornos— y el retrato salía con un filete DORADO en
+ * medio. Se veía al renderizar la pieza; leyendo el código no.
  */
 export const azulCristal = caballete({
   id: 'azul-cristal',
@@ -14,6 +20,7 @@ export const azulCristal = caballete({
   category: 'xv',
   kind: 'xv',
   premium: true,
+  retratoFrame: 'silver',
   nameColor: '#8b97a3',
   nameGradient: [
     0,

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1800" width="1200" height="1800">
+  <!-- otono-terracota — CAPA 1 / base del caballete. Casi no se ve: la tapan las dos
+       mitades. Existe porque al exportar con sangrado el motor ESTIRA este
+       archivo a 1276x1876, así que es lo único que cubre el margen.
+       Generado por scripts/build-caballete-assets.mjs -->
+  <defs>
+    <linearGradient id="t" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#fdf2e6"/><stop offset="100%" stop-color="#a04425"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="900" fill="url(#t)"/>
+  <rect x="0" y="900" width="1200" height="900" fill="#fffdf8"/>
+</svg>

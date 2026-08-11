@@ -1,6 +1,12 @@
 import type { TemplateCategory, TemplateDef } from '../types'
 import { xvMariposasOro } from './xv-mariposas-oro'
 import { bodaArcoEucalipto } from './boda-arco-eucalipto'
+import { coronaAmatista } from './corona-amatista'
+import { otonoTerracota } from './otono-terracota'
+import { bodaRuborBorgona } from './boda-rubor-borgona'
+import { bodaBrumaPlata } from './boda-bruma-plata'
+import { birreteDeHonor } from './birrete-de-honor'
+import { laurelTinta } from './laurel-tinta'
 import { universal } from './universal'
 import { deluxeValentina } from './deluxe-valentina'
 import { bodaBlancoOro } from './boda-blanco-oro'
@@ -28,8 +34,16 @@ import { togaDigital } from './toga-digital'
  */
 export const templates: TemplateDef[] = [
   // --- Colección Premium ---
+  // El orden manda dentro de cada categoría en la galería, así que las nuevas
+  // van delante de las de su evento.
   xvMariposasOro,
+  coronaAmatista,
+  otonoTerracota,
   bodaArcoEucalipto,
+  bodaRuborBorgona,
+  bodaBrumaPlata,
+  birreteDeHonor,
+  laurelTinta,
   // --- Catálogo previo ---
   universal,
   consolaNeon,
