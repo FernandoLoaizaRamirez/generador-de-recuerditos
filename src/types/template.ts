@@ -171,6 +171,12 @@ export interface TemplateDef {
   /** Evento al que pertenece. Obligatorio: agrupa la galería y el
    *  type-checker avisa si una plantilla nueva se queda sin clasificar. */
   category: TemplateCategory
+  /**
+   * La destaca en una sección propia al principio de la galería, además de
+   * seguir apareciendo en su categoría. Es un atajo para no tener que buscar
+   * los diseños nuevos entre los 21; no cambia nada del render.
+   */
+  featured?: boolean
   thumbnail: AssetRef
   /** Versión del esquema/plantilla para migraciones futuras. */
   version: number

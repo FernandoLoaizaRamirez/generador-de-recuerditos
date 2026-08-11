@@ -118,6 +118,8 @@ export interface CaballeteSpec {
    * Los assets los emite `scripts/build-caballete-assets.mjs`.
    */
   premium?: boolean
+  /** La destaca al principio de la galería, además de en su categoría. */
+  featured?: boolean
   /** Adornos extra, ya posicionados por mitad. */
   overlays?: TemplateDef['overlays']
 }
@@ -175,6 +177,7 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
     id: spec.id,
     name: spec.name,
     category: spec.category,
+    ...(spec.featured ? { featured: true } : {}),
     thumbnail: `${BASE}/thumbnail.svg`,
     version: spec.version ?? 2,
     fold: { atY: CAB.foldY },

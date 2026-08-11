@@ -28,6 +28,7 @@ export const bodaArcoEucalipto = caballete({
   category: 'boda',
   kind: 'boda',
   premium: true,
+  featured: true,
   version: 4,
   // Arco de radio 200 (= ancho/2) sobre el hueco de 400×655: arranca en
   // y=200 y el vértice queda en y=0. Coordenadas locales del hueco.

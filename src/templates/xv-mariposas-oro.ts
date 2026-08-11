@@ -33,6 +33,7 @@ export const xvMariposasOro: TemplateDef = {
   id: 'xv-mariposas-oro',
   name: 'Mariposas de Oro',
   category: 'xv',
+  featured: true,
   thumbnail: `${BASE}/thumbnail.svg`,
   version: 2,
   fold: { atY: 900 },

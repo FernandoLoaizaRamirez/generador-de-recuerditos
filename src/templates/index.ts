@@ -99,6 +99,15 @@ export const CATEGORIES: { id: TemplateCategory; label: string }[] = [
   { id: 'graduacion', label: 'Graduación' },
 ]
 
+/**
+ * Las destacadas, en el orden del registro. La galería las pone en una
+ * sección propia al principio para no tener que buscarlas entre las 21;
+ * siguen apareciendo además en su categoría, que es como se navega por evento.
+ */
+export function featuredTemplates(): TemplateDef[] {
+  return templates.filter((t) => t.featured)
+}
+
 export interface TemplateGroup {
   id: TemplateCategory
   label: string
