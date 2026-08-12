@@ -24,7 +24,6 @@ export const otonoTerracota = caballete({
   premium: true,
   featured: true,
   version: 1,
-  retratoFrame: 'none',
   nameColor: '#b06437',
   nameGradient: [
     0,

@@ -25,7 +25,6 @@ export const coronaAmatista = caballete({
   premium: true,
   featured: true,
   version: 1,
-  retratoFrame: 'none',
   displayFont: 'Playfair Display',
   nameColor: '#e5a894',
   nameGradient: [

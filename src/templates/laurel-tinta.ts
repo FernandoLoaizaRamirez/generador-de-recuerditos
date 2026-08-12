@@ -26,7 +26,6 @@ export const laurelTinta = caballete({
   premium: true,
   featured: true,
   version: 1,
-  retratoFrame: 'none',
   displayFont: 'Playfair Display',
   nameColor: '#1f6f6b',
   nameGradient: [

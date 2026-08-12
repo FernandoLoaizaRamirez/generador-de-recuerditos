@@ -14,12 +14,6 @@ import { caballete } from './_caballete'
  * El nombre va en Playfair y no en el script caligráfico de la casa: «Diego
  * Alberto» bajo «Generación 2026» pide letra grabada de diploma, no de
  * invitación de quinceañera.
- *
- * `retratoFrame: 'none'` porque la moldura del retrato la pone
- * `overlays/bottom-decor.svg` en la paleta de la plantilla (ver
- * `retratoMoulding` en scripts/build-caballete-assets.mjs). El marco vectorial
- * 'thin' dibuja oro fijo y aquí desentonaría con el resto del oro, que es más
- * apagado.
  */
 export const birreteDeHonor = caballete({
   id: 'birrete-de-honor',
@@ -29,7 +23,6 @@ export const birreteDeHonor = caballete({
   premium: true,
   featured: true,
   version: 1,
-  retratoFrame: 'none',
   displayFont: 'Playfair Display',
   nameColor: '#e0bc7e',
   nameGradient: [

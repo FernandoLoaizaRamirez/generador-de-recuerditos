@@ -151,9 +151,15 @@ export function caballete(spec: CaballeteSpec): TemplateDef {
   // `overlays/top-frames.svg`, que dibuja una moldura de cuatro caras en
   // inglete; ahí el marco vectorial sobraría.
   const frameStyle = spec.premium ? 'none' : (spec.frameStyle ?? 'thin')
-  // El retrato es otra historia: esa capa no le dibuja marco, así que si se
-  // le aplicara el 'none' de premium se quedaría sin ninguno.
-  const retratoFrame = spec.retratoFrame ?? (spec.premium ? 'thin' : frameStyle)
+  // El retrato también viene enmarcado desde el overlay en premium: la
+  // moldura la emite `bottom-decor.svg` con el acento de la plantilla.
+  //
+  // Antes aquí ponía 'thin', que dibuja un filete plano con un oro FIJO
+  // (GOLD_STOPS en frames.tsx). Eso metía oro en las plantillas que no lo
+  // tienen —«Azul Cristal» es plateada entera y llevaba el retrato dorado— y,
+  // aun acertando el color, dejaba un filete plano debajo de dos fotos
+  // enmarcadas con molduras biseladas: el retrato parecía de otra pieza.
+  const retratoFrame = spec.retratoFrame ?? (spec.premium ? 'none' : frameStyle)
   const half = (src: string, y: number) => ({
     src: `${BASE}/${src}`,
     x: 0,

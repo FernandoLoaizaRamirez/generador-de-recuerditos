@@ -23,7 +23,6 @@ export const bodaRuborBorgona = caballete({
   premium: true,
   featured: true,
   version: 1,
-  retratoFrame: 'none',
   nameColor: '#c9835c',
   nameGradient: [
     0,

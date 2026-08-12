@@ -537,14 +537,20 @@ ${MOTES.map(([x, y, s]) => `    <use href="#mo" x="-50" y="-50" width="100" heig
 /**
  * Moldura del RETRATO, en la paleta de la plantilla.
  *
- * `retratoFrame: 'thin'` dibuja el marco con `GOLD_STOPS`, que están fijos en
- * frames.tsx. En una plantilla de oro no se nota, pero en una de plata o de
- * oro rosa mete un rectángulo dorado en medio de una pieza que no tiene ni una
- * gota de oro — se ve en «Azul Cristal», que es plateada entera y lleva el
- * retrato con filete dorado.
+ * Antes el retrato se enmarcaba con `retratoFrame: 'thin'`, que dibuja un
+ * filete plano con `GOLD_STOPS` — un oro FIJO, escrito en frames.tsx. Eso
+ * tenía dos problemas:
  *
- * Con esto la moldura sale del acento, igual que las de las fotos de arriba, y
- * la plantilla declara `retratoFrame: 'none'`.
+ *  1. En las plantillas que no son doradas metía oro donde no lo hay. «Azul
+ *     Cristal» es plateada entera y llevaba el retrato con filete dorado;
+ *     «Consola Neón» es cian y violeta y lo mismo.
+ *  2. Aun acertando el color, era un filete PLANO debajo de dos fotos
+ *     enmarcadas con molduras biseladas de cuatro caras. El retrato parecía de
+ *     otra pieza.
+ *
+ * Ahora la lleva la misma moldura que las fotos de arriba, sacada del acento
+ * de cada plantilla. Se emite para TODA plantilla premium salvo las de retrato
+ * en arco, donde un rectángulo taparía la curva (ver `arch`).
  */
 const retratoMoulding = (t) => {
   const [a1, a2] = t.acc
@@ -565,7 +571,9 @@ const retratoMoulding = (t) => {
 }
 
 function bottomDecor(t) {
-  const marco = t.retratoMoulding ? retratoMoulding(t) : null
+  // Toda premium salvo las de arco: ahí el marco lo pone su propio overlay,
+  // siguiendo la curva.
+  const marco = t.arch ? null : retratoMoulding(t)
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
   <!-- ${t.id} — CAPA 7 / adorno de la MITAD INFERIOR (0,900,1200,900).
        Coordenadas LOCALES: local_y = canvas_y - 900. Monta la esquina del
@@ -875,8 +883,6 @@ const TEMPLATES = [
   // y sólo 3 de boda (las dos de verdad casi idénticas entre sí) y 3 de
   // graduación, las tres neón oscuras de videojuego.
   //
-  // `retratoMoulding` les da la moldura del retrato en su propia paleta. Las
-  // de antes heredan `retratoFrame: 'thin'`, que dibuja oro fijo.
   //
   // Las paletas están medidas en Lab contra todo el catálogo: la más cercana
   // está a ΔE 11.5, y el par más parecido ya publicado está a 4.1.
